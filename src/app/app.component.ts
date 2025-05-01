@@ -34,5 +34,26 @@ export class AppComponent {
       }
     }, 1000);
   }
+  cheerButton(event: any) {
+    // Add the sparkle effect on click
+    const button = event.target;
+    const sparklesContainer = button.querySelector('.sparkles');
+
+    // Create a sparkle element
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    
+    // Position the sparkle at a random spot within the button
+    sparkle.style.top = `${Math.random() * 100}%`;
+    sparkle.style.left = `${Math.random() * 100}%`;
+
+    // Add the sparkle to the container
+    sparklesContainer.appendChild(sparkle);
+
+    // Remove the sparkle after animation completes (1 second)
+    setTimeout(() => {
+      sparkle.remove();
+    }, 1000);
+  }
 
 }
