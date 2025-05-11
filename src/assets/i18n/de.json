@@ -1,0 +1,20 @@
+{
+ "choose_language": "Sprache auswählen",
+ "nav": {
+  "home": "Startseite",
+  "about": "Über uns",
+  "projects": "Projekte",
+  "skills": "Fähigkeiten",
+  "contact": "Kontakt",
+  "resume": "Lebenslauf"
+}
+,
+ 
+    "languages": {
+      "ar": "Arabisch",
+      "fr": "Französisch",
+      "en": "Englisch",
+      "de": "Deutsch"
+    }
+  }
+  

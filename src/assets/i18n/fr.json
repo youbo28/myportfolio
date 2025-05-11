@@ -1,0 +1,20 @@
+{   "choose_language": "Choisissez une langue",
+"nav": {
+  "home": "Accueil",
+  "about": "À propos",
+  "projects": "Projets",
+  "skills": "Compétences",
+  "contact": "Contact",
+  "resume": "CV",
+  "get_in_touch": "Entrer en contact"
+
+}
+,
+    "languages": {
+      "ar": "Arabe",
+      "fr": "Français",
+      "en": "Anglais",
+      "de": "Allemand"
+    }
+  
+  }
