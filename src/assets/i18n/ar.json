@@ -1,22 +1,71 @@
 {
   "title": "أيوب غزالي",
-   "choose_language": "اختر لغة",
-   "nav": {
+  "choose_language": "اختر لغة",
+  "nav": {
     "home": "الرئيسية",
-    "about": "من نحن",
+    "about": "من انا",
+    "education": "التعليم",
+    "experience": "الخبرات",
     "projects": "المشاريع",
     "skills": "المهارات",
     "contact": "اتصل بنا",
     "resume": "السيرة الذاتية",
     "get_in_touch": "تواصل معي"
-
+  },
+  "languages": {
+    "ar": "العربية",
+    "fr": "الفرنسية",
+    "en": "الإنجليزية",
+    "de": "الألمانية"
+  },
+  "about_me": {
+    "aboutMe": "عنّي",
+    "intro": "أنا <strong>غزالي أيوب</strong>، مطور <strong>Full-Stack</strong> مكرّس ولدي خبرة في بناء تطبيقات الويب الحديثة باستخدام <span class=\"text-blue-600 font-semibold\">Angular</span> و <span class=\"text-green-600 font-semibold\">Spring Boot</span>. أنا شغوف بالكود النظيف وتجربة المستخدم وحل المشكلات الحقيقية من خلال التكنولوجيا. أستمتع أيضًا بتعلم أطر عمل جديدة والعمل في بيئات سريعة الحركة مثل بيئات الشركات الناشئة.",
+    "skills": "المهارات"
+  },
+  "education": {
+    "title": "التعليم",
+    "degrees": {
+      "bachelor": "ليسانس في علوم الحاسوب",
+      "master": "ماجستير في علوم الحاسوب والشبكات"
+    },
+    "institutions": {
+      "blida": "جامعة البليدة"
+    },
+    "descriptions": {
+      "bachelor": "ليسانس في الإعلام الآلي من جامعة البليدة، تركزت على أساسيات البرمجة، هياكل البيانات، قواعد البيانات وأنظمة التشغيل.",
+      "master": "ماستر في الإعلام الآلي والشبكات من جامعة البليدة، تخصص في الشبكات، أمن المعلومات، الحوسبة السحابية ومشاريع التخرج الموجهة نحو حلول SaaS."
+    }
+  },
+  "experience": {
+    "title": "الخبرات",
+    "positions": {
+      "universityTeacher": "أستاذ جامعي",
+      "armyOfficer": "ضابط في الجيش",
+      "analystDeveloper": "محلل ومطور برامج",
+      "juniorIntegrator": "مطور ومُدمج مبتدئ",
+      "softwareEngineer": "مهندس برمجيات"
+    },
+    "companies": {
+      "none": "جامعة البليدة 1",
+      "army": "الجيش الوطني الشعبي",
+      "compos": "Compos Solution",
+      "apcs": "APCS Serports",
+      "enageo": "ENAGEO / سوناطراك"
+    },
+    "descriptions": {
+      "universityTeacher": "درّست مقررات أكاديمية وساعدت الطلاب في الفهم النظري والتطبيقي.",
+      "armyOfficer": "أديت الخدمة العسكرية، مسؤول عن الانضباط والتنسيق والعمليات.",
+      "analystDeveloper": "طوّرت برامج وساهمت في تصميم الحلول ومعالجة الأخطاء.",
+      "juniorIntegrator": "عملت على دمج وتطوير الأنظمة الخاصة بإدارة الموانئ.",
+      "softwareEngineer": "تصميم وتنفيذ حلول برمجية للعمليات الجيوفيزيائية والأنظمة الداخلية."
+    },
+    "dates": {
+      "universityTeacher": "أكتوبر 2022 – يناير 2023",
+      "armyOfficer": "يناير 2023 – يناير 2024",
+      "analystDeveloper": "فبراير 2024 – يوليو 2024",
+      "juniorIntegrator": "يوليو 2024 – يناير 2025",
+      "softwareEngineer": "مارس 2025 – الآن"
+    }
   }
-  ,
-    "languages": {
-      "ar": "العربية",
-      "fr": "الفرنسية",
-      "en": "الإنجليزية",
-      "de": "الألمانية"
-      }
-  }
-  
+}

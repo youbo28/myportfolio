@@ -2,6 +2,8 @@
 const rtl = require('tailwindcss-rtl');
 
 module.exports = {
+    darkMode: 'class', 
+
   content: [
     "./src/**/*.{html,ts}",
   ],

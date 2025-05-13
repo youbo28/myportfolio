@@ -1,20 +1,72 @@
-{   "choose_language": "Choisissez une langue",
-"nav": {
-  "home": "Accueil",
-  "about": "À propos",
-  "projects": "Projets",
-  "skills": "Compétences",
-  "contact": "Contact",
-  "resume": "CV",
-  "get_in_touch": "Entrer en contact"
+{
+  "title": "RAZALI Ayoub",
+  "choose_language": "Choisissez une langue",
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "education": "Éducation",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact",
+    "resume": "CV",
+    "get_in_touch": "Entrer en contact"
+  },
+  "languages": {
+    "ar": "Arabe",
+    "fr": "Français",
+    "en": "Anglais",
+    "de": "Allemand"
+  },
+  "about_me": {
+    "aboutMe": "À propos de moi",
+    "intro": "Je suis <strong>Razali Ayoub</strong>, un développeur <strong>Full-Stack</strong> passionné, avec de l'expérience dans la création d'applications web modernes utilisant <span class=\"text-blue-600 font-semibold\">Angular</span> et <span class=\"text-green-600 font-semibold\">Spring Boot</span>. Je suis passionné par le code propre, l'UI/UX et la résolution de problèmes réels grâce à la technologie. J'aime aussi apprendre de nouveaux frameworks et travailler dans des environnements dynamiques de type startup.",
+    "skills": "Compétences"
+  },
+    "education": {
+    "title": "Éducation",
+    "degrees": {
+      "bachelor": "Licence en informatique",
+      "master": "Master en informatique et réseaux"
+    },
+    "institutions": {
+      "blida": "Université de Blida"
+    },
+    "descriptions": {
+      "bachelor": "Licence en informatique obtenue à l'Université de Blida, axée sur les bases de la programmation, les structures de données, les bases de données et les systèmes d'exploitation.",
+      "master": "Master en informatique et réseaux obtenu à l'Université de Blida, avec une spécialisation en réseaux, sécurité informatique, cloud computing et projets de fin d'études orientés vers des solutions SaaS."
+    }
+  },
+   "experience": {
+    "title": "Expérience",
+    "positions": {
+      "universityTeacher": "Enseignant universitaire",
+      "armyOfficer": "Officier de l’armée",
+      "analystDeveloper": "Développeur analyste",
+      "juniorIntegrator": "Développeur & Intégrateur junior",
+      "softwareEngineer": "Ingénieur logiciel"
+    },
+    "companies": {
+      "none": "Université de Blida 1",
+      "army": "Armée nationale populaire",
+      "compos": "Compos Solution",
+      "apcs": "APCS Serports",
+      "enageo": "ENAGEO / Sonatrach"
+    },
+    "descriptions": {
+      "universityTeacher": "Dispensé des cours académiques et assisté les étudiants dans la compréhension théorique et pratique.",
+      "armyOfficer": "Service militaire, responsable de la discipline, de la coordination et des opérations.",
+      "analystDeveloper": "Développement et maintenance de composants logiciels, participation à la conception et au débogage.",
+      "juniorIntegrator": "Travail sur l'intégration et le développement de logiciels pour les systèmes de gestion portuaire.",
+      "softwareEngineer": "Conception et mise en œuvre de solutions logicielles pour les opérations géophysiques."
+    },
+    "dates": {
+      "universityTeacher": "Octobre 2022 – Janvier 2023",
+      "armyOfficer": "Janvier 2023 – Janvier 2024",
+      "analystDeveloper": "Février 2024 – Juillet 2024",
+      "juniorIntegrator": "Juillet 2024 – Janvier 2025",
+      "softwareEngineer": "Mars 2025 – Présent"
+    }
+  }
 
 }
-,
-    "languages": {
-      "ar": "Arabe",
-      "fr": "Français",
-      "en": "Anglais",
-      "de": "Allemand"
-    }
-  
-  }

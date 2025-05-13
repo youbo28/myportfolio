@@ -1,0 +1,37 @@
+[
+  {
+    "position": "experience.positions.universityTeacher",
+    "company": "experience.companies.none",
+    "description": "experience.descriptions.universityTeacher",
+    "date": "experience.dates.universityTeacher",
+    "icon": "fa-chalkboard-teacher"
+  },
+  {
+    "position": "experience.positions.armyOfficer",
+    "company": "experience.companies.army",
+    "description": "experience.descriptions.armyOfficer",
+    "date": "experience.dates.armyOfficer",
+    "icon": "fa-shield-alt"
+  },
+  {
+    "position": "experience.positions.analystDeveloper",
+    "company": "experience.companies.compos",
+    "description": "experience.descriptions.analystDeveloper",
+    "date": "experience.dates.analystDeveloper",
+    "icon": "fa-code"
+  },
+  {
+    "position": "experience.positions.juniorIntegrator",
+    "company": "experience.companies.apcs",
+    "description": "experience.descriptions.juniorIntegrator",
+    "date": "experience.dates.juniorIntegrator",
+    "icon": "fa-puzzle-piece"
+  },
+  {
+    "position": "experience.positions.softwareEngineer",
+    "company": "experience.companies.enageo",
+    "description": "experience.descriptions.softwareEngineer",
+    "date": "experience.dates.softwareEngineer",
+    "icon": "fa-laptop-code"
+  }
+]

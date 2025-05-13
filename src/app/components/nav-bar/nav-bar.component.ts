@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { LanguageSwitcherComponent } from "../language-switcher/language-switcher.component";
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,9 +12,12 @@ import { LanguageSwitcherComponent } from "../language-switcher/language-switche
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
+  public themeService = inject(ThemeService);
   navItems = [
     { icon: 'fa-house', label: 'nav.home', href: '#home' },
     { icon: 'fa-user', label: 'nav.about', href: '#about' },
+    { icon: 'fa-graduation-cap', label: 'nav.education', href: '#education' },
+    { icon: 'fa-briefcase', label: 'nav.experience', href: '#experience' },
     { icon: 'fa-gift', label: 'nav.projects', href: '#projects' },
     { icon: 'fa-code', label: 'nav.skills', href: '#skills' },
     { icon: 'fa-envelope', label: 'nav.contact', href: '#contact' },
