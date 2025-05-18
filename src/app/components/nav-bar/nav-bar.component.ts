@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { LanguageSwitcherComponent } from "../language-switcher/language-switcher.component";
 import { ThemeService } from '../../services/theme.service';
@@ -13,7 +13,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class NavBarComponent {
   public themeService = inject(ThemeService);
-  
+
   navItems = [
     { icon: 'fa-house', label: 'nav.home', href: '#home' },
     { icon: 'fa-user', label: 'nav.about', href: '#about' },
@@ -25,6 +25,24 @@ export class NavBarComponent {
   ];
 
   currentSection: string = 'nav.home';
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const offset = 100; // adjust as needed
+    for (const item of this.navItems) {
+      if (!item.href.startsWith('#')) continue;
+
+      const section = document.querySelector(item.href);
+      if (section) {
+        const top = (section as HTMLElement).offsetTop;
+        const height = (section as HTMLElement).offsetHeight;
+
+        if (window.scrollY + offset >= top && window.scrollY < top + height) {
+          this.currentSection = item.label;
+          break;
+        }
+      }
+    }
+  }
 
   scrollToSection(label: string): void {
     const item = this.navItems.find(i => i.label === label);
@@ -38,8 +56,8 @@ export class NavBarComponent {
       const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        this.toggleMobile(false); // Optional: close mobile menu after click
-
+        this.currentSection = label; // Update active section
+        this.toggleMobile(false);
       }
     }
   }
