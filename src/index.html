@@ -14,10 +14,14 @@
 </head>
 <body>
   <app-root></app-root>
-  <form name="contact" netlify hidden>
+<form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <!-- Required fields -->
   <input type="text" name="name" />
   <input type="email" name="email" />
   <textarea name="message"></textarea>
+
+  <!-- Spam honeypot -->
+  <input type="text" name="bot-field" />
 </form>
 
 </body>
