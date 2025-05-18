@@ -1,0 +1,36 @@
+<div class="relative w-32 md:w-40">
+  <select
+    id="lang"
+    (change)="onChange($event)"
+    [value]="currentLanguage"
+    class="appearance-none w-full px-4 pr-10 py-2 text-sm rounded-lg
+           bg-white/80 dark:bg-gray-900/60 text-gray-800 dark:text-white
+           border border-gray-300 dark:border-gray-700 shadow-md
+           backdrop-blur-lg focus:outline-none focus:ring-2
+           focus:ring-indigo-500 focus:border-indigo-500
+           transition duration-300 ease-in-out font-medium"
+  >
+    <ng-container *ngFor="let lang of languages">
+      <option
+        [value]="lang.id"
+        [selected]="lang.id === currentLanguage"
+        class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+      >
+        {{ text('languages.' + lang.id) }}
+      </option>
+    </ng-container>
+  </select>
+
+  <!-- Chevron Icon -->
+  <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+    <svg
+      class="h-4 w-4 text-gray-500 dark:text-gray-300 transition duration-300"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>

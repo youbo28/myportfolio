@@ -1,0 +1,34 @@
+[
+  {
+    "title": "projects.titles.portfolio",
+    "description": "projects.descriptions.portfolio",
+    "technologies": ["Angular", "Tailwind CSS", "SCSS"],
+    "link": "https://ayoubrazali.site",
+    "github": "https://github.com/youbo28/myportfolio",
+    "image": "assets/images/portfolio.png"
+  },
+  {
+    "title": "projects.titles.moviesWatchlist",
+    "description": "projects.descriptions.moviesWatchlist",
+    "technologies": ["Spring Boot"],
+    "link": "",
+    "github": "https://github.com/youbo28/watchlist",
+    "image": "assets/images/movies.png"
+  },
+  {
+    "title": "projects.titles.loanManagement",
+    "description": "projects.descriptions.loanManagement",
+    "technologies": ["Angular", "Spring Boot", "MySQL"],
+    "link": "",
+    "github": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
+    "image": "assets/images/loan.png"
+  },
+  {
+    "title": "projects.titles.libraryManagement",
+    "description": "projects.descriptions.libraryManagement",
+    "technologies": ["JEE", "JavaScript", "MySQL"],
+    "link": "",
+    "github": "https://github.com/youbo28/Bibliotheque",
+    "image": "assets/images/library.png"
+  }
+]

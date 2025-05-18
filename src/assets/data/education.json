@@ -1,0 +1,14 @@
+[
+  {
+    "degree": "education.degrees.bachelor",
+    "institution": "education.institutions.blida",
+    "description": "education.descriptions.bachelor",
+    "date": "2015 - 2020"
+  },
+  {
+    "degree": "education.degrees.master",
+    "institution": "education.institutions.blida",
+    "description": "education.descriptions.master",
+    "date": "2020 - 2022"
+  }
+]

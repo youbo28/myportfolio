@@ -1,0 +1,115 @@
+{
+  "title": "RAZALI Ayoub",
+  "choose_language": "Choose a language",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "resume": "Resume",
+    "get_in_touch": "Get in Touch",
+    "education": "Education",
+    "experience": "Experience"
+  },
+  "hero": {
+    "greeting": "Hi, I'm <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
+    "typewriter": {
+      "line1": "I'm a passionate Full-Stack Developer specialized in Angular and Java Spring Boot.",
+      "line2": "I build modern, performant web applications.",
+      "line3": "Let's build something awesome together!"
+    },
+    "contactMe": "Contact Me"
+  },
+  "languages": {
+    "ar": "Arabic",
+    "fr": "French",
+    "en": "English",
+    "de": "German"
+  },
+  "about_me": {
+    "aboutMe": "About Me",
+    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class=\"text-blue-600 font-semibold\">Angular</span> and <span class=\"text-green-600 font-semibold\">Spring Boot</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments. I’m multilingual and can communicate effectively in <strong>English</strong>, <strong>French</strong>, and <strong>Arabic</strong>, with a basic knowledge of <strong>German</strong>.",
+    "skills": "Skills"
+  },
+  "education": {
+    "title": "Education",
+    "degrees": {
+      "bachelor": "Bachelor's in Computer Science",
+      "master": "Master's in Computer Science and Network"
+    },
+    "institutions": {
+      "blida": "University of Blida"
+    },
+    "descriptions": {
+      "bachelor": "Bachelor's degree in Computer Science from the University of Blida, focusing on programming fundamentals, data structures, databases, and operating systems.",
+      "master": "Master's degree in Computer Science and Network from the University of Blida, specialized in networking, cybersecurity, cloud computing, and final projects oriented toward SaaS solutions."
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "positions": {
+      "universityTeacher": "University Teacher",
+      "armyOfficer": "Army Officer",
+      "analystDeveloper": "Analyst Developer",
+      "juniorIntegrator": "Junior Developer & Integrator",
+      "softwareEngineer": "Software Engineer"
+    },
+    "companies": {
+      "none": "University of Blida 1",
+      "army": "National People's Army",
+      "compos": "Compos Solution",
+      "apcs": "APCS Serports",
+      "enageo": "ENAGEO / Sonatrach"
+    },
+    "descriptions": {
+      "universityTeacher": "Taught academic courses and assisted students with practical and theoretical understanding.",
+      "armyOfficer": "Served in the military, responsible for discipline, coordination, and operations as part of national service.",
+      "analystDeveloper": "Developed and maintained software components, contributed to solution design and debugging.",
+      "juniorIntegrator": "Worked on software integration and development tasks for port management systems.",
+      "softwareEngineer": "Designing and implementing software solutions for geophysical operations and internal systems."
+    },
+    "dates": {
+      "universityTeacher": "October 2022 – January 2023",
+      "armyOfficer": "January 2023 – January 2024",
+      "analystDeveloper": "February 2024 – July 2024",
+      "juniorIntegrator": "July 2024 – January 2025",
+      "softwareEngineer": "March 2025 – Present"
+    }
+  },
+  "projects": {
+    "technologies": "Technologies",
+    "project_title": "Projects",
+    "titles": {
+      "portfolio": "Portfolio",
+      "moviesWatchlist": "Movies Watchlist API",
+      "loanManagement": "Loan Management",
+      "libraryManagement": "Library Management"
+    },
+    "descriptions": {
+      "portfolio": "Portfolio project showcasing my skills and experience.",
+      "moviesWatchlist": "A movie watchlist API  built with Spring Boot for learning puposes.",
+      "loanManagement": "A loan management system with Angular frontend and Spring Boot backend, connected to MySQL database.",
+      "libraryManagement": "A library management system developed with JEE, JavaScript, and MySQL."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "architecture": "Architecture",
+    "devops": "DevOps",
+    "testing": "Testing",
+    "languages": "Languages",
+    "speaking_languages": "Speaking Languages"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "send": "Send Message",
+    "successMessage": "Thank you! Your message has been sent successfully.",
+    "errorMessage": "Oops! Something went wrong. Please try again later."
+  }
+}

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Additional custom styles can be added here */
+body {
+  @apply bg-gray-100 dark:bg-gray-900; /* Use a light gray for the body when in light mode, dark mode stays gray */
+  transition: background-color 0.3s ease-in-out;
+}
+

@@ -1,0 +1,114 @@
+{
+  "title": "RAZALI Ayoub",
+  "choose_language": "Sprache auswählen",
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "education": "Bildung",
+    "experience": "Erfahrung",
+    "projects": "Projekte",
+    "skills": "Fähigkeiten",
+    "contact": "Kontakt",
+    "resume": "Lebenslauf"
+  },
+  "languages": {
+    "ar": "Arabisch",
+    "fr": "Französisch",
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+  "about_me": {
+    "aboutMe": "Über mich",
+    "intro": "Ich bin <strong>Razali Ayoub</strong>, ein engagierter <strong>Full-Stack-Entwickler</strong> mit Erfahrung in der Entwicklung moderner Webanwendungen mit <span class=\"text-blue-600 font-semibold\">Angular</span> und <span class=\"text-green-600 font-semibold\">Spring Boot</span>. Ich lege großen Wert auf sauberen Code, UI/UX und darauf, reale Probleme mit Technologie zu lösen. Außerdem lerne ich gerne neue Frameworks und arbeite gern in dynamischen Startup-Umgebungen. Ich spreche fließend <strong>Englisch</strong>, <strong>Französisch</strong> und <strong>Arabisch</strong> und habe Grundkenntnisse in <strong>Deutsch</strong>.",
+    "skills": "Fähigkeiten"
+  },
+  "education": {
+    "title": "Ausbildung",
+    "degrees": {
+      "bachelor": "Bachelor in Informatik",
+      "master": "Master in Informatik und Netzwerke"
+    },
+    "institutions": {
+      "blida": "Universität Blida"
+    },
+    "descriptions": {
+      "bachelor": "Bachelor in Informatik an der Universität Blida mit Schwerpunkt auf Programmiergrundlagen, Datenstrukturen, Datenbanken und Betriebssystemen.",
+      "master": "Master in Informatik und Netzwerke an der Universität Blida mit Spezialisierung auf Netzwerke, IT-Sicherheit, Cloud Computing und Abschlussprojekte mit Fokus auf SaaS-Lösungen."
+    }
+  },
+  "experience": {
+    "title": "Berufserfahrung",
+    "positions": {
+      "universityTeacher": "Universitätsdozent",
+      "armyOfficer": "Offizier der Armee",
+      "analystDeveloper": "Analyst Entwickler",
+      "juniorIntegrator": "Junior Entwickler & Integrator",
+      "softwareEngineer": "Softwareentwickler"
+    },
+    "companies": {
+      "none": "Universität Blida 1",
+      "army": "Volksarmee (ANP)",
+      "compos": "Compos Solution",
+      "apcs": "APCS Serports",
+      "enageo": "ENAGEO / Sonatrach"
+    },
+    "descriptions": {
+      "universityTeacher": "Akademische Kurse unterrichtet und Studenten bei praktischen und theoretischen Fragen unterstützt.",
+      "armyOfficer": "Militärdienst, verantwortlich für Disziplin, Koordination und Einsatzführung.",
+      "analystDeveloper": "Softwarekomponenten entwickelt und gewartet, an Design und Debugging beteiligt.",
+      "juniorIntegrator": "Arbeit an Integration und Entwicklung von Softwaresystemen für Hafenmanagement.",
+      "softwareEngineer": "Entwicklung und Umsetzung von Softwarelösungen für geophysikalische Operationen."
+    },
+    "dates": {
+      "universityTeacher": "Oktober 2022 – Januar 2023",
+      "armyOfficer": "Januar 2023 – Januar 2024",
+      "analystDeveloper": "Februar 2024 – Juli 2024",
+      "juniorIntegrator": "Juli 2024 – Januar 2025",
+      "softwareEngineer": "März 2025 – Heute"
+    }
+  },
+  "projects": {
+    "technologies": "Technologien",
+    "project_title": "Projekte",
+    "titles": {
+      "portfolio": "Portfolio",
+      "moviesWatchlist": "Filmliste API",
+      "loanManagement": "Kreditverwaltung",
+      "libraryManagement": "Bibliotheksverwaltung"
+    },
+    "descriptions": {
+      "portfolio": "Portfolio-Projekt, das meine Fähigkeiten und Erfahrungen zeigt.",
+      "moviesWatchlist": "Eine Filmlisten-API, die mit Spring Boot zu Lernzwecken erstellt wurde.",
+      "loanManagement": "Ein System zur Verwaltung von Krediten mit Angular-Frontend und Spring Boot-Backend, verbunden mit einer MySQL-Datenbank.",
+      "libraryManagement": "Ein Bibliotheksverwaltungssystem, das mit JEE, JavaScript und MySQL entwickelt wurde."
+    }
+  },
+  "skills": {
+    "title": "Fähigkeiten",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "architecture": "Architektur",
+    "devops": "DevOps",
+    "testing": "Tests",
+    "languages": "Sprachen",
+    "speaking_languages": "Gesprochene Sprachen"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie mich",
+    "name": "Ihr Name",
+    "email": "Ihre E-Mail",
+    "message": "Ihre Nachricht",
+    "send": "Nachricht senden",
+    "successMessage": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
+    "errorMessage": "Hoppla! Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
+    "typewriter": {
+      "line1": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler, spezialisiert auf Angular und Java Spring Boot.",
+      "line2": "Ich baue moderne, leistungsstarke Webanwendungen.",
+      "line3": "Lass uns gemeinsam etwas Großartiges schaffen!"
+    },
+    "contactMe": "Kontaktieren Sie mich"
+  }
+}

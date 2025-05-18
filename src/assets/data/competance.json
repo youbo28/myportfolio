@@ -1,0 +1,60 @@
+[
+  {
+    "category": "skills.frontend",
+    "competences": [
+      { "name": "Angular", "level": 90 },
+      { "name": "Tailwind", "level": 80 },
+      { "name": "Bootstrap", "level": 85 },
+      { "name": "CSS", "level": 85 }
+    ]
+  },
+  {
+    "category": "skills.backend",
+    "competences": [
+      { "name": "Spring Boot", "level": 85 },
+      { "name": "Java", "level": 95 },
+      { "name": "Odoo", "level": 70 }
+    ]
+  },
+  {
+    "category": "skills.architecture",
+    "competences": [
+      { "name": "Microservices", "level": 80 },
+      { "name": "Monolithic", "level": 85 }
+    ]
+  },
+  {
+    "category": "skills.devops",
+    "competences": [
+      { "name": "Kubernetes", "level": 70 },
+      { "name": "Docker", "level": 80 },
+      { "name": "Git", "level": 90 }
+    ]
+  },
+  {
+    "category": "skills.testing",
+    "competences": [
+      { "name": "TDD", "level": 80 },
+      { "name": "BDD", "level": 75 }
+    ]
+  },
+  {
+    "category": "skills.languages",
+    "competences": [
+      { "name": "Java", "level": 95 },
+      { "name": "TypeScript", "level": 85 },
+      { "name": "Python", "level": 70 },
+      { "name": "HTML", "level": 90 },
+      { "name": "SCSS", "level": 80 }
+    ]
+  },
+  {
+    "category": "skills.speaking_languages",
+    "competences": [
+      { "name": "Arabic", "level": 100 },
+      { "name": "French", "level": 95 },
+      { "name": "English", "level": 90 },
+      { "name": "German", "level": 60 }
+    ]
+  }
+]
