@@ -20,10 +20,10 @@
   },
   "about_me": {
     "aboutMe": "À propos de moi",
-    "intro": "Je suis <strong>Razali Ayoub</strong>, un développeur <strong>Full-Stack</strong> passionné, avec de l'expérience dans la création d'applications web modernes utilisant <span class=\"text-blue-600 font-semibold\">Angular</span> et <span class=\"text-green-600 font-semibold\">Spring Boot</span>. Je suis passionné par le code propre, l'UI/UX et la résolution de problèmes réels grâce à la technologie. J'aime aussi apprendre de nouveaux frameworks et travailler dans des environnements dynamiques de type startup.",
+    "intro": "Je suis <strong>Razali Ayoub</strong>, un <strong>Développeur Full-Stack</strong> passionné, avec de l'expérience dans la création d'applications web modernes en utilisant <span class=\"text-blue-600 font-semibold\">Angular</span> et <span class=\"text-green-600 font-semibold\">Spring Boot</span>. J'aime le code propre, l'UI/UX, et résoudre des problèmes concrets grâce à la technologie. J'apprécie également apprendre de nouveaux frameworks et travailler dans des environnements dynamiques de type startup. Je parle couramment le <strong>français</strong>, l'<strong>anglais</strong> et l'<strong>arabe</strong>, avec quelques notions en <strong>allemand</strong>.",
     "skills": "Compétences"
   },
-    "education": {
+  "education": {
     "title": "Éducation",
     "degrees": {
       "bachelor": "Licence en informatique",
@@ -37,7 +37,7 @@
       "master": "Master en informatique et réseaux obtenu à l'Université de Blida, avec une spécialisation en réseaux, sécurité informatique, cloud computing et projets de fin d'études orientés vers des solutions SaaS."
     }
   },
-   "experience": {
+  "experience": {
     "title": "Expérience",
     "positions": {
       "universityTeacher": "Enseignant universitaire",
@@ -67,6 +67,49 @@
       "juniorIntegrator": "Juillet 2024 – Janvier 2025",
       "softwareEngineer": "Mars 2025 – Présent"
     }
+  },
+  "projects": {
+    "technologies": "Technologies",
+    "project_title": "Projets",
+    "titles": {
+      "portfolio": "Portfolio",
+      "moviesWatchlist": "Liste de films API ",
+      "loanManagement": "Gestion des prêts",
+      "libraryManagement": "Gestion de bibliothèque"
+    },
+    "descriptions": {
+      "portfolio": "Projet portfolio présentant mes compétences et mon expérience.",
+      "moviesWatchlist": "Une API de liste de films construite avec Spring Boot à des fins d'apprentissage.",
+      "loanManagement": "Un système de gestion des prêts avec un frontend Angular et un backend Spring Boot, connecté à une base de données MySQL.",
+      "libraryManagement": "Un système de gestion de bibliothèque développé avec JEE, JavaScript et MySQL."
+    }
+  },
+  "skills": {
+    "title": "Compétences",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "architecture": "Architecture",
+    "devops": "DevOps",
+    "testing": "Tests",
+    "languages": "Langages",
+    "speaking_languages": "Langues Parlées"
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "name": "Votre nom",
+    "email": "Votre e-mail",
+    "message": "Votre message",
+    "send": "Envoyer le message",
+    "successMessage": "Merci ! Votre message a été envoyé avec succès.",
+    "errorMessage": "Oups ! Une erreur s'est produite. Veuillez réessayer plus tard."
+  },
+  "hero": {
+    "greeting": "Salut, je suis <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
+    "typewriter": {
+      "line1": "Je suis un développeur Full-Stack passionné spécialisé en Angular et Java Spring Boot.",
+      "line2": "Je crée des applications web modernes et performantes.",
+      "line3": "Construisons quelque chose d'incroyable ensemble !"
+    },
+    "contactMe": "Contactez-moi"
   }
-
 }

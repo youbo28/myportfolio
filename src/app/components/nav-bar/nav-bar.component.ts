@@ -16,10 +16,9 @@ export class NavBarComponent {
   navItems = [
     { icon: 'fa-house', label: 'nav.home', href: '#home' },
     { icon: 'fa-user', label: 'nav.about', href: '#about' },
-    { icon: 'fa-graduation-cap', label: 'nav.education', href: '#education' },
+    { icon: 'fa-project-diagram', label: 'nav.projects', href: '#projects' },
     { icon: 'fa-briefcase', label: 'nav.experience', href: '#experience' },
-    { icon: 'fa-gift', label: 'nav.projects', href: '#projects' },
-    { icon: 'fa-code', label: 'nav.skills', href: '#skills' },
+    { icon: 'fa-graduation-cap', label: 'nav.education', href: '#education' },
     { icon: 'fa-envelope', label: 'nav.contact', href: '#contact' },
     { icon: 'fa-file-lines', label: 'nav.resume', href: '#resume' }
   ];

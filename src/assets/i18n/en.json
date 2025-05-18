@@ -12,6 +12,15 @@
     "education": "Education",
     "experience": "Experience"
   },
+  "hero": {
+    "greeting": "Hi, I'm <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
+    "typewriter": {
+      "line1": "I'm a passionate Full-Stack Developer specialized in Angular and Java Spring Boot.",
+      "line2": "I build modern, performant web applications.",
+      "line3": "Let's build something awesome together!"
+    },
+    "contactMe": "Contact Me"
+  },
   "languages": {
     "ar": "Arabic",
     "fr": "French",
@@ -20,7 +29,7 @@
   },
   "about_me": {
     "aboutMe": "About Me",
-    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class=\"text-blue-600 font-semibold\">Angular</span> and <span class=\"text-green-600 font-semibold\">Spring Boot</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments.",
+    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class=\"text-blue-600 font-semibold\">Angular</span> and <span class=\"text-green-600 font-semibold\">Spring Boot</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments. I’m multilingual and can communicate effectively in <strong>English</strong>, <strong>French</strong>, and <strong>Arabic</strong>, with a basic knowledge of <strong>German</strong>.",
     "skills": "Skills"
   },
   "education": {
@@ -37,7 +46,7 @@
       "master": "Master's degree in Computer Science and Network from the University of Blida, specialized in networking, cybersecurity, cloud computing, and final projects oriented toward SaaS solutions."
     }
   },
-    "experience": {
+  "experience": {
     "title": "Experience",
     "positions": {
       "universityTeacher": "University Teacher",
@@ -67,5 +76,40 @@
       "juniorIntegrator": "July 2024 – January 2025",
       "softwareEngineer": "March 2025 – Present"
     }
+  },
+  "projects": {
+    "technologies": "Technologies",
+    "project_title": "Projects",
+    "titles": {
+      "portfolio": "Portfolio",
+      "moviesWatchlist": "Movies Watchlist API",
+      "loanManagement": "Loan Management",
+      "libraryManagement": "Library Management"
+    },
+    "descriptions": {
+      "portfolio": "Portfolio project showcasing my skills and experience.",
+      "moviesWatchlist": "A movie watchlist API  built with Spring Boot for learning puposes.",
+      "loanManagement": "A loan management system with Angular frontend and Spring Boot backend, connected to MySQL database.",
+      "libraryManagement": "A library management system developed with JEE, JavaScript, and MySQL."
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "architecture": "Architecture",
+    "devops": "DevOps",
+    "testing": "Testing",
+    "languages": "Languages",
+    "speaking_languages": "Speaking Languages"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "send": "Send Message",
+    "successMessage": "Thank you! Your message has been sent successfully.",
+    "errorMessage": "Oops! Something went wrong. Please try again later."
   }
 }

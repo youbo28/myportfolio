@@ -1,1 +1,51 @@
-<p>project works!</p>
+<section id="projects" class="px-6 md:px-0 py-28 transition-colors duration-300">
+  <div
+    class="max-w-7xl mx-auto rounded-3xl shadow-xl px-6 md:px-12 py-12 backdrop-blur-lg bg-white/60 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700">
+    <!-- Section Title with Icon -->
+    <ng-container *transloco="let t">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <i class="fas fa-project-diagram text-indigo-600 dark:text-indigo-400 text-4xl"></i>
+        {{ t('projects.project_title') }}
+      </h2>
+    </ng-container>
+
+    <!-- Project Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let project of projects()"
+        class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm flex flex-col justify-between">
+        <!-- Project Image -->
+        <ng-container *transloco="let t">
+          <img class="rounded-t-lg w-full h-48 object-cover" [src]="project.image" [alt]="t(project.title)" />
+        </ng-container>
+        <!-- Content Section -->
+        <div class="p-5 flex flex-col flex-grow justify-between">
+          <ng-container *transloco="let t">
+            <div>
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {{ t(project.title) }}
+              </h5>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {{ t(project.description) }}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-300">
+                <strong>{{ t('projects.technologies') }}:</strong>
+                {{ project.technologies.join(', ') }}
+              </p>
+            </div>
+          </ng-container>
+          <!-- Buttons -->
+          <div class="flex justify-between items-center mt-4">
+            <a [href]="project.github" target="_blank"
+              class="text-white bg-gray-800 hover:bg-gray-900 p-2 rounded-full shadow-md" aria-label="GitHub">
+              <i class="fab fa-github text-lg"></i>
+            </a>
+            <a [href]="project.link" target="_blank"
+              class="text-white bg-blue-700 hover:bg-blue-800 p-2 rounded-full shadow-md" aria-label="View Project">
+              <i class="fas fa-eye text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
