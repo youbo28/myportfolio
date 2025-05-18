@@ -19,7 +19,7 @@
     <!-- Skills -->
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <ng-container *ngFor="let skill of skills(); let i = index">
-        <span class="px-4 py-2 rounded-full text-sm font-medium" [ngClass]="getColorClass(i)">
+        <span  class="px-4 py-2 rounded-full text-sm font-medium transition-transform duration-300 transform hover:scale-110 hover:-translate-y-1 hover:shadow-lg" [ngClass]="getColorClass(i)">
           {{ skill }}
         </span>
       </ng-container>

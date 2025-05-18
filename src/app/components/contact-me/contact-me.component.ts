@@ -15,31 +15,27 @@ import { TranslocoDirective } from '@ngneat/transloco';
 export class ContactMeComponent {
   success = false;
   error = false;
-    async onSubmit(event: Event) {
-    event.preventDefault();
+  submitted = false;
 
+
+  handleSubmit() {
     this.success = false;
     this.error = false;
+    this.submitted = true;
+  }
 
-    const form = event.target as HTMLFormElement;
-    const formData = new FormData(form);
+  handleIframeLoad() {
+    // Only mark as success if form was submitted
+    if (this.submitted) {
+      this.success = true;
+      this.error = false;
+      this.submitted = false;
 
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
-      });
-
-      if (response.ok) {
-        this.success = true;
-        form.reset(); // clear form
-      } else {
-        this.error = true;
-      }
-    } catch {
-      this.error = true;
+      // Optionally reset form fields manually
+      const form = document.forms.namedItem('contact') as HTMLFormElement;
+      form?.reset();
     }
   }
+
 
 }
