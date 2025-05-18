@@ -13,6 +13,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class NavBarComponent {
   public themeService = inject(ThemeService);
+  
   navItems = [
     { icon: 'fa-house', label: 'nav.home', href: '#home' },
     { icon: 'fa-user', label: 'nav.about', href: '#about' },
@@ -20,20 +21,28 @@ export class NavBarComponent {
     { icon: 'fa-briefcase', label: 'nav.experience', href: '#experience' },
     { icon: 'fa-graduation-cap', label: 'nav.education', href: '#education' },
     { icon: 'fa-envelope', label: 'nav.contact', href: '#contact' },
-    { icon: 'fa-file-lines', label: 'nav.resume', href: '#resume' }
+    { icon: 'fa-file-lines', label: 'nav.resume', href: 'https://drive.google.com/file/d/1ucq3uOuMHMxDRxRFfX7oy3XTGdMYhkS3/view?usp=drive_link' }
   ];
 
   currentSection: string = 'nav.home';
 
-  scrollToSection(item: string) {
-    this.currentSection = item;
-    const sectionId = item.split('.')[1]; // "home", "about", etc.
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  scrollToSection(label: string): void {
+    const item = this.navItems.find(i => i.label === label);
+    if (!item) return;
+
+    const href = item.href;
+
+    if (href.startsWith('http')) {
+      window.open(href, '_blank');
+    } else if (href.startsWith('#')) {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        this.toggleMobile(false); // Optional: close mobile menu after click
+
+      }
     }
   }
-
   activeItem() {
     return this.currentSection;
   }
