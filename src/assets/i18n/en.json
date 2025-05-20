@@ -29,7 +29,7 @@
   },
   "about_me": {
     "aboutMe": "About Me",
-    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class=\"text-blue-600 font-semibold\">Angular</span> and <span class=\"text-green-600 font-semibold\">Spring Boot</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments. I’m multilingual and can communicate effectively in <strong>English</strong>, <strong>French</strong>, and <strong>Arabic</strong>, with a basic knowledge of <strong>German</strong>.",
+    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class="text-green-600 font-semibold">Spring Boot</span> and <span class="text-blue-600 font-semibold">Angular</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments. I’m multilingual and can communicate effectively in <strong>English</strong>, <strong>French</strong>, and <strong>Arabic</strong>, with a basic knowledge of <strong>German</strong>.",
     "skills": "Skills"
   },
   "education": {
