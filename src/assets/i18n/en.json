@@ -15,7 +15,7 @@
   "hero": {
     "greeting": "Hi, I'm <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
     "typewriter": {
-      "line1": "I'm a passionate Full-Stack Developer specialized in Angular and Java Spring Boot.",
+      "line1": "I'm a passionate Full-Stack Developer specialized in Java Spring Boot and Angular.",
       "line2": "I build modern, performant web applications.",
       "line3": "Let's build something awesome together!"
     },
