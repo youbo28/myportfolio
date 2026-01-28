@@ -111,5 +111,14 @@
       "line3": "Construisons quelque chose d'incroyable ensemble !"
     },
     "contactMe": "Contactez-moi"
+  },
+  "youtubeModal": {
+    "iconAlt": "Chaîne YouTube LEAF CODE",
+    "channelName": "LEAF CODE",
+    "title": "🎉 Nouvelle chaîne YouTube !",
+    "description": "Rejoignez LEAF CODE pour des tutoriels Spring Boot, des conseils de codage et les meilleures pratiques de développement !",
+    "visitButton": "Visiter LEAF CODE",
+    "laterButton": "Peut-être plus tard",
+    "note": "Ce message ne s'affichera plus"
   }
 }
