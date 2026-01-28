@@ -1,0 +1,150 @@
+/* Custom bounce animation for the YouTube icon */
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Glow effect for the icon */
+img.animate-bounce-slow {
+    filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.5));
+}
+
+/* Dark mode glow enhancement */
+:host-context(.dark) img.animate-bounce-slow {
+    filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.7));
+}
+
+/* Smooth transitions for backdrop */
+:host ::ng-deep .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+/* Additional hover effects */
+button {
+    transition: all 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Fireworks container */
+.fireworks-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Firework particles */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: explode 1.5s ease-out forwards;
+}
+
+/* Different colors for fireworks */
+.firework-red {
+    background: radial-gradient(circle, #ff0040, #ff0040);
+    box-shadow: 0 0 10px #ff0040, 0 0 20px #ff0040;
+}
+
+.firework-yellow {
+    background: radial-gradient(circle, #ffff00, #ffd700);
+    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffd700;
+}
+
+.firework-blue {
+    background: radial-gradient(circle, #00d4ff, #0080ff);
+    box-shadow: 0 0 10px #00d4ff, 0 0 20px #0080ff;
+}
+
+.firework-green {
+    background: radial-gradient(circle, #00ff88, #00cc66);
+    box-shadow: 0 0 10px #00ff88, 0 0 20px #00cc66;
+}
+
+.firework-purple {
+    background: radial-gradient(circle, #ff00ff, #cc00ff);
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #cc00ff;
+}
+
+.firework-orange {
+    background: radial-gradient(circle, #ff8800, #ff6600);
+    box-shadow: 0 0 10px #ff8800, 0 0 20px #ff6600;
+}
+
+/* Explosion animation */
+@keyframes explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(600px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Sparkle effect */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle 1s ease-out forwards;
+    box-shadow: 0 0 5px white, 0 0 10px white;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
