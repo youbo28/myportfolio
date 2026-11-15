@@ -3,7 +3,7 @@ import { CompetanceService } from '../../services/competance.service';
 import { CategorizedCompetence, Competance } from '../../models/Competance';
 import { CommonModule } from '@angular/common';
 import {} from '@angular/common/http';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-competance',

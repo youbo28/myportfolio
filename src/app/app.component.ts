@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HeroComponent } from './components/hero/hero.component';

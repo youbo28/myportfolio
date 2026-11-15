@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, inject } from '@angular/core';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { LanguageSwitcherComponent } from "../language-switcher/language-switcher.component";
 import { ThemeService } from '../../services/theme.service';
 

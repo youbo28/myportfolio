@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { LangOption } from '../../models/LangOption';
 import { CommonModule } from '@angular/common';
 

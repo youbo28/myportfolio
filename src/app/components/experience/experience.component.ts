@@ -2,7 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { ExperienceService } from '../../services/experience.service';
 import { Experience } from '../../models/Experience';
 import { CommonModule } from '@angular/common';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-experience',

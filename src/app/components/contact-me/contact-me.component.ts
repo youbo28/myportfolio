@@ -3,7 +3,7 @@ import { ContactFormData } from '../../models/ContactForm';
 import { ContactMeService } from '../../services/contact-me.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-contact-me',

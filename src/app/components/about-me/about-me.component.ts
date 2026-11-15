@@ -2,7 +2,7 @@ import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { OnSameUrlNavigation } from '@angular/router';
 import { SkillsService } from '../../services/skills.service';
 import { CommonModule } from '@angular/common';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-about-me',

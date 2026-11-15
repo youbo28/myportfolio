@@ -2,7 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { EducationService } from '../../services/education.service';
 import { Education } from '../../models/Education';
 import { CommonModule } from '@angular/common';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-education',

@@ -13,7 +13,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 
 interface Firework {
   id: number;
