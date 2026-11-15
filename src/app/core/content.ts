@@ -1,9 +1,9 @@
 export type Lang = 'en' | 'fr' | 'de' | 'ar';
 export type Mode = 'dark' | 'light';
 
-export interface Project { id: string; title: string; desc: string; tech: string[]; gh: string; live: string; hue: string; motif: string; }
-export interface Job { role: string; company: string; date: string; desc: string; now: boolean; }
-export interface Edu { date: string; title: string; desc: string; }
+export interface Project { id: string; title: string; desc: string; tech: string[]; gh: string; live: string; hue: string; motif: string; story?: string; }
+export interface Job { role: string; company: string; date: string; desc: string; now: boolean; story?: string; }
+export interface Edu { date: string; title: string; desc: string; story?: string; }
 export interface SkillGroup { key: string; label: string; items: string[]; core: boolean; }
 export interface Content {
   ui: Record<string, string>;

@@ -270,7 +270,8 @@
       "hue": "#38BDF8",
       "motif": "car",
       "title": "LUXE WASH",
-      "desc": "Demo-Website für ein Premium-Autoaufbereitungsstudio in Algier: scrollgesteuertes Intro, Leistungen mit Preisen und Buchung."
+      "desc": "Demo-Website für ein Premium-Autoaufbereitungsstudio in Algier: scrollgesteuertes Intro, Leistungen mit Preisen und Buchung.",
+      "story": "LUXE WASH ist eine Demo, in der ich Animation und Feinschliff so weit wie möglich getrieben habe. Sie sollte sich hochwertig anfühlen."
     },
     {
       "id": "dncouture",
@@ -284,7 +285,8 @@
       "hue": "#F472B6",
       "motif": "sew",
       "title": "DN Couture",
-      "desc": "Website für eine Näh- und Schneiderlehrerin: Kurse und Workshops, ihre Geschichte und Nähanleitungen, auf Englisch, Französisch und Arabisch."
+      "desc": "Website für eine Näh- und Schneiderlehrerin: Kurse und Workshops, ihre Geschichte und Nähanleitungen, auf Englisch, Französisch und Arabisch.",
+      "story": "DN Couture ist eine echte Website für eine Nählehrerin, in drei Sprachen. Für einen echten Menschen zu bauen, ist etwas anderes."
     },
     {
       "id": "portfolio",
@@ -298,7 +300,8 @@
       "gh": "https://github.com/youbo28/myportfolio",
       "live": "https://ayoubrazali.site",
       "hue": "#8FA8FF",
-      "motif": "web"
+      "motif": "web",
+      "story": "Sie sind gerade mittendrin! Angular, vier Sprachen, und ich als Mond."
     },
     {
       "id": "loan",
@@ -312,7 +315,8 @@
       "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
       "live": "",
       "hue": "#6EE7B7",
-      "motif": "chart"
+      "motif": "chart",
+      "story": "Die Kreditverwaltung war mein Einstieg in Spring Boot. Sie hat mir bewiesen, dass ich eine komplette App bauen kann, von vorne bis hinten."
     },
     {
       "id": "movies",
@@ -324,7 +328,8 @@
       "gh": "https://github.com/youbo28/watchlist",
       "live": "",
       "hue": "#FF9A6B",
-      "motif": "film"
+      "motif": "film",
+      "story": "Die Watchlist-API habe ich an der Uni gebaut. Sie ist einfach, ich weiß, aber ich war stolz darauf, und bin es immer noch."
     },
     {
       "id": "library",
@@ -338,7 +343,8 @@
       "gh": "https://github.com/youbo28/Bibliotheque",
       "live": "",
       "hue": "#F6E7B4",
-      "motif": "books"
+      "motif": "books",
+      "story": "Die Bibliotheksverwaltung stammt aus meinem Studium. Da habe ich gemerkt, dass ich Java liebe."
     }
   ],
   "jobs": [
@@ -347,47 +353,54 @@
       "company": "ENAGEO / Sonatrach",
       "date": "März 2025 – heute",
       "desc": "Konzeption und Umsetzung von Softwarelösungen für geophysikalische Abläufe und interne Systeme.",
-      "now": true
+      "now": true,
+      "story": "Heute bin ich Softwareingenieur bei ENAGEO / Sonatrach und kann dort wirklich etwas für das Unternehmen bewegen."
     },
     {
       "role": "Junior-Entwickler und Integrator",
       "company": "APCS Serports",
       "date": "Juli 2024 – Jan. 2025",
       "desc": "Softwareintegration und -entwicklung für Hafenmanagementsysteme.",
-      "now": false
+      "now": false,
+      "story": "Bei APCS Serports bin ich mit Spring Boot ins Professionelle gestartet. Ein großer Schritt für mich und eine tolle Erfahrung."
     },
     {
       "role": "Analyst und Entwickler",
       "company": "Compos Solution",
       "date": "Feb. 2024 – Juli 2024",
       "desc": "Entwicklung und Wartung von Softwarekomponenten; Mitarbeit an Lösungsdesign und Fehlersuche.",
-      "now": false
+      "now": false,
+      "story": "Compos Solution war meine erste Berufserfahrung: echte Projekte in einem professionellen Team."
     },
     {
       "role": "Offizier",
       "company": "Nationale Volksarmee",
       "date": "Jan. 2023 – Jan. 2024",
       "desc": "Wehrdienst: Disziplin, Koordination und Einsätze.",
-      "now": false
+      "now": false,
+      "story": "Der Wehrdienst war eine Pflicht, die ich erfüllen musste. Er hat mich Disziplin und Koordination gelehrt."
     },
     {
       "role": "Universitätsdozent",
       "company": "Universität Blida 1",
       "date": "Okt. 2022 – Jan. 2023",
       "desc": "Lehrveranstaltungen gehalten und Studierende in Theorie und Praxis unterstützt.",
-      "now": false
+      "now": false,
+      "story": "Ich war Universitätsdozent und habe es geliebt. Dort habe ich gemerkt, wie gern ich Wissen weitergebe."
     }
   ],
   "edu": [
     {
       "date": "2020 – 2022",
       "title": "Master in Informatik und Netzwerke",
-      "desc": "Universität Blida · Netzwerke, Cybersicherheit, Cloud Computing, SaaS-orientierte Abschlussarbeit."
+      "desc": "Universität Blida · Netzwerke, Cybersicherheit, Cloud Computing, SaaS-orientierte Abschlussarbeit.",
+      "story": "Mein Master hat mich weitergebracht: Netzwerke, Sicherheit, Cloud und zum Abschluss ein SaaS-Projekt."
     },
     {
       "date": "2015 – 2020",
       "title": "Bachelor in Informatik",
-      "desc": "Universität Blida · Programmiergrundlagen, Datenstrukturen, Datenbanken, Betriebssysteme."
+      "desc": "Universität Blida · Programmiergrundlagen, Datenstrukturen, Datenbanken, Betriebssysteme.",
+      "story": "Mit meinem Bachelor fing alles an: Programmierung, Datenstrukturen und Datenbanken. Er hat mir mein Fundament gegeben."
     }
   ]
 }

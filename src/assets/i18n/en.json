@@ -270,7 +270,8 @@
       "hue": "#38BDF8",
       "motif": "car",
       "title": "LUXE WASH",
-      "desc": "A demo website for a premium car detailing studio in Algiers: a scroll-driven intro, services with prices, and booking."
+      "desc": "A demo website for a premium car detailing studio in Algiers: a scroll-driven intro, services with prices, and booking.",
+      "story": "LUXE WASH is a demo where I pushed animation and polish as far as I could. I wanted it to feel premium."
     },
     {
       "id": "dncouture",
@@ -284,7 +285,8 @@
       "hue": "#F472B6",
       "motif": "sew",
       "title": "DN Couture",
-      "desc": "A website for a sewing and tailoring tutor: sessions and workshops, the tutor's story and sewing guides, in English, French and Arabic."
+      "desc": "A website for a sewing and tailoring tutor: sessions and workshops, the tutor's story and sewing guides, in English, French and Arabic.",
+      "story": "DN Couture is a real website for a sewing tutor, in three languages. Building for a real person feels different."
     },
     {
       "id": "portfolio",
@@ -298,7 +300,8 @@
       "gh": "https://github.com/youbo28/myportfolio",
       "live": "https://ayoubrazali.site",
       "hue": "#8FA8FF",
-      "motif": "web"
+      "motif": "web",
+      "story": "You're inside this one! Angular, four languages, and me as the moon."
     },
     {
       "id": "loan",
@@ -312,7 +315,8 @@
       "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
       "live": "",
       "hue": "#6EE7B7",
-      "motif": "chart"
+      "motif": "chart",
+      "story": "Loan Management was my beginning with Spring Boot. It proved to me that I can build a complete app, front to back."
     },
     {
       "id": "movies",
@@ -324,7 +328,8 @@
       "gh": "https://github.com/youbo28/watchlist",
       "live": "",
       "hue": "#FF9A6B",
-      "motif": "film"
+      "motif": "film",
+      "story": "I built the Watchlist API at university. It's simple, I know, but I was proud of it then and I still am."
     },
     {
       "id": "library",
@@ -338,7 +343,8 @@
       "gh": "https://github.com/youbo28/Bibliotheque",
       "live": "",
       "hue": "#F6E7B4",
-      "motif": "books"
+      "motif": "books",
+      "story": "Library Management goes back to my studies. That's where I realised I love Java."
     }
   ],
   "jobs": [
@@ -347,47 +353,54 @@
       "company": "ENAGEO / Sonatrach",
       "date": "Mar 2025 – Present",
       "desc": "Designing and implementing software solutions for geophysical operations and internal systems.",
-      "now": true
+      "now": true,
+      "story": "Today I'm a software engineer at ENAGEO / Sonatrach, where I can make a real difference for the company."
     },
     {
       "role": "Junior Developer & Integrator",
       "company": "APCS Serports",
       "date": "Jul 2024 – Jan 2025",
       "desc": "Software integration and development for port management systems.",
-      "now": false
+      "now": false,
+      "story": "At APCS Serports I went professional with Spring Boot. A big step for me, and a great experience."
     },
     {
       "role": "Analyst Developer",
       "company": "Compos Solution",
       "date": "Feb 2024 – Jul 2024",
       "desc": "Developed and maintained software components; contributed to solution design and debugging.",
-      "now": false
+      "now": false,
+      "story": "Compos Solution was my first professional experience: real projects, inside a professional team."
     },
     {
       "role": "Army Officer",
       "company": "National People's Army",
       "date": "Jan 2023 – Jan 2024",
       "desc": "National service: discipline, coordination and operations.",
-      "now": false
+      "now": false,
+      "story": "National service was an obligation I had to fulfil. It taught me discipline and coordination."
     },
     {
       "role": "University Teacher",
       "company": "University of Blida 1",
       "date": "Oct 2022 – Jan 2023",
       "desc": "Taught academic courses and helped students with theory and practice.",
-      "now": false
+      "now": false,
+      "story": "I was a university teacher, and I loved it. That's where I found out how much I enjoy sharing knowledge."
     }
   ],
   "edu": [
     {
       "date": "2020 – 2022",
       "title": "Master's in Computer Science and Network",
-      "desc": "University of Blida · networking, cybersecurity, cloud computing, SaaS-oriented final project."
+      "desc": "University of Blida · networking, cybersecurity, cloud computing, SaaS-oriented final project.",
+      "story": "My master's took me further: networks, security, the cloud, and a SaaS project to finish."
     },
     {
       "date": "2015 – 2020",
       "title": "Bachelor's in Computer Science",
-      "desc": "University of Blida · programming fundamentals, data structures, databases, operating systems."
+      "desc": "University of Blida · programming fundamentals, data structures, databases, operating systems.",
+      "story": "My bachelor's is where it all started: programming, data structures and databases. It gave me my foundations."
     }
   ]
 }

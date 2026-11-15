@@ -258,7 +258,7 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   function cyclePj(){clearInterval(pjTimer);document.querySelectorAll('.pj.spot').forEach(e=>e.classList.remove('spot'));spot=null;
     if(current!=='projects')return;
-    const show=()=>{const P=C().projects,p=P[pjIdx%P.length];spot=$('#pj-'+p.id);document.querySelectorAll('.pj').forEach(e=>e.classList.toggle('spot',e===spot));pjMode=pjIdx%3===0?'beckon':'point';if(performance.now()>hoverUntil)say((pjMode==='beckon'?RT().come:C().guide[who].projects).replace('{p}',p.title));burst(18);pjIdx++};
+    const show=()=>{const P=C().projects,p=P[pjIdx%P.length];spot=$('#pj-'+p.id);document.querySelectorAll('.pj').forEach(e=>e.classList.toggle('spot',e===spot));pjMode=pjIdx%3===0?'beckon':'point';if(performance.now()>hoverUntil)say(pjMode==='beckon'?RT().come.replace('{p}',p.title):(p.story||C().guide[who].projects.replace('{p}',p.title)));burst(18);pjIdx++};
     show();pjTimer=setInterval(show,4200)}
 
   function setHidden(v){hidden=v;store.set('guide-hidden',v?'1':'0');canvas.style.visibility=v?'hidden':'visible';bubble.hidden=v;$('#recall').hidden=!v;if(!v){lastLine='';current=null}}

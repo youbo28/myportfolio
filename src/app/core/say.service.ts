@@ -41,14 +41,17 @@ export class SayService {
   }
 
   job(j: Job): string {
+    if (j.story) return j.story;
     return this.fill(j.now ? this.h?.jobNow : this.h?.jobPast, { role: j.role, company: j.company, date: j.date });
   }
 
   project(p: Project): string {
+    if (p.story) return p.story;
     return this.fill(this.h?.project, { title: p.title, tech: this.join(p.tech) });
   }
 
   edu(e: Edu): string {
+    if (e.story) return e.story;
     return this.fill(this.h?.edu, { date: e.date });
   }
 
