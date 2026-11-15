@@ -1,12 +1,12 @@
 import { Component, effect, inject, signal, Signal } from '@angular/core';
 import { Project } from '../../models/Project';
 import { ProjectService } from '../../services/project.service';
-import { CommonModule } from '@angular/common';
+
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-project',
-    imports: [CommonModule, TranslocoDirective],
+    imports: [TranslocoDirective],
     templateUrl: './project.component.html',
     styleUrl: './project.component.scss'
 })

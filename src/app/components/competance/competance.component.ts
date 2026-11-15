@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal } from '@angular/core';
 import { CompetanceService } from '../../services/competance.service';
 import { CategorizedCompetence, Competance } from '../../models/Competance';
-import { CommonModule } from '@angular/common';
+
 import {} from '@angular/common/http';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-competance',
-    imports: [CommonModule, TranslocoDirective],
+    imports: [TranslocoDirective],
     templateUrl: './competance.component.html',
     styleUrl: './competance.component.scss'
 })

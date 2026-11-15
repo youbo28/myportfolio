@@ -5,7 +5,7 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   trigger,
   state,
@@ -31,7 +31,7 @@ interface Particle {
 
 @Component({
     selector: 'app-youtube-modal',
-    imports: [CommonModule, TranslocoModule],
+    imports: [TranslocoModule],
     templateUrl: './youtube-modal.component.html',
     styleUrls: ['./youtube-modal.component.scss'],
     animations: [

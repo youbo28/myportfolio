@@ -1,12 +1,12 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { EducationService } from '../../services/education.service';
 import { Education } from '../../models/Education';
-import { CommonModule } from '@angular/common';
+
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-education',
-    imports: [CommonModule, TranslocoDirective],
+    imports: [TranslocoDirective],
     templateUrl: './education.component.html',
     styleUrl: './education.component.scss'
 })

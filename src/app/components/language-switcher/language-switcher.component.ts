@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { LangOption } from '../../models/LangOption';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'app-language-switcher',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './language-switcher.component.html',
     styleUrl: './language-switcher.component.scss'
 })

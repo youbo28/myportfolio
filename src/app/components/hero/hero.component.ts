@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'app-hero',
-    imports: [CommonModule, TranslocoDirective],
+    imports: [TranslocoDirective],
     templateUrl: './hero.component.html',
     styleUrl: './hero.component.scss'
 })
