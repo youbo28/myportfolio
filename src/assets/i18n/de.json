@@ -55,7 +55,9 @@
     "light": "Zum Tagmodus wechseln",
     "dark": "Zum Nachtmodus wechseln",
     "guide.hide": "Guide ausblenden",
-    "guide.show": "Guide wieder anzeigen"
+    "guide.show": "Guide wieder anzeigen",
+    "skills.hint": "Fahren Sie über einen Skill, und ich erzähle Ihnen davon.",
+    "skills.hintTouch": "Tippen Sie auf einen Skill, und ich erzähle Ihnen davon."
   },
   "type": [
     "Ich baue moderne, performante Webanwendungen.",

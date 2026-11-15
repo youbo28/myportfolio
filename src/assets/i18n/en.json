@@ -55,7 +55,9 @@
     "guide.hide": "Hide the guide",
     "guide.show": "Show the guide again",
     "nav.menu": "Menu",
-    "lang": "Language"
+    "lang": "Language",
+    "skills.hint": "Hover any skill and I'll tell you about it.",
+    "skills.hintTouch": "Tap any skill and I'll tell you about it."
   },
   "type": [
     "I build modern, performant web applications.",

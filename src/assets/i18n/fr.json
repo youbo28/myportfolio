@@ -55,7 +55,9 @@
     "light": "Passer en mode jour",
     "dark": "Passer en mode nuit",
     "guide.hide": "Masquer le guide",
-    "guide.show": "Afficher le guide"
+    "guide.show": "Afficher le guide",
+    "skills.hint": "Survolez une compétence et je vous en parle.",
+    "skills.hintTouch": "Touchez une compétence et je vous en parle."
   },
   "type": [
     "Je crée des applications web modernes et performantes.",

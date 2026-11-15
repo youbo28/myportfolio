@@ -212,3 +212,34 @@ a[data-say],button[data-say]{cursor:pointer}
 .chip[data-say]:hover,.chip[data-say]:focus-visible,.tech span[data-say]:hover{border-color:var(--glow);background:color-mix(in srgb,var(--glow) 16%,var(--chip))}
 .spoken .sl{border-bottom:1px dashed color-mix(in srgb,var(--glow) 60%,transparent)}
 .spoken .sl:hover{color:var(--glow)}
+
+/* ---------- skills: drifting rows of tiles ---------- */
+.sk-hint{margin:-18px 0 28px;color:var(--muted);font:500 13px var(--mono)}
+.marquees{display:grid;gap:16px;margin-inline:calc(50% - 50vw);padding-block:6px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.track{display:flex;width:max-content;animation:sk-scroll var(--dur,40s) linear infinite}
+.marquee.rev .track{animation-direction:reverse}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+@keyframes sk-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+[dir="rtl"] .track{animation-name:sk-scroll-rtl}
+@keyframes sk-scroll-rtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.set{display:flex;gap:14px;padding:8px 7px;margin:0;list-style:none}
+.skill{--hue:#8FA8FF;display:flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:18px;border:1px solid var(--line);
+  background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(6px);white-space:nowrap;cursor:default;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .35s,background .35s}
+[dir="rtl"] .skill{padding:10px 10px 10px 20px}
+.skill .mark{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font:700 14px var(--mono);letter-spacing:-.02em;
+  color:#fff;background:linear-gradient(145deg,var(--hue),color-mix(in srgb,var(--hue) 55%,#000));box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 6px 16px -8px var(--hue)}
+.skill .txt{display:grid;line-height:1.2}
+.skill b{font:700 17px var(--display);letter-spacing:-.01em}
+.skill small{font:500 11.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.skill.core{border-color:color-mix(in srgb,var(--glow) 55%,var(--line));background:linear-gradient(140deg,color-mix(in srgb,var(--glow) 14%,var(--card)),var(--card))}
+.skill.core .mark{width:48px;height:48px;font-size:15px}
+.skill.core b{font-size:19px}
+.skill:hover,.skill:focus-visible{transform:translateY(-4px) scale(1.04);border-color:var(--hue);box-shadow:0 14px 34px -14px var(--hue);
+  background:color-mix(in srgb,var(--hue) 12%,var(--card))}
+@media (max-width:620px){.skill b{font-size:15px}.skill .mark{width:36px;height:36px;font-size:12px}.marquees{gap:12px}}
+@media (prefers-reduced-motion:reduce){
+  .marquees{margin-inline:0}.marquee{-webkit-mask-image:none;mask-image:none}
+  .track{width:auto}.set{flex-wrap:wrap}.set[aria-hidden]{display:none}.set{justify-content:center}
+}
