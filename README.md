@@ -1,27 +1,29 @@
-# MyPortfolio
+# Razali Ayoub · Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+Personal portfolio of Razali Ayoub, full-stack developer (Java Spring Boot, Angular). Live at [ayoubrazali.site](https://ayoubrazali.site).
 
-## Development server
+A single scrolling page with a 3D guide: a crescent moon at night and a sun by day, with floating hands and a mouth, that glides beside the section you are reading, points at things and talks in a speech bubble (in the first person).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Run it
 
-## Code scaffolding
+```bash
+npm install
+npm start        # http://localhost:4200
+npm run build    # production build in dist/
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Where things live
 
-## Build
+| What | Where |
+|---|---|
+| All text, project / job / education content and the guide's lines | `src/assets/i18n/{en,fr,de,ar}.json` |
+| Links (CV on Google Drive, email, LinkedIn, GitHub, YouTube) | `src/app/core/content.ts` |
+| Page sections | `src/app/sections/` |
+| Nav bar, background sky, YouTube popup | `src/app/layout/` |
+| 3D guide (three.js, loaded in its own chunk) | `src/app/mascot/` |
+| Colours, fonts, light/dark themes | `src/styles.scss` |
+| Design reference | `prototype/portfolio-moon.html` |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Stack
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Angular 21 (standalone components, signals), Transloco (`@jsverse/transloco`) for EN / FR / DE / AR with right-to-left Arabic, three.js for the guide, self-hosted fonts through `@fontsource`. The contact form posts to the Netlify function `/.netlify/functions/sendEmail`.

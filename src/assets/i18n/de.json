@@ -1,123 +1,310 @@
 {
-  "title": "RAZALI Ayoub",
-  "choose_language": "Sprache auswählen",
-  "nav": {
-    "home": "Startseite",
-    "about": "Über uns",
-    "education": "Bildung",
-    "experience": "Erfahrung",
-    "projects": "Projekte",
-    "skills": "Fähigkeiten",
-    "contact": "Kontakt",
-    "resume": "Lebenslauf"
+  "ui": {
+    "nav.about": "Über mich",
+    "nav.skills": "Skills",
+    "nav.projects": "Projekte",
+    "nav.experience": "Erfahrung",
+    "nav.contact": "Kontakt",
+    "nav.resume": "Lebenslauf",
+    "nav.menu": "Menü",
+    "lang": "Sprache",
+    "hero.kicker": "Softwareingenieur bei ENAGEO / Sonatrach",
+    "hero.h1a": "Razali",
+    "hero.h1b": "Ayoub",
+    "hero.role": "Full-Stack-Entwickler mit <strong>Java Spring Boot</strong> und <strong>Angular</strong>.",
+    "hero.cv": "Lebenslauf ansehen",
+    "hero.contact": "Kontakt aufnehmen",
+    "about.t": "Über mich",
+    "about.p": "<p>Ich bin <b>Full-Stack-Entwickler</b> und baue moderne Webanwendungen mit Spring Boot und Angular. Mir sind sauberer Code, durchdachtes UI/UX und echte Problemlösungen mit Technologie wichtig.</p><p>Ich lerne gern neue Frameworks und arbeite gern in schnellen, startup-artigen Teams.</p>",
+    "about.f1": "Aktuell",
+    "about.f1v": "Softwareingenieur, ENAGEO / Sonatrach",
+    "about.f2": "Schwerpunkt",
+    "about.f3": "Sprachen",
+    "about.f3v": "Arabisch, Französisch, Englisch · Deutsch (Grundkenntnisse)",
+    "skills.t": "Skills",
+    "skills.core": "Kern-Stack",
+    "skills.fe": "Frontend",
+    "skills.be": "Backend",
+    "skills.ar": "Architektur",
+    "skills.do": "DevOps",
+    "skills.te": "Testing",
+    "skills.pl": "Programmiersprachen",
+    "projects.t": "Projekte",
+    "exp.t": "Erfahrung",
+    "edu.t": "Ausbildung",
+    "contact.t": "Lassen Sie uns reden.",
+    "contact.p": "Sie suchen jemanden für eine Java-/Angular-Stelle oder haben ein Projekt? Schreiben Sie mir direkt oder nutzen Sie das Formular, ich melde mich.",
+    "contact.mailL": "E-Mail",
+    "contact.copy": "Kopieren",
+    "contact.copied": "Kopiert",
+    "contact.name": "Ihr Name",
+    "contact.email": "Ihre E-Mail",
+    "contact.msg": "Ihre Nachricht",
+    "contact.send": "Nachricht senden",
+    "contact.ok": "Danke! Ihre Nachricht wurde gesendet. Ich melde mich bald.",
+    "contact.err": "Leider wurde die Nachricht nicht gesendet. Bitte schreiben Sie mir direkt per E-Mail.",
+    "contact.sending": "Wird gesendet…",
+    "foot.yt": "YouTube-Ankündigung erneut ansehen",
+    "yt.t": "Neuer YouTube-Kanal",
+    "yt.p": "Folgen Sie LEAF CODE für Spring-Boot-Tutorials, Coding-Tipps und Best Practices.",
+    "yt.go": "LEAF CODE besuchen",
+    "yt.later": "Später",
+    "yt.note": "Diese Nachricht erscheint nicht noch einmal.",
+    "site": "GitHub",
+    "live": "Live-Seite",
+    "light": "Zum Tagmodus wechseln",
+    "dark": "Zum Nachtmodus wechseln",
+    "guide.hide": "Guide ausblenden",
+    "guide.show": "Guide wieder anzeigen"
   },
-  "languages": {
-    "ar": "Arabisch",
-    "fr": "Französisch",
-    "en": "Englisch",
-    "de": "Deutsch"
-  },
-  "about_me": {
-    "aboutMe": "Über mich",
-    "intro": "Ich bin <strong>Razali Ayoub</strong>, ein engagierter <strong>Full-Stack-Entwickler</strong> mit Erfahrung in der Entwicklung moderner Webanwendungen mit <span class=\"text-blue-600 font-semibold\">Angular</span> und <span class=\"text-green-600 font-semibold\">Spring Boot</span>. Ich lege großen Wert auf sauberen Code, UI/UX und darauf, reale Probleme mit Technologie zu lösen. Außerdem lerne ich gerne neue Frameworks und arbeite gern in dynamischen Startup-Umgebungen. Ich spreche fließend <strong>Englisch</strong>, <strong>Französisch</strong> und <strong>Arabisch</strong> und habe Grundkenntnisse in <strong>Deutsch</strong>.",
-    "skills": "Fähigkeiten"
-  },
-  "education": {
-    "title": "Ausbildung",
-    "degrees": {
-      "bachelor": "Bachelor in Informatik",
-      "master": "Master in Informatik und Netzwerke"
+  "type": [
+    "Ich baue moderne, performante Webanwendungen.",
+    "Java · Spring Boot · Angular",
+    "Lassen Sie uns gemeinsam etwas Großartiges bauen."
+  ],
+  "now": "AKTUELL",
+  "guide": {
+    "moon": {
+      "hero": [
+        "Hallo, ich bin Ayoub. Ich führe Sie herum.",
+        "Scrollen Sie langsam, ich zeige Ihnen meine Arbeit."
+      ],
+      "about": [
+        "Ich baue beide Seiten des Webs.",
+        "Java im Backend, Angular im Frontend. Und ich spreche vier Sprachen."
+      ],
+      "skills": [
+        "Mein Werkzeugkasten. Der Kern-Stack leuchtet am hellsten.",
+        "Java und Spring Boot sind mein Zuhause."
+      ],
+      "projects": "Schauen Sie sich das an, das habe ich gebaut: {p}",
+      "experience": [
+        "Wo ich gearbeitet habe. Das Neueste oben.",
+        "Von der Lehre zur Geophysik-Software. Ein spannender Weg."
+      ],
+      "education": [
+        "Zwei Abschlüsse der Universität Blida."
+      ],
+      "contact": [
+        "Danke für Ihren Besuch. Erzählen Sie mir von Ihrer Stelle oder Ihrem Projekt.",
+        "Schreiben Sie mir per E-Mail oder über das Formular. Ich antworte in ein bis zwei Tagen."
+      ],
+      "idle": "Noch da? Weiter unten gibt es mehr von meiner Arbeit…",
+      "near": "Oh! Hallo.",
+      "arrive": "Guten Abend. Ich übernehme ab hier."
     },
-    "institutions": {
-      "blida": "Universität Blida"
+    "sun": {
+      "hero": [
+        "Guten Morgen! Ich bin Ayoub. Los geht's.",
+        "Früh und hellwach. Folgen Sie mir."
+      ],
+      "about": [
+        "Ich bin Full-Stack-Entwickler: Java und Angular.",
+        "Ich spreche Arabisch, Französisch, Englisch und etwas Deutsch."
+      ],
+      "skills": [
+        "Damit arbeite ich. Zuerst der Kern-Stack.",
+        "Spring Boot auf dem Server, Angular im Browser."
+      ],
+      "projects": "Sehen Sie, was ich gebaut habe: {p}",
+      "experience": [
+        "Meine Erfahrung, das Neueste zuerst.",
+        "Zurzeit entwickle ich Software bei ENAGEO / Sonatrach."
+      ],
+      "education": [
+        "Informatik: Bachelor und Master."
+      ],
+      "contact": [
+        "Danke für Ihren Besuch. Lassen Sie uns über Ihre Stelle oder Ihr Projekt sprechen.",
+        "E-Mail oder Formular: Beides erreicht mich direkt."
+      ],
+      "idle": "Eine Pause? Ich warte hier.",
+      "near": "Vorsicht, ich bin heiß!",
+      "arrive": "Aufstehen! Ich bin dran."
     },
-    "descriptions": {
-      "bachelor": "Bachelor in Informatik an der Universität Blida mit Schwerpunkt auf Programmiergrundlagen, Datenstrukturen, Datenbanken und Betriebssystemen.",
-      "master": "Master in Informatik und Netzwerke an der Universität Blida mit Spezialisierung auf Netzwerke, IT-Sicherheit, Cloud Computing und Abschlussprojekte mit Fokus auf SaaS-Lösungen."
+    "react": {
+      "come": "Kommen Sie, sehen Sie sich das an, das habe ich gebaut: {p}.",
+      "copied": "Kopiert. Bis bald!",
+      "thanks": "Danke! Ich melde mich bald."
     }
   },
-  "experience": {
-    "title": "Berufserfahrung",
-    "positions": {
-      "universityTeacher": "Universitätsdozent",
-      "armyOfficer": "Offizier der Armee",
-      "analystDeveloper": "Analyst Entwickler",
-      "juniorIntegrator": "Junior Entwickler & Integrator",
-      "softwareEngineer": "Softwareentwickler"
+  "skills": [
+    {
+      "key": "core",
+      "label": "Kern-Stack",
+      "items": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "TypeScript"
+      ],
+      "core": true
     },
-    "companies": {
-      "none": "Universität Blida 1",
-      "army": "Volksarmee (ANP)",
-      "compos": "Compos Solution",
-      "apcs": "APCS Serports",
-      "enageo": "ENAGEO / Sonatrach"
+    {
+      "key": "fe",
+      "label": "Frontend",
+      "items": [
+        "Angular",
+        "Tailwind",
+        "Bootstrap",
+        "CSS"
+      ],
+      "core": false
     },
-    "descriptions": {
-      "universityTeacher": "Akademische Kurse unterrichtet und Studenten bei praktischen und theoretischen Fragen unterstützt.",
-      "armyOfficer": "Militärdienst, verantwortlich für Disziplin, Koordination und Einsatzführung.",
-      "analystDeveloper": "Softwarekomponenten entwickelt und gewartet, an Design und Debugging beteiligt.",
-      "juniorIntegrator": "Arbeit an Integration und Entwicklung von Softwaresystemen für Hafenmanagement.",
-      "softwareEngineer": "Entwicklung und Umsetzung von Softwarelösungen für geophysikalische Operationen."
+    {
+      "key": "be",
+      "label": "Backend",
+      "items": [
+        "Spring Boot",
+        "Java",
+        "Odoo"
+      ],
+      "core": false
     },
-    "dates": {
-      "universityTeacher": "Oktober 2022 – Januar 2023",
-      "armyOfficer": "Januar 2023 – Januar 2024",
-      "analystDeveloper": "Februar 2024 – Juli 2024",
-      "juniorIntegrator": "Juli 2024 – Januar 2025",
-      "softwareEngineer": "März 2025 – Heute"
+    {
+      "key": "ar",
+      "label": "Architektur",
+      "items": [
+        "Microservices",
+        "Monolithic"
+      ],
+      "core": false
+    },
+    {
+      "key": "do",
+      "label": "DevOps",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Git"
+      ],
+      "core": false
+    },
+    {
+      "key": "te",
+      "label": "Testing",
+      "items": [
+        "TDD",
+        "BDD"
+      ],
+      "core": false
+    },
+    {
+      "key": "pl",
+      "label": "Programmiersprachen",
+      "items": [
+        "Java",
+        "TypeScript",
+        "Python",
+        "HTML",
+        "SCSS"
+      ],
+      "core": false
     }
-  },
-  "projects": {
-    "technologies": "Technologien",
-    "project_title": "Projekte",
-    "titles": {
-      "portfolio": "Portfolio",
-      "moviesWatchlist": "Filmliste API",
-      "loanManagement": "Kreditverwaltung",
-      "libraryManagement": "Bibliotheksverwaltung"
+  ],
+  "projects": [
+    {
+      "id": "portfolio",
+      "title": "Portfolio",
+      "desc": "Diese Seite: ein mehrsprachiges Angular-Portfolio mit Rechts-nach-links-Unterstützung und Tag/Nacht-Design.",
+      "tech": [
+        "Angular",
+        "Tailwind CSS",
+        "SCSS"
+      ],
+      "gh": "https://github.com/youbo28/myportfolio",
+      "live": "https://ayoubrazali.site",
+      "hue": "#8FA8FF",
+      "motif": "web"
     },
-    "descriptions": {
-      "portfolio": "Portfolio-Projekt, das meine Fähigkeiten und Erfahrungen zeigt.",
-      "moviesWatchlist": "Eine Filmlisten-API, die mit Spring Boot zu Lernzwecken erstellt wurde.",
-      "loanManagement": "Ein System zur Verwaltung von Krediten mit Angular-Frontend und Spring Boot-Backend, verbunden mit einer MySQL-Datenbank.",
-      "libraryManagement": "Ein Bibliotheksverwaltungssystem, das mit JEE, JavaScript und MySQL entwickelt wurde."
+    {
+      "id": "loan",
+      "title": "Kreditverwaltung",
+      "desc": "Ein Kreditverwaltungssystem mit Angular-Frontend und Spring-Boot-Backend auf MySQL.",
+      "tech": [
+        "Angular",
+        "Spring Boot",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
+      "live": "",
+      "hue": "#6EE7B7",
+      "motif": "chart"
+    },
+    {
+      "id": "movies",
+      "title": "Movies-Watchlist-API",
+      "desc": "Eine REST-API für eine Film-Watchlist, zum Lernen mit Spring Boot gebaut.",
+      "tech": [
+        "Spring Boot"
+      ],
+      "gh": "https://github.com/youbo28/watchlist",
+      "live": "",
+      "hue": "#FF9A6B",
+      "motif": "film"
+    },
+    {
+      "id": "library",
+      "title": "Bibliotheksverwaltung",
+      "desc": "Ein Bibliotheksverwaltungssystem, entwickelt mit JEE, JavaScript und MySQL.",
+      "tech": [
+        "JEE",
+        "JavaScript",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/Bibliotheque",
+      "live": "",
+      "hue": "#F6E7B4",
+      "motif": "books"
     }
-  },
-  "skills": {
-    "title": "Fähigkeiten",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "architecture": "Architektur",
-    "devops": "DevOps",
-    "testing": "Tests",
-    "languages": "Sprachen",
-    "speaking_languages": "Gesprochene Sprachen"
-  },
-  "contact": {
-    "title": "Kontaktieren Sie mich",
-    "name": "Ihr Name",
-    "email": "Ihre E-Mail",
-    "message": "Ihre Nachricht",
-    "send": "Nachricht senden",
-    "successMessage": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.",
-    "errorMessage": "Hoppla! Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut."
-  },
-  "hero": {
-    "greeting": "Hallo, ich bin <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
-    "typewriter": {
-      "line1": "Ich bin ein leidenschaftlicher Full-Stack-Entwickler, spezialisiert auf Angular und Java Spring Boot.",
-      "line2": "Ich baue moderne, leistungsstarke Webanwendungen.",
-      "line3": "Lass uns gemeinsam etwas Großartiges schaffen!"
+  ],
+  "jobs": [
+    {
+      "role": "Softwareingenieur",
+      "company": "ENAGEO / Sonatrach",
+      "date": "März 2025 – heute",
+      "desc": "Konzeption und Umsetzung von Softwarelösungen für geophysikalische Abläufe und interne Systeme.",
+      "now": true
     },
-    "contactMe": "Kontaktieren Sie mich"
-  },
-  "youtubeModal": {
-    "iconAlt": "LEAF CODE YouTube-kanaal",
-    "channelName": "LEAF CODE",
-    "title": "🎉 Nieuw YouTube-kanaal!",
-    "description": "Sluit je aan bij LEAF CODE voor Spring Boot tutorials, programmeer tips en best practices voor ontwikkeling!",
-    "visitButton": "Bezoek LEAF CODE",
-    "laterButton": "Misschien later",
-    "note": "Dit bericht verschijnt niet meer"
-  }
+    {
+      "role": "Junior-Entwickler und Integrator",
+      "company": "APCS Serports",
+      "date": "Juli 2024 – Jan. 2025",
+      "desc": "Softwareintegration und -entwicklung für Hafenmanagementsysteme.",
+      "now": false
+    },
+    {
+      "role": "Analyst und Entwickler",
+      "company": "Compos Solution",
+      "date": "Feb. 2024 – Juli 2024",
+      "desc": "Entwicklung und Wartung von Softwarekomponenten; Mitarbeit an Lösungsdesign und Fehlersuche.",
+      "now": false
+    },
+    {
+      "role": "Offizier",
+      "company": "Nationale Volksarmee",
+      "date": "Jan. 2023 – Jan. 2024",
+      "desc": "Wehrdienst: Disziplin, Koordination und Einsätze.",
+      "now": false
+    },
+    {
+      "role": "Universitätsdozent",
+      "company": "Universität Blida 1",
+      "date": "Okt. 2022 – Jan. 2023",
+      "desc": "Lehrveranstaltungen gehalten und Studierende in Theorie und Praxis unterstützt.",
+      "now": false
+    }
+  ],
+  "edu": [
+    {
+      "date": "2020 – 2022",
+      "title": "Master in Informatik und Netzwerke",
+      "desc": "Universität Blida · Netzwerke, Cybersicherheit, Cloud Computing, SaaS-orientierte Abschlussarbeit."
+    },
+    {
+      "date": "2015 – 2020",
+      "title": "Bachelor in Informatik",
+      "desc": "Universität Blida · Programmiergrundlagen, Datenstrukturen, Datenbanken, Betriebssysteme."
+    }
+  ]
 }

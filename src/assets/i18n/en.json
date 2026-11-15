@@ -1,124 +1,310 @@
 {
-  "title": "RAZALI Ayoub",
-  "choose_language": "Choose a language",
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "skills": "Skills",
-    "contact": "Contact",
-    "resume": "Resume",
-    "get_in_touch": "Get in Touch",
-    "education": "Education",
-    "experience": "Experience"
+  "ui": {
+    "nav.about": "About",
+    "nav.skills": "Skills",
+    "nav.projects": "Projects",
+    "nav.experience": "Experience",
+    "nav.contact": "Contact",
+    "nav.resume": "Resume",
+    "hero.kicker": "Software Engineer at ENAGEO / Sonatrach",
+    "hero.h1a": "Razali",
+    "hero.h1b": "Ayoub",
+    "hero.role": "Full-stack developer building with <strong>Java Spring Boot</strong> and <strong>Angular</strong>.",
+    "hero.cv": "See my CV",
+    "hero.contact": "Contact me",
+    "about.t": "About me",
+    "about.p": "<p>I'm a <b>full-stack developer</b> who builds modern web applications with Spring Boot and Angular. I care about clean code, thoughtful UI/UX and solving real problems with technology.</p><p>I enjoy learning new frameworks and working in fast-paced, startup-style teams.</p>",
+    "about.f1": "Currently",
+    "about.f1v": "Software Engineer, ENAGEO / Sonatrach",
+    "about.f2": "Focus",
+    "about.f3": "Languages",
+    "about.f3v": "Arabic, French, English · basic German",
+    "skills.t": "Skills",
+    "skills.core": "Core stack",
+    "skills.fe": "Frontend",
+    "skills.be": "Backend",
+    "skills.ar": "Architecture",
+    "skills.do": "DevOps",
+    "skills.te": "Testing",
+    "skills.pl": "Programming languages",
+    "projects.t": "Projects",
+    "exp.t": "Experience",
+    "edu.t": "Education",
+    "contact.t": "Let's talk.",
+    "contact.p": "Hiring for a Java / Angular role, or have a project in mind? Write to me directly or use the form, and I'll get back to you.",
+    "contact.mailL": "Email",
+    "contact.copy": "Copy",
+    "contact.copied": "Copied",
+    "contact.name": "Your name",
+    "contact.email": "Your email",
+    "contact.msg": "Your message",
+    "contact.send": "Send message",
+    "contact.ok": "Thanks! Your message was sent. I will get back to you soon.",
+    "foot.yt": "Watch the YouTube announcement again",
+    "yt.t": "New YouTube channel",
+    "yt.p": "Join LEAF CODE for Spring Boot tutorials, coding tips and development best practices.",
+    "yt.go": "Visit LEAF CODE",
+    "yt.later": "Maybe later",
+    "yt.note": "This message won't show again.",
+    "site": "GitHub",
+    "live": "Live site",
+    "light": "Switch to day mode",
+    "dark": "Switch to night mode",
+    "contact.err": "Sorry, the message didn't send. Please email me directly.",
+    "contact.sending": "Sending…",
+    "guide.hide": "Hide the guide",
+    "guide.show": "Show the guide again",
+    "nav.menu": "Menu",
+    "lang": "Language"
   },
-  "hero": {
-    "greeting": "Hi, I'm <span class='text-blue-600 dark:text-blue-400'>Razali Ayoub</span>",
-    "typewriter": {
-      "line1": "I'm a passionate Full-Stack Developer specialized in Java Spring Boot and Angular.",
-      "line2": "I build modern, performant web applications.",
-      "line3": "Let's build something awesome together!"
+  "type": [
+    "I build modern, performant web applications.",
+    "Java · Spring Boot · Angular",
+    "Let's build something great together."
+  ],
+  "now": "NOW",
+  "guide": {
+    "moon": {
+      "hero": [
+        "Hi, I'm Ayoub. Let me show you around.",
+        "Scroll slowly. I'll walk you through my work."
+      ],
+      "about": [
+        "I build both sides of the web.",
+        "Java on the back, Angular on the front. And I speak four languages."
+      ],
+      "skills": [
+        "My toolbox. The core stack glows brightest.",
+        "Java and Spring Boot are where I feel at home."
+      ],
+      "projects": "Look at this one I built: {p}",
+      "experience": [
+        "Where I've worked. The newest is on top.",
+        "From teaching to geophysics software. Quite a path."
+      ],
+      "education": [
+        "Two degrees from Blida. Short and solid."
+      ],
+      "contact": [
+        "Thanks for visiting. I'd be glad to hear about your role or project.",
+        "Send me an email or use the form. I reply within a day or two."
+      ],
+      "idle": "Still there? There's more of my work below…",
+      "near": "Oh! Hello there.",
+      "arrive": "Good evening. Let me take it from here."
     },
-    "contactMe": "Contact Me"
-  },
-  "languages": {
-    "ar": "Arabic",
-    "fr": "French",
-    "en": "English",
-    "de": "German"
-  },
-  "about_me": {
-    "aboutMe": "About Me",
-    "intro": "I'm <strong>Razali Ayoub</strong>, a dedicated <strong>Full-Stack Developer</strong> with experience in building modern web applications using <span class=\"text-green-600 font-semibold\">Spring Boot</span> and <span class=\"text-blue-600 font-semibold\">Angular</span>. I’m passionate about clean code, UI/UX, and solving real-world problems through technology. I also enjoy learning new frameworks and working in fast-paced, startup-style environments. I’m multilingual and can communicate effectively in <strong>English</strong>, <strong>French</strong>, and <strong>Arabic</strong>, with a basic knowledge of <strong>German</strong>.",
-    "skills": "Skills"
-  },
-  "education": {
-    "title": "Education",
-    "degrees": {
-      "bachelor": "Bachelor's in Computer Science",
-      "master": "Master's in Computer Science and Network"
+    "sun": {
+      "hero": [
+        "Good morning! I'm Ayoub. Let's go.",
+        "Bright and early. Follow me down."
+      ],
+      "about": [
+        "I'm a full-stack developer: Java and Angular.",
+        "I speak Arabic, French, English and some German."
+      ],
+      "skills": [
+        "Here's what I work with. Core stack first.",
+        "Spring Boot on the server, Angular in the browser."
+      ],
+      "projects": "Check out what I built: {p}",
+      "experience": [
+        "My experience, newest first.",
+        "Right now I build software at ENAGEO / Sonatrach."
+      ],
+      "education": [
+        "Computer science, bachelor's and master's."
+      ],
+      "contact": [
+        "Thanks for visiting. Let's talk about your role or project.",
+        "Send me an email or use the form. Both reach me directly."
+      ],
+      "idle": "Taking a break? I'll wait right here.",
+      "near": "Careful, I'm hot!",
+      "arrive": "Rise and shine. My turn."
     },
-    "institutions": {
-      "blida": "University of Blida"
-    },
-    "descriptions": {
-      "bachelor": "Bachelor's degree in Computer Science from the University of Blida, focusing on programming fundamentals, data structures, databases, and operating systems.",
-      "master": "Master's degree in Computer Science and Network from the University of Blida, specialized in networking, cybersecurity, cloud computing, and final projects oriented toward SaaS solutions."
+    "react": {
+      "come": "Come see this one I built: {p}.",
+      "copied": "Copied. Talk soon!",
+      "thanks": "Thank you! I will get back to you soon."
     }
   },
-  "experience": {
-    "title": "Experience",
-    "positions": {
-      "universityTeacher": "University Teacher",
-      "armyOfficer": "Army Officer",
-      "analystDeveloper": "Analyst Developer",
-      "juniorIntegrator": "Junior Developer & Integrator",
-      "softwareEngineer": "Software Engineer"
+  "skills": [
+    {
+      "key": "core",
+      "label": "Core stack",
+      "items": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "TypeScript"
+      ],
+      "core": true
     },
-    "companies": {
-      "none": "University of Blida 1",
-      "army": "National People's Army",
-      "compos": "Compos Solution",
-      "apcs": "APCS Serports",
-      "enageo": "ENAGEO / Sonatrach"
+    {
+      "key": "fe",
+      "label": "Frontend",
+      "items": [
+        "Angular",
+        "Tailwind",
+        "Bootstrap",
+        "CSS"
+      ],
+      "core": false
     },
-    "descriptions": {
-      "universityTeacher": "Taught academic courses and assisted students with practical and theoretical understanding.",
-      "armyOfficer": "Served in the military, responsible for discipline, coordination, and operations as part of national service.",
-      "analystDeveloper": "Developed and maintained software components, contributed to solution design and debugging.",
-      "juniorIntegrator": "Worked on software integration and development tasks for port management systems.",
-      "softwareEngineer": "Designing and implementing software solutions for geophysical operations and internal systems."
+    {
+      "key": "be",
+      "label": "Backend",
+      "items": [
+        "Spring Boot",
+        "Java",
+        "Odoo"
+      ],
+      "core": false
     },
-    "dates": {
-      "universityTeacher": "October 2022 – January 2023",
-      "armyOfficer": "January 2023 – January 2024",
-      "analystDeveloper": "February 2024 – July 2024",
-      "juniorIntegrator": "July 2024 – January 2025",
-      "softwareEngineer": "March 2025 – Present"
+    {
+      "key": "ar",
+      "label": "Architecture",
+      "items": [
+        "Microservices",
+        "Monolithic"
+      ],
+      "core": false
+    },
+    {
+      "key": "do",
+      "label": "DevOps",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Git"
+      ],
+      "core": false
+    },
+    {
+      "key": "te",
+      "label": "Testing",
+      "items": [
+        "TDD",
+        "BDD"
+      ],
+      "core": false
+    },
+    {
+      "key": "pl",
+      "label": "Programming languages",
+      "items": [
+        "Java",
+        "TypeScript",
+        "Python",
+        "HTML",
+        "SCSS"
+      ],
+      "core": false
     }
-  },
-  "projects": {
-    "technologies": "Technologies",
-    "project_title": "Projects",
-    "titles": {
-      "portfolio": "Portfolio",
-      "moviesWatchlist": "Movies Watchlist API",
-      "loanManagement": "Loan Management",
-      "libraryManagement": "Library Management"
+  ],
+  "projects": [
+    {
+      "id": "portfolio",
+      "title": "Portfolio",
+      "desc": "This site: a multilingual Angular portfolio with right-to-left support and a day/night theme.",
+      "tech": [
+        "Angular",
+        "Tailwind CSS",
+        "SCSS"
+      ],
+      "gh": "https://github.com/youbo28/myportfolio",
+      "live": "https://ayoubrazali.site",
+      "hue": "#8FA8FF",
+      "motif": "web"
     },
-    "descriptions": {
-      "portfolio": "Portfolio project showcasing my skills and experience.",
-      "moviesWatchlist": "A movie watchlist API  built with Spring Boot for learning puposes.",
-      "loanManagement": "A loan management system with Angular frontend and Spring Boot backend, connected to MySQL database.",
-      "libraryManagement": "A library management system developed with JEE, JavaScript, and MySQL."
+    {
+      "id": "loan",
+      "title": "Loan Management",
+      "desc": "A loan management system with an Angular frontend and a Spring Boot backend on MySQL.",
+      "tech": [
+        "Angular",
+        "Spring Boot",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
+      "live": "",
+      "hue": "#6EE7B7",
+      "motif": "chart"
+    },
+    {
+      "id": "movies",
+      "title": "Movies Watchlist API",
+      "desc": "A REST API for a movie watchlist, built with Spring Boot for learning.",
+      "tech": [
+        "Spring Boot"
+      ],
+      "gh": "https://github.com/youbo28/watchlist",
+      "live": "",
+      "hue": "#FF9A6B",
+      "motif": "film"
+    },
+    {
+      "id": "library",
+      "title": "Library Management",
+      "desc": "A library management system built with JEE, JavaScript and MySQL.",
+      "tech": [
+        "JEE",
+        "JavaScript",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/Bibliotheque",
+      "live": "",
+      "hue": "#F6E7B4",
+      "motif": "books"
     }
-  },
-  "skills": {
-    "title": "Skills",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "architecture": "Architecture",
-    "devops": "DevOps",
-    "testing": "Testing",
-    "languages": "Languages",
-    "speaking_languages": "Speaking Languages"
-  },
-  "contact": {
-    "title": "Contact Me",
-    "name": "Your Name",
-    "email": "Your Email",
-    "message": "Your Message",
-    "send": "Send Message",
-    "successMessage": "Thank you! Your message has been sent successfully.",
-    "errorMessage": "Oops! Something went wrong. Please try again later."
-  },
-  "youtubeModal": {
-    "iconAlt": "LEAF CODE YouTube Channel",
-    "channelName": "LEAF CODE",
-    "title": "🎉 New YouTube Channel!",
-    "description": "Join LEAF CODE for Spring Boot tutorials, coding tips, and development best practices!",
-    "visitButton": "Visit LEAF CODE",
-    "laterButton": "Maybe Later",
-    "note": "This message won't show again"
-  }
+  ],
+  "jobs": [
+    {
+      "role": "Software Engineer",
+      "company": "ENAGEO / Sonatrach",
+      "date": "Mar 2025 – Present",
+      "desc": "Designing and implementing software solutions for geophysical operations and internal systems.",
+      "now": true
+    },
+    {
+      "role": "Junior Developer & Integrator",
+      "company": "APCS Serports",
+      "date": "Jul 2024 – Jan 2025",
+      "desc": "Software integration and development for port management systems.",
+      "now": false
+    },
+    {
+      "role": "Analyst Developer",
+      "company": "Compos Solution",
+      "date": "Feb 2024 – Jul 2024",
+      "desc": "Developed and maintained software components; contributed to solution design and debugging.",
+      "now": false
+    },
+    {
+      "role": "Army Officer",
+      "company": "National People's Army",
+      "date": "Jan 2023 – Jan 2024",
+      "desc": "National service: discipline, coordination and operations.",
+      "now": false
+    },
+    {
+      "role": "University Teacher",
+      "company": "University of Blida 1",
+      "date": "Oct 2022 – Jan 2023",
+      "desc": "Taught academic courses and helped students with theory and practice.",
+      "now": false
+    }
+  ],
+  "edu": [
+    {
+      "date": "2020 – 2022",
+      "title": "Master's in Computer Science and Network",
+      "desc": "University of Blida · networking, cybersecurity, cloud computing, SaaS-oriented final project."
+    },
+    {
+      "date": "2015 – 2020",
+      "title": "Bachelor's in Computer Science",
+      "desc": "University of Blida · programming fundamentals, data structures, databases, operating systems."
+    }
+  ]
 }
