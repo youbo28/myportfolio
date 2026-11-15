@@ -57,7 +57,8 @@
     "guide.hide": "Masquer le guide",
     "guide.show": "Afficher le guide",
     "skills.hint": "Survolez une compétence et je vous en parle.",
-    "skills.hintTouch": "Touchez une compétence et je vous en parle."
+    "skills.hintTouch": "Touchez une compétence et je vous en parle.",
+    "skills.ai": "IA"
   },
   "type": [
     "Je crée des applications web modernes et performantes.",
@@ -137,7 +138,9 @@
         "Java": "Java est mon langage principal, de l'université à mes projets d'aujourd'hui.",
         "Spring Boot": "Spring Boot, c'est ainsi que je construis mes backends et mes API REST, comme Gestion des prêts et l'API Movies Watchlist.",
         "Angular": "Angular est mon framework frontend. Ce site est construit avec.",
-        "TypeScript": "TypeScript rend mon code Angular clair et sûr."
+        "TypeScript": "TypeScript rend mon code Angular clair et sûr.",
+        "Flutter": "Flutter fait partie de mes outils pour créer des applications mobiles.",
+        "LiteLLM": "J'utilise LiteLLM comme passerelle pour appeler différents LLM via une seule API."
       },
       "langs": [
         {
@@ -191,7 +194,8 @@
         "Angular",
         "Tailwind",
         "Bootstrap",
-        "CSS"
+        "CSS",
+        "Flutter"
       ],
       "core": false
     },
@@ -211,6 +215,14 @@
       "items": [
         "Microservices",
         "Monolithic"
+      ],
+      "core": false
+    },
+    {
+      "key": "ai",
+      "label": "IA",
+      "items": [
+        "LiteLLM"
       ],
       "core": false
     },
