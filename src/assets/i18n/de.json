@@ -55,7 +55,10 @@
     "light": "Zum Tagmodus wechseln",
     "dark": "Zum Nachtmodus wechseln",
     "guide.hide": "Guide ausblenden",
-    "guide.show": "Guide wieder anzeigen"
+    "guide.show": "Guide wieder anzeigen",
+    "skills.hint": "Fahren Sie über einen Skill, und ich erzähle Ihnen davon.",
+    "skills.hintTouch": "Tippen Sie auf einen Skill, und ich erzähle Ihnen davon.",
+    "skills.ai": "KI"
   },
   "type": [
     "Ich baue moderne, performante Webanwendungen.",
@@ -126,6 +129,50 @@
       "come": "Kommen Sie, sehen Sie sich das an, das habe ich gebaut: {p}.",
       "copied": "Kopiert. Bis bald!",
       "thanks": "Danke! Ich melde mich bald."
+    },
+    "hover": {
+      "and": "und",
+      "built": "Ich habe {list} mit {x} gebaut.",
+      "tool": "{x} gehört zu meinen täglichen Werkzeugen.",
+      "core": {
+        "Java": "Java ist meine Hauptsprache, von der Uni bis zu meinen heutigen Projekten.",
+        "Spring Boot": "Mit Spring Boot baue ich Backends und REST-APIs, zum Beispiel meine Kreditverwaltung und die Movies-Watchlist-API.",
+        "Angular": "Angular ist mein Frontend-Framework. Genau diese Seite ist damit gebaut.",
+        "TypeScript": "TypeScript hält meinen Angular-Code klar und sicher.",
+        "Flutter": "Flutter gehört zu meinen Werkzeugen für mobile Apps.",
+        "LiteLLM": "Ich nutze LiteLLM als Gateway, um verschiedene LLMs über eine einzige API anzusprechen."
+      },
+      "langs": [
+        {
+          "name": "Arabisch",
+          "say": "Ich spreche Arabisch."
+        },
+        {
+          "name": "Französisch",
+          "say": "Ich spreche Französisch."
+        },
+        {
+          "name": "Englisch",
+          "say": "Ich spreche Englisch."
+        },
+        {
+          "name": "Deutsch (Grundkenntnisse)",
+          "say": "Ich lerne Deutsch. Die Grundlagen habe ich schon!"
+        }
+      ],
+      "jobNow": "Das ist meine aktuelle Stelle: {role} bei {company}.",
+      "jobPast": "Ich war {role} bei {company} ({date}).",
+      "project": "{title}: Ich habe es mit {tech} gebaut. Schauen Sie sich den Code an.",
+      "edu": "Das habe ich an der Universität Blida studiert ({date}).",
+      "current": "Ich bin derzeit Softwareingenieur bei ENAGEO / Sonatrach.",
+      "focus": "Das ist mein Kern-Stack: Java, Spring Boot und Angular.",
+      "cv": "Mein Lebenslauf liegt auf Google Drive und ist daher immer aktuell.",
+      "email": "Das ist meine E-Mail. Klicken Sie, um mir zu schreiben, oder kopieren Sie sie.",
+      "linkedin": "Vernetzen wir uns auf LinkedIn.",
+      "github": "Mein ganzer Code liegt auf GitHub.",
+      "youtube": "Mein Kanal LEAF CODE: Spring-Boot-Tutorials und Coding-Tipps.",
+      "contactBtn": "Das bringt Sie direkt zu meinem Kontaktformular.",
+      "form": "Schreiben Sie mir ein paar Zeilen. Ich lese jede Nachricht."
     }
   },
   "skills": [
@@ -147,7 +194,8 @@
         "Angular",
         "Tailwind",
         "Bootstrap",
-        "CSS"
+        "CSS",
+        "Flutter"
       ],
       "core": false
     },
@@ -167,6 +215,14 @@
       "items": [
         "Microservices",
         "Monolithic"
+      ],
+      "core": false
+    },
+    {
+      "key": "ai",
+      "label": "KI",
+      "items": [
+        "LiteLLM"
       ],
       "core": false
     },
@@ -204,6 +260,35 @@
   ],
   "projects": [
     {
+      "id": "luxewash",
+      "tech": [
+        "Angular",
+        "TypeScript"
+      ],
+      "gh": "",
+      "live": "https://car-wash2-demo.netlify.app/",
+      "hue": "#38BDF8",
+      "motif": "car",
+      "title": "LUXE WASH",
+      "desc": "Demo-Website für ein Premium-Autoaufbereitungsstudio in Algier: scrollgesteuertes Intro, Leistungen mit Preisen und Buchung.",
+      "story": "LUXE WASH ist eine Demo, in der ich Animation und Feinschliff so weit wie möglich getrieben habe. Sie sollte sich hochwertig anfühlen."
+    },
+    {
+      "id": "dncouture",
+      "tech": [
+        "Angular",
+        "TypeScript",
+        "i18n"
+      ],
+      "gh": "",
+      "live": "https://dncouture.netlify.app/",
+      "hue": "#F472B6",
+      "motif": "sew",
+      "title": "DN Couture",
+      "desc": "Website für eine Näh- und Schneiderlehrerin: Kurse und Workshops, ihre Geschichte und Nähanleitungen, auf Englisch, Französisch und Arabisch.",
+      "story": "DN Couture ist eine echte Website für eine Nählehrerin, in drei Sprachen. Für einen echten Menschen zu bauen, ist etwas anderes."
+    },
+    {
       "id": "portfolio",
       "title": "Portfolio",
       "desc": "Diese Seite: ein mehrsprachiges Angular-Portfolio mit Rechts-nach-links-Unterstützung und Tag/Nacht-Design.",
@@ -215,7 +300,8 @@
       "gh": "https://github.com/youbo28/myportfolio",
       "live": "https://ayoubrazali.site",
       "hue": "#8FA8FF",
-      "motif": "web"
+      "motif": "web",
+      "story": "Sie sind gerade mittendrin! Angular, vier Sprachen, und ich als Mond."
     },
     {
       "id": "loan",
@@ -229,7 +315,8 @@
       "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
       "live": "",
       "hue": "#6EE7B7",
-      "motif": "chart"
+      "motif": "chart",
+      "story": "Die Kreditverwaltung war mein Einstieg in Spring Boot. Sie hat mir bewiesen, dass ich eine komplette App bauen kann, von vorne bis hinten."
     },
     {
       "id": "movies",
@@ -241,7 +328,8 @@
       "gh": "https://github.com/youbo28/watchlist",
       "live": "",
       "hue": "#FF9A6B",
-      "motif": "film"
+      "motif": "film",
+      "story": "Die Watchlist-API habe ich an der Uni gebaut. Sie ist einfach, ich weiß, aber ich war stolz darauf, und bin es immer noch."
     },
     {
       "id": "library",
@@ -255,7 +343,8 @@
       "gh": "https://github.com/youbo28/Bibliotheque",
       "live": "",
       "hue": "#F6E7B4",
-      "motif": "books"
+      "motif": "books",
+      "story": "Die Bibliotheksverwaltung stammt aus meinem Studium. Da habe ich gemerkt, dass ich Java liebe."
     }
   ],
   "jobs": [
@@ -264,47 +353,54 @@
       "company": "ENAGEO / Sonatrach",
       "date": "März 2025 – heute",
       "desc": "Konzeption und Umsetzung von Softwarelösungen für geophysikalische Abläufe und interne Systeme.",
-      "now": true
+      "now": true,
+      "story": "Heute bin ich Softwareingenieur bei ENAGEO / Sonatrach und kann dort wirklich etwas für das Unternehmen bewegen."
     },
     {
       "role": "Junior-Entwickler und Integrator",
       "company": "APCS Serports",
       "date": "Juli 2024 – Jan. 2025",
       "desc": "Softwareintegration und -entwicklung für Hafenmanagementsysteme.",
-      "now": false
+      "now": false,
+      "story": "Bei APCS Serports bin ich mit Spring Boot ins Professionelle gestartet. Ein großer Schritt für mich und eine tolle Erfahrung."
     },
     {
       "role": "Analyst und Entwickler",
       "company": "Compos Solution",
       "date": "Feb. 2024 – Juli 2024",
       "desc": "Entwicklung und Wartung von Softwarekomponenten; Mitarbeit an Lösungsdesign und Fehlersuche.",
-      "now": false
+      "now": false,
+      "story": "Compos Solution war meine erste Berufserfahrung: echte Projekte in einem professionellen Team."
     },
     {
       "role": "Offizier",
       "company": "Nationale Volksarmee",
       "date": "Jan. 2023 – Jan. 2024",
       "desc": "Wehrdienst: Disziplin, Koordination und Einsätze.",
-      "now": false
+      "now": false,
+      "story": "Der Wehrdienst war eine Pflicht, die ich erfüllen musste. Er hat mich Disziplin und Koordination gelehrt."
     },
     {
       "role": "Universitätsdozent",
       "company": "Universität Blida 1",
       "date": "Okt. 2022 – Jan. 2023",
       "desc": "Lehrveranstaltungen gehalten und Studierende in Theorie und Praxis unterstützt.",
-      "now": false
+      "now": false,
+      "story": "Ich war Universitätsdozent und habe es geliebt. Dort habe ich gemerkt, wie gern ich Wissen weitergebe."
     }
   ],
   "edu": [
     {
       "date": "2020 – 2022",
       "title": "Master in Informatik und Netzwerke",
-      "desc": "Universität Blida · Netzwerke, Cybersicherheit, Cloud Computing, SaaS-orientierte Abschlussarbeit."
+      "desc": "Universität Blida · Netzwerke, Cybersicherheit, Cloud Computing, SaaS-orientierte Abschlussarbeit.",
+      "story": "Mein Master hat mich weitergebracht: Netzwerke, Sicherheit, Cloud und zum Abschluss ein SaaS-Projekt."
     },
     {
       "date": "2015 – 2020",
       "title": "Bachelor in Informatik",
-      "desc": "Universität Blida · Programmiergrundlagen, Datenstrukturen, Datenbanken, Betriebssysteme."
+      "desc": "Universität Blida · Programmiergrundlagen, Datenstrukturen, Datenbanken, Betriebssysteme.",
+      "story": "Mit meinem Bachelor fing alles an: Programmierung, Datenstrukturen und Datenbanken. Er hat mir mein Fundament gegeben."
     }
   ]
 }

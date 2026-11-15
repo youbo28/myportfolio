@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 import { GuideService } from '../core/guide.service';
 import { ContactMeService } from '../services/contact-me.service';
 import { LINKS } from '../core/content';
@@ -18,16 +19,16 @@ type Status = 'idle' | 'sending' | 'ok' | 'err';
       <h2>{{ i18n.ui('contact.t') }}</h2>
       <p>{{ i18n.ui('contact.p') }}</p>
       <div class="outs">
-        <div class="mail">
+        <div class="mail" [attr.data-say]="say.key('email')">
           <div><strong>{{ i18n.ui('contact.mailL') }}</strong><br><a id="mailAddr" [href]="'mailto:' + links.email">{{ links.email }}</a></div>
           <button type="button" (click)="copy()">{{ copied() ? i18n.ui('contact.copied') : i18n.ui('contact.copy') }}</button>
         </div>
-        <a [href]="links.linkedin" target="_blank" rel="noopener">LinkedIn <span>ayoub-razali ↗</span></a>
-        <a [href]="links.github" target="_blank" rel="noopener">GitHub <span>youbo28 ↗</span></a>
-        <a [href]="links.youtube" target="_blank" rel="noopener">YouTube <span>LEAF CODE ↗</span></a>
+        <a [href]="links.linkedin" [attr.data-say]="say.key('linkedin')" target="_blank" rel="noopener">LinkedIn <span>ayoub-razali ↗</span></a>
+        <a [href]="links.github" [attr.data-say]="say.key('github')" target="_blank" rel="noopener">GitHub <span>youbo28 ↗</span></a>
+        <a [href]="links.youtube" [attr.data-say]="say.key('youtube')" target="_blank" rel="noopener">YouTube <span>LEAF CODE ↗</span></a>
       </div>
     </div>
-    <form #f="ngForm" (ngSubmit)="send(f)">
+    <form #f="ngForm" (ngSubmit)="send(f)" [attr.data-say]="say.key('form')">
       <label for="f-name">{{ i18n.ui('contact.name') }}</label>
       <input id="f-name" name="name" [(ngModel)]="model.name" required autocomplete="name">
       <label for="f-mail">{{ i18n.ui('contact.email') }}</label>
@@ -48,6 +49,7 @@ type Status = 'idle' | 'sending' | 'ok' | 'err';
 })
 export class ContactComponent {
   readonly i18n = inject(I18nService);
+  readonly say = inject(SayService);
   private guide = inject(GuideService);
   private api = inject(ContactMeService);
   readonly links = LINKS;

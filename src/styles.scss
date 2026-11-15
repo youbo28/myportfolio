@@ -204,3 +204,49 @@ input.ng-touched.ng-invalid,textarea.ng-touched.ng-invalid{border-color:#F87171}
   .links.open .lang-m{display:flex;align-self:flex-start;margin-top:12px}
   .links.open .lang-m button{height:34px;padding:0 12px}
 }
+
+/* things the guide talks about on hover */
+[data-say]{cursor:default}
+a[data-say],button[data-say]{cursor:pointer}
+.chip[data-say],.tech span[data-say],.sl{transition:border-color .2s,background .2s,color .2s}
+.chip[data-say]:hover,.chip[data-say]:focus-visible,.tech span[data-say]:hover{border-color:var(--glow);background:color-mix(in srgb,var(--glow) 16%,var(--chip))}
+.spoken .sl{border-bottom:1px dashed color-mix(in srgb,var(--glow) 60%,transparent)}
+.spoken .sl:hover{color:var(--glow)}
+
+/* ---------- skills: infinite logo marquee ---------- */
+.sk-hint{margin:-18px 0 30px;color:var(--muted);font:500 13px var(--mono)}
+.marquees{display:grid;gap:26px;margin-inline:calc(50% - 50vw);padding-block:8px}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.track{display:flex;width:max-content;animation:sk-scroll var(--dur,40s) linear infinite}
+.marquee.rev .track{animation-direction:reverse}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+@keyframes sk-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+[dir="rtl"] .track{animation-name:sk-scroll-rtl}
+@keyframes sk-scroll-rtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.set{display:flex;align-items:center;gap:56px;padding:6px 28px;margin:0;list-style:none}
+.logo{--hue:#8FA8FF;display:flex;align-items:center;gap:12px;white-space:nowrap;cursor:default;color:var(--muted);padding:6px 4px;border-radius:12px;transition:color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.logo .ic{width:30px;height:30px;display:grid;place-items:center;transition:filter .3s,transform .3s}
+.logo .ic svg{width:100%;height:100%;fill:currentColor;transition:fill .3s,stroke .3s}
+.logo .ic svg.glyph{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.logo .nm{font:600 20px var(--display);letter-spacing:-.01em}
+.logo.core{color:var(--ink)}
+.logo.core .ic{width:36px;height:36px}
+.logo.core .nm{font-size:24px;font-weight:700}
+.logo:hover,.logo:focus-visible{color:var(--ink);transform:translateY(-3px)}
+.logo:hover .ic svg,.logo:focus-visible .ic svg{fill:var(--hue)}
+.logo:hover .ic svg.glyph,.logo:focus-visible .ic svg.glyph{fill:none;stroke:var(--hue)}
+.logo:hover .ic,.logo:focus-visible .ic{transform:scale(1.15);filter:drop-shadow(0 6px 14px var(--hue))}
+@media (max-width:620px){.set{gap:36px}.logo .nm{font-size:17px}.logo.core .nm{font-size:20px}.logo .ic{width:26px;height:26px}.logo.core .ic{width:30px;height:30px}.marquees{gap:18px}}
+/* reduce-motion: keep the drift (it pauses on hover and focus), just slower */
+@media (prefers-reduced-motion:reduce){
+  html body .track{animation:sk-scroll calc(var(--dur,40s) * 1.6) linear infinite !important}
+  html body .marquee.rev .track{animation-direction:reverse !important}
+  html body [dir="rtl"] .track{animation-name:sk-scroll-rtl !important}
+  html body .marquee:hover .track,html body .marquee:focus-within .track{animation-play-state:paused !important}
+}
+
+/* project screenshots */
+.cover{display:block;background:var(--chip);border-bottom:1px solid var(--line)}
+.cover img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.cover img.poster{object-position:center}
+.pj:hover .cover img,.pj.spot .cover img{transform:scale(1.04)}
