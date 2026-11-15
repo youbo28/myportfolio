@@ -260,6 +260,33 @@
   ],
   "projects": [
     {
+      "id": "luxewash",
+      "tech": [
+        "Angular",
+        "TypeScript"
+      ],
+      "gh": "",
+      "live": "https://car-wash2-demo.netlify.app/",
+      "hue": "#38BDF8",
+      "motif": "car",
+      "title": "LUXE WASH",
+      "desc": "Site de démonstration pour un studio de detailing automobile haut de gamme à Alger : intro animée au défilement, services avec tarifs et réservation."
+    },
+    {
+      "id": "dncouture",
+      "tech": [
+        "Angular",
+        "TypeScript",
+        "i18n"
+      ],
+      "gh": "",
+      "live": "https://dncouture.netlify.app/",
+      "hue": "#F472B6",
+      "motif": "sew",
+      "title": "DN Couture",
+      "desc": "Site pour une formatrice en couture : séances et ateliers, l'histoire de la formatrice et des guides de couture, en anglais, français et arabe."
+    },
+    {
       "id": "portfolio",
       "title": "Portfolio",
       "desc": "Ce site : un portfolio Angular multilingue, avec prise en charge de l'arabe (RTL) et un thème jour/nuit.",
