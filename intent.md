@@ -21,18 +21,10 @@ The site has four goals:
 ## Key features
 
 ### Single-page layout
-The whole portfolio is one scrolling page. The sections appear in this order (`src/app/app.component.html`):
+The whole portfolio is one scrolling page, in this order: Hero → About → Skills → Projects → Experience → Education → Contact (`src/app/app.component.ts`).
 
-| Section | Component | Content |
-|---|---|---|
-| Navigation | `nav-bar` | Section links, resume, theme toggle, language switcher |
-| YouTube announcement | `youtube-modal` | One-time popup announcing my new channel |
-| Hero | `hero` | Greeting, typewriter text and a "Contact Me" call to action |
-| About | `about-me` | Personal introduction and skills/competences |
-| Projects | `project` | Project cards (image, description, technologies, demo and GitHub links) |
-| Experience | `experience` | Professional experience timeline |
-| Education | `education` | Academic background |
-| Contact | `contact-me` | Contact form |
+### 3D guide
+A 3D mascot (`src/app/mascot/`) represents me and speaks in the first person: a crescent moon in dark mode, a sun in light mode. It has floating hands and an expressive mouth, glides slowly to the section being read, hovers there, points at the CV button, project cards and the email, and reacts to events (copying the email, sending the form, changing language). Switching the theme plays a sunset or moonrise.
 
 ### Multilingual (i18n)
 - Available in **English, French, German and Arabic** through Transloco (`src/assets/i18n/*.json`).
@@ -40,16 +32,16 @@ The whole portfolio is one scrolling page. The sections appear in this order (`s
 - All content, including project titles and descriptions, is referenced by translation keys, so every language gets the same content.
 
 ### Data-driven content
-Projects, experience, education, skills and competences live in JSON files in `src/assets/data/` and are loaded by dedicated services (`src/app/services/`). Updating the portfolio means editing JSON, not templates.
+Projects, experience, education, skills and the guide's lines live in the translation files `src/assets/i18n/*.json`. Updating the portfolio means editing JSON, not templates.
 
 ### Light / dark theme
-`ThemeService` toggles Tailwind's `dark` class on the root element and saves the choice in `localStorage` (`portfolio-theme`).
+`ThemeService` sets `data-theme` on the root element and saves the choice in `localStorage` (`portfolio-theme`).
 
 ### Contact form
 The form posts to a serverless **Netlify Function** (`/.netlify/functions/sendEmail`), so messages reach my inbox without a dedicated backend.
 
 ### YouTube channel announcement
-On a visitor's first visit, an animated modal (fireworks, confetti, sparkles, in green tones inspired by Spring Boot) announces my YouTube channel. It closes with the button, a backdrop click or `Escape`, and it doesn't come back after that (`localStorage` key `youtube-modal-shown`).
+On a visitor's first visit, a modal announces my YouTube channel. It closes with the button, a backdrop click or `Escape`, and it doesn't come back after that (`localStorage` key `youtube-modal-shown`).
 
 ## Featured projects
 
@@ -60,13 +52,12 @@ On a visitor's first visit, an animated modal (fireworks, confetti, sparkles, in
 
 ## Tech stack
 
-- **Framework:** Angular 17 (standalone components)
-- **Styling:** Tailwind CSS 3 + SCSS, `tailwindcss-rtl`
-- **i18n:** `@ngneat/transloco`
-- **Icons:** `lucide-angular`
-- **Animations:** `@angular/animations` and CSS keyframes
+- **Framework:** Angular 21 (standalone components, signals)
+- **Styling:** plain SCSS with CSS custom properties (`src/styles.scss`)
+- **3D:** three.js, loaded lazily
+- **i18n:** `@jsverse/transloco`
+- **Fonts:** self-hosted with `@fontsource`
 - **Hosting:** Netlify, with Netlify Functions for email
-- **Testing:** Jasmine + Karma
 
 ## Design principles
 

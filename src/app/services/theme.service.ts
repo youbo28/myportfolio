@@ -1,33 +1,40 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { Mode } from '../core/content';
 
-@Injectable({
-  providedIn: 'root'
-})
+const KEY = 'portfolio-theme';
+
+/** Light (dawn) / dark (night) theme. The guide can take over the switch to play the sunset/moonrise. */
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private darkClass = 'dark';
-  private themeKey = 'portfolio-theme';
+  readonly mode = signal<Mode>(this.initial());
+  private switcher?: (next: Mode) => boolean;
 
   constructor() {
-    const saved = localStorage.getItem(this.themeKey);
-    if (saved === 'dark') {
-      this.enableDark();
-    } else {
-      this.enableLight();
-    }
+    this.apply(this.mode());
   }
-  enableDark() {
-    document.documentElement.classList.add(this.darkClass);
-    localStorage.setItem(this.themeKey, 'dark');
+
+  apply(mode: Mode): void {
+    const root = document.documentElement;
+    root.dataset['theme'] = mode;
+    root.dataset['mode'] = mode;
+    try { localStorage.setItem(KEY, mode); } catch {}
+    this.mode.set(mode);
   }
-  enableLight() {
-    document.documentElement.classList.remove(this.darkClass);
-    localStorage.setItem(this.themeKey, 'light');
+
+  /** Lets the guide animate the change; it calls apply() at the right moment. */
+  registerSwitcher(fn: (next: Mode) => boolean): void {
+    this.switcher = fn;
   }
-  toggleTheme(): void {
-    if (document.documentElement.classList.contains(this.darkClass)) {
-      this.enableLight();
-    } else {
-      this.enableDark();
-    }
+
+  toggle(): void {
+    const next: Mode = this.mode() === 'dark' ? 'light' : 'dark';
+    if (!this.switcher?.(next)) this.apply(next);
+  }
+
+  private initial(): Mode {
+    let saved: string | null = null;
+    try { saved = localStorage.getItem(KEY); } catch {}
+    if (saved === 'dark' || saved === 'light') return saved;
+    return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   }
 }

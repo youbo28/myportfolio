@@ -1,124 +1,303 @@
 {
-  "title": "أيوب غزالي",
-  "choose_language": "اختر لغة",
-  "nav": {
-    "home": "الرئيسية",
-    "about": "من انا",
-    "education": "التعليم",
-    "experience": "الخبرات",
-    "projects": "المشاريع",
-    "skills": "المهارات",
-    "contact": "اتصل بنا",
-    "resume": "السيرة الذاتية",
-    "get_in_touch": "تواصل معي"
+  "ui": {
+    "nav.about": "من أنا",
+    "nav.skills": "المهارات",
+    "nav.projects": "المشاريع",
+    "nav.experience": "الخبرات",
+    "nav.contact": "تواصل",
+    "nav.resume": "السيرة الذاتية",
+    "hero.kicker": "مهندس برمجيات في ENAGEO / سوناطراك",
+    "hero.h1a": "أيوب",
+    "hero.h1b": "غزالي",
+    "hero.role": "مطور Full-Stack متخصص في <strong>Java Spring Boot</strong> و<strong>Angular</strong>.",
+    "hero.cv": "سيرتي الذاتية",
+    "hero.contact": "تواصل معي",
+    "about.t": "من أنا",
+    "about.p": "<p>أنا <b>مطور Full-Stack</b> أبني تطبيقات ويب حديثة باستخدام Spring Boot وAngular. أهتم بالكود النظيف وتجربة المستخدم وحل المشاكل الحقيقية بالتكنولوجيا.</p><p>أحب تعلم أطر عمل جديدة والعمل في فرق سريعة الإيقاع.</p>",
+    "about.f1": "حالياً",
+    "about.f1v": "مهندس برمجيات، ENAGEO / سوناطراك",
+    "about.f2": "التخصص",
+    "about.f3": "اللغات",
+    "about.f3v": "العربية، الفرنسية، الإنجليزية · ألمانية أساسية",
+    "skills.t": "المهارات",
+    "skills.core": "التقنيات الأساسية",
+    "skills.fe": "الواجهة الأمامية",
+    "skills.be": "الواجهة الخلفية",
+    "skills.ar": "هندسة البرمجيات",
+    "skills.do": "ديف أوبس",
+    "skills.te": "اختبار البرمجيات",
+    "skills.pl": "لغات البرمجة",
+    "projects.t": "المشاريع",
+    "exp.t": "الخبرات",
+    "edu.t": "التعليم",
+    "contact.t": "لنتحدث.",
+    "contact.p": "تبحث عن مطور Java / Angular أو لديك مشروع؟ راسلني مباشرة أو استخدم النموذج وسأرد عليك.",
+    "contact.mailL": "البريد الإلكتروني",
+    "contact.copy": "نسخ",
+    "contact.copied": "تم النسخ",
+    "contact.name": "اسمك",
+    "contact.email": "بريدك الإلكتروني",
+    "contact.msg": "رسالتك",
+    "contact.send": "أرسل الرسالة",
+    "contact.ok": "شكرًا! تم إرسال رسالتك وسأرد عليك قريبًا.",
+    "foot.yt": "مشاهدة إعلان يوتيوب مرة أخرى",
+    "yt.t": "قناة يوتيوب جديدة",
+    "yt.p": "انضم إلى LEAF CODE لدروس Spring Boot ونصائح البرمجة وأفضل الممارسات.",
+    "yt.go": "زيارة LEAF CODE",
+    "yt.later": "لاحقاً",
+    "yt.note": "لن تظهر هذه الرسالة مرة أخرى.",
+    "site": "GitHub",
+    "live": "الموقع",
+    "light": "التبديل إلى وضع النهار",
+    "dark": "التبديل إلى وضع الليل",
+    "contact.err": "عذرًا، لم تُرسل الرسالة. راسلني مباشرة عبر البريد.",
+    "contact.sending": "جارٍ الإرسال…",
+    "guide.hide": "إخفاء المرشد",
+    "guide.show": "إظهار المرشد",
+    "nav.menu": "القائمة",
+    "lang": "اللغة"
   },
-  "languages": {
-    "ar": "العربية",
-    "fr": "الفرنسية",
-    "en": "الإنجليزية",
-    "de": "الألمانية"
-  },
-  "about_me": {
-    "aboutMe": "عنّي",
-    "intro": "أنا <strong>غزالي أيوب</strong>، مطور <strong>Full-Stack</strong> مكرّس ولدي خبرة في بناء تطبيقات الويب الحديثة باستخدام <span class=\"text-blue-600 font-semibold\">Angular</span> و <span class=\"text-green-600 font-semibold\">Spring Boot</span>. أركز على تحسين تجربة المستخدم، وكتابة كود قابل للتطوير وسهل الصيانة، وحل المشكلات الحقيقية من خلال التكنولوجيا. أستمتع أيضًا بتعلم أطر عمل جديدة والعمل في بيئات سريعة الحركة مثل بيئات الشركات الناشئة. أتحدث <strong>العربية</strong>، <strong>الفرنسية</strong>، و<strong>الإنجليزية</strong> بطلاقة، ولدي معرفة أساسية بـ<strong>الألمانية</strong>.",
-    "skills": "المهارات"
-  },
-  "education": {
-    "title": "التعليم",
-    "degrees": {
-      "bachelor": "ليسانس في علوم الحاسوب",
-      "master": "ماجستير في علوم الحاسوب والشبكات"
+  "type": [
+    "أبني تطبيقات ويب حديثة وعالية الأداء.",
+    "Java · Spring Boot · Angular",
+    "لنبنِ شيئاً رائعاً معاً."
+  ],
+  "now": "حالياً",
+  "guide": {
+    "moon": {
+      "hero": [
+        "مرحباً، أنا أيوب. دعني أرافقك في جولة.",
+        "مرّر ببطء، سأعرّفك على أعمالي."
+      ],
+      "about": [
+        "أبني جانبي الويب معاً.",
+        "Java في الخلفية وAngular في الواجهة، وأتحدث أربع لغات."
+      ],
+      "skills": [
+        "هذه أدواتي. التقنيات الأساسية تلمع أكثر."
+      ],
+      "projects": "انظر إلى هذا المشروع الذي بنيته: {p}",
+      "experience": [
+        "أين عملت. الأحدث في الأعلى."
+      ],
+      "education": [
+        "شهادتان من جامعة البليدة."
+      ],
+      "contact": [
+        "شكرًا على زيارتك. يسعدني أن أسمع عن عرضك أو مشروعك.",
+        "راسلني عبر البريد أو النموذج، وسأرد خلال يوم أو يومين."
+      ],
+      "idle": "ما زلت هنا؟ هناك المزيد من أعمالي في الأسفل…",
+      "near": "أوه! مرحباً.",
+      "arrive": "مساء الخير. دعني أكمل الجولة."
     },
-    "institutions": {
-      "blida": "جامعة البليدة"
+    "sun": {
+      "hero": [
+        "صباح الخير! أنا أيوب. هيا بنا."
+      ],
+      "about": [
+        "أنا مطور Full-Stack بـ Java وAngular."
+      ],
+      "skills": [
+        "هذه التقنيات التي أعمل بها."
+      ],
+      "projects": "شاهد ما بنيته: {p}",
+      "experience": [
+        "خبراتي، الأحدث أولاً."
+      ],
+      "education": [
+        "ليسانس وماستر في الإعلام الآلي."
+      ],
+      "contact": [
+        "شكرًا على زيارتك. لنتحدث عن عرضك أو مشروعك."
+      ],
+      "idle": "استراحة؟ سأنتظرك هنا.",
+      "near": "احذر، أنا ساخن!",
+      "arrive": "صباح الخير. جاء دوري."
     },
-    "descriptions": {
-      "bachelor": "ليسانس في الإعلام الآلي من جامعة البليدة، تركزت على أساسيات البرمجة، هياكل البيانات، قواعد البيانات وأنظمة التشغيل.",
-      "master": "ماستر في الإعلام الآلي والشبكات من جامعة البليدة، تخصص في الشبكات، أمن المعلومات، الحوسبة السحابية ومشاريع التخرج الموجهة نحو حلول SaaS."
+    "react": {
+      "come": "تعال وشاهد ما بنيته: {p}.",
+      "copied": "تم النسخ. نتحدث قريبًا!",
+      "thanks": "شكرًا لك! سأرد عليك قريبًا."
     }
   },
-  "experience": {
-    "title": "الخبرات",
-    "positions": {
-      "universityTeacher": "أستاذ جامعي",
-      "armyOfficer": "ضابط في الجيش",
-      "analystDeveloper": "محلل ومطور برامج",
-      "juniorIntegrator": "مطور ومُدمج مبتدئ",
-      "softwareEngineer": "مهندس برمجيات"
+  "skills": [
+    {
+      "key": "core",
+      "label": "التقنيات الأساسية",
+      "items": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "TypeScript"
+      ],
+      "core": true
     },
-    "companies": {
-      "none": "جامعة البليدة 1",
-      "army": "الجيش الوطني الشعبي",
-      "compos": "Compos Solution",
-      "apcs": "APCS Serports",
-      "enageo": "ENAGEO / سوناطراك"
+    {
+      "key": "fe",
+      "label": "الواجهة الأمامية",
+      "items": [
+        "Angular",
+        "Tailwind",
+        "Bootstrap",
+        "CSS"
+      ],
+      "core": false
     },
-    "descriptions": {
-      "universityTeacher": "درّست مقررات أكاديمية وساعدت الطلاب في الفهم النظري والتطبيقي.",
-      "armyOfficer": "أديت الخدمة العسكرية، مسؤول عن الانضباط والتنسيق والعمليات.",
-      "analystDeveloper": "طوّرت برامج وساهمت في تصميم الحلول ومعالجة الأخطاء.",
-      "juniorIntegrator": "عملت على دمج وتطوير الأنظمة الخاصة بإدارة الموانئ.",
-      "softwareEngineer": "تصميم وتنفيذ حلول برمجية للعمليات الجيوفيزيائية والأنظمة الداخلية."
+    {
+      "key": "be",
+      "label": "الواجهة الخلفية",
+      "items": [
+        "Spring Boot",
+        "Java",
+        "Odoo"
+      ],
+      "core": false
     },
-    "dates": {
-      "universityTeacher": "أكتوبر 2022 – يناير 2023",
-      "armyOfficer": "يناير 2023 – يناير 2024",
-      "analystDeveloper": "فبراير 2024 – يوليو 2024",
-      "juniorIntegrator": "يوليو 2024 – يناير 2025",
-      "softwareEngineer": "مارس 2025 – الآن"
+    {
+      "key": "ar",
+      "label": "هندسة البرمجيات",
+      "items": [
+        "Microservices",
+        "Monolithic"
+      ],
+      "core": false
+    },
+    {
+      "key": "do",
+      "label": "ديف أوبس",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Git"
+      ],
+      "core": false
+    },
+    {
+      "key": "te",
+      "label": "اختبار البرمجيات",
+      "items": [
+        "TDD",
+        "BDD"
+      ],
+      "core": false
+    },
+    {
+      "key": "pl",
+      "label": "لغات البرمجة",
+      "items": [
+        "Java",
+        "TypeScript",
+        "Python",
+        "HTML",
+        "SCSS"
+      ],
+      "core": false
     }
-  },
-  "projects": {
-    "technologies": "التقنيات",
-    "project_title": "المشاريع",
-    "titles": {
-      "portfolio": "محفظتي",
-      "moviesWatchlist": " API قائمة الأفلام",
-      "loanManagement": "إدارة القروض",
-      "libraryManagement": "إدارة المكتبة"
+  ],
+  "projects": [
+    {
+      "id": "portfolio",
+      "title": "محفظتي",
+      "desc": "هذا الموقع: محفظة Angular متعددة اللغات تدعم الاتجاه من اليمين لليسار ووضعي النهار والليل.",
+      "tech": [
+        "Angular",
+        "Tailwind CSS",
+        "SCSS"
+      ],
+      "gh": "https://github.com/youbo28/myportfolio",
+      "live": "https://ayoubrazali.site",
+      "hue": "#8FA8FF",
+      "motif": "web"
     },
-    "descriptions": {
-      "portfolio": "مشروع المحفظة يعرض مهاراتي وخبرتي.",
-      "moviesWatchlist": "واجهة برمجة تطبيقات قائمة الأفلام مبنية باستخدام Spring Boot لأغراض تعليمية.",
-      "loanManagement": "نظام إدارة القروض مع واجهة أمامية باستخدام Angular وواجهة خلفية باستخدام Spring Boot، متصل بقاعدة بيانات MySQL.",
-      "libraryManagement": "نظام إدارة المكتبة تم تطويره باستخدام JEE و JavaScript و MySQL."
+    {
+      "id": "loan",
+      "title": "إدارة القروض",
+      "desc": "نظام إدارة القروض مع واجهة أمامية باستخدام Angular وواجهة خلفية باستخدام Spring Boot، متصل بقاعدة بيانات MySQL.",
+      "tech": [
+        "Angular",
+        "Spring Boot",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/gestionDesPretsFront/tree/master",
+      "live": "",
+      "hue": "#6EE7B7",
+      "motif": "chart"
+    },
+    {
+      "id": "movies",
+      "title": "API قائمة الأفلام",
+      "desc": "واجهة برمجة تطبيقات قائمة الأفلام مبنية باستخدام Spring Boot لأغراض تعليمية.",
+      "tech": [
+        "Spring Boot"
+      ],
+      "gh": "https://github.com/youbo28/watchlist",
+      "live": "",
+      "hue": "#FF9A6B",
+      "motif": "film"
+    },
+    {
+      "id": "library",
+      "title": "إدارة المكتبة",
+      "desc": "نظام إدارة المكتبة تم تطويره باستخدام JEE و JavaScript و MySQL.",
+      "tech": [
+        "JEE",
+        "JavaScript",
+        "MySQL"
+      ],
+      "gh": "https://github.com/youbo28/Bibliotheque",
+      "live": "",
+      "hue": "#F6E7B4",
+      "motif": "books"
     }
-  },
-  "skills": {
-    "": "المهارات",
-    "frontend": "الواجهة الأمامية",
-    "backend": "الواجهة الخلفية",
-    "architecture": "هندسة البرمجيات",
-    "devops": "ديف أوبس",
-    "testing": "اختبار البرمجيات",
-    "languages": "لغات البرمجة",
-    "speaking_languages": "اللغات التي أتحدثها"
-  },
-  "contact": {
-    "title": "اتصل بي",
-    "name": "اسمك",
-    "email": "بريدك الإلكتروني",
-    "message": "رسالتك",
-    "send": "إرسال الرسالة",
-    "successMessage": "شكرًا لك! تم إرسال رسالتك بنجاح.",
-    "errorMessage": "حدث خطأ ما! يرجى المحاولة لاحقًا."
-  },
-  "hero": {
-    "greeting": "مرحبًا، أنا <span class='text-blue-600 dark:text-blue-400'>غزالي أيوب</span>",
-    "typewriter": {
-      "line1": "أنا مطور Full-Stack شغوف متخصص في Angular و Java Spring Boot.",
-      "line2": "أقوم ببناء تطبيقات ويب حديثة وعالية الأداء.",
-      "line3": "دعونا نبني شيئًا رائعًا معًا!"
+  ],
+  "jobs": [
+    {
+      "role": "مهندس برمجيات",
+      "company": "ENAGEO / سوناطراك",
+      "date": "مارس 2025 – الآن",
+      "desc": "تصميم وتنفيذ حلول برمجية للعمليات الجيوفيزيائية والأنظمة الداخلية.",
+      "now": true
     },
-    "contactMe": "اتصل بي"
-  },
-  "youtubeModal": {
-    "iconAlt": "قناة LEAF CODE على يوتيوب",
-    "channelName": "LEAF CODE",
-    "title": "🎉 قناة يوتيوب جديدة!",
-    "description": "انضم إلى LEAF CODE للحصول على دروس Spring Boot ونصائح البرمجة وأفضل ممارسات التطوير!",
-    "visitButton": "زيارة LEAF CODE",
-    "laterButton": "ربما لاحقاً",
-    "note": "لن تظهر هذه الرسالة مرة أخرى"
-  }
+    {
+      "role": "مطور ومُدمج مبتدئ",
+      "company": "APCS Serports",
+      "date": "يوليو 2024 – يناير 2025",
+      "desc": "عملت على دمج وتطوير الأنظمة الخاصة بإدارة الموانئ.",
+      "now": false
+    },
+    {
+      "role": "محلل ومطور برامج",
+      "company": "Compos Solution",
+      "date": "فبراير 2024 – يوليو 2024",
+      "desc": "طوّرت برامج وساهمت في تصميم الحلول ومعالجة الأخطاء.",
+      "now": false
+    },
+    {
+      "role": "ضابط في الجيش",
+      "company": "الجيش الوطني الشعبي",
+      "date": "يناير 2023 – يناير 2024",
+      "desc": "أديت الخدمة العسكرية، مسؤول عن الانضباط والتنسيق والعمليات.",
+      "now": false
+    },
+    {
+      "role": "أستاذ جامعي",
+      "company": "جامعة البليدة 1",
+      "date": "أكتوبر 2022 – يناير 2023",
+      "desc": "درّست مقررات أكاديمية وساعدت الطلاب في الفهم النظري والتطبيقي.",
+      "now": false
+    }
+  ],
+  "edu": [
+    {
+      "date": "2020 – 2022",
+      "title": "ماستر في الإعلام الآلي والشبكات",
+      "desc": "جامعة البليدة · الشبكات، أمن المعلومات، الحوسبة السحابية ومشروع تخرج موجه نحو حلول SaaS."
+    },
+    {
+      "date": "2015 – 2020",
+      "title": "ليسانس في الإعلام الآلي",
+      "desc": "جامعة البليدة · أساسيات البرمجة، هياكل البيانات، قواعد البيانات وأنظمة التشغيل."
+    }
+  ]
 }

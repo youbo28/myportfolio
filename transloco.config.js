@@ -1,6 +1,5 @@
 module.exports = {
   rootTranslationsPath: 'src/assets/i18n/',
-  langs: ['en', 'ar', 'de', 'fr'],
-  keysManager: {}
+  langs: ['en', 'fr', 'de', 'ar'],
+  keysManager: {},
 };
-export default cofig; 
