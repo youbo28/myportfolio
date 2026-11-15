@@ -2,7 +2,7 @@ import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, signal 
 import { CompetanceService } from '../../services/competance.service';
 import { CategorizedCompetence, Competance } from '../../models/Competance';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
