@@ -5,11 +5,10 @@ import { LanguageSwitcherComponent } from "../language-switcher/language-switche
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
-  selector: 'app-nav-bar',
-  standalone: true,
-  imports: [CommonModule, TranslocoDirective, LanguageSwitcherComponent],
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+    selector: 'app-nav-bar',
+    imports: [CommonModule, TranslocoDirective, LanguageSwitcherComponent],
+    templateUrl: './nav-bar.component.html',
+    styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
   public themeService = inject(ThemeService);

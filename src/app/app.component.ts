@@ -13,24 +13,23 @@ import { ContactMeComponent } from './components/contact-me/contact-me.component
 import { YoutubeModalComponent } from './components/youtube-modal/youtube-modal.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    TranslocoDirective,
-    LanguageSwitcherComponent,
-    NavBarComponent,
-    HeroComponent,
-    AboutMeComponent,
-    EducationComponent,
-    ExperienceComponent,
-    ProjectComponent,
-    CompetanceComponent,
-    ContactMeComponent,
-    YoutubeModalComponent,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        TranslocoDirective,
+        LanguageSwitcherComponent,
+        NavBarComponent,
+        HeroComponent,
+        AboutMeComponent,
+        EducationComponent,
+        ExperienceComponent,
+        ProjectComponent,
+        CompetanceComponent,
+        ContactMeComponent,
+        YoutubeModalComponent,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   // Set your target date (for example: 1st June 2025)

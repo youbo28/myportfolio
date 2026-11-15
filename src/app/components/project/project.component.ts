@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-project',
-  standalone: true,
-  imports: [CommonModule,TranslocoDirective],
-  templateUrl: './project.component.html',
-  styleUrl: './project.component.scss'
+    selector: 'app-project',
+    imports: [CommonModule, TranslocoDirective],
+    templateUrl: './project.component.html',
+    styleUrl: './project.component.scss'
 })
 export class ProjectComponent {
   readonly projects= signal   <Project[]>([]);

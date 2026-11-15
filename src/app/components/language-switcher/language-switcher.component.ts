@@ -4,11 +4,10 @@ import { LangOption } from '../../models/LangOption';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-language-switcher',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.scss'
+    selector: 'app-language-switcher',
+    imports: [CommonModule],
+    templateUrl: './language-switcher.component.html',
+    styleUrl: './language-switcher.component.scss'
 })
 export class LanguageSwitcherComponent {
   languages: LangOption[] = [

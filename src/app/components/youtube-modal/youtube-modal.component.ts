@@ -30,35 +30,28 @@ interface Particle {
 }
 
 @Component({
-  selector: 'app-youtube-modal',
-  standalone: true,
-  imports: [CommonModule, TranslocoModule],
-  templateUrl: './youtube-modal.component.html',
-  styleUrls: ['./youtube-modal.component.scss'],
-  animations: [
-    trigger('modalAnimation', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0.7)' }),
-        animate(
-          '300ms cubic-bezier(0.34, 1.56, 0.64, 1)',
-          style({ opacity: 1, transform: 'scale(1)' }),
-        ),
-      ]),
-      transition(':leave', [
-        animate(
-          '200ms ease-out',
-          style({ opacity: 0, transform: 'scale(0.7)' }),
-        ),
-      ]),
-    ]),
-    trigger('backdropAnimation', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('200ms ease-out', style({ opacity: 1 })),
-      ]),
-      transition(':leave', [animate('200ms ease-out', style({ opacity: 0 }))]),
-    ]),
-  ],
+    selector: 'app-youtube-modal',
+    imports: [CommonModule, TranslocoModule],
+    templateUrl: './youtube-modal.component.html',
+    styleUrls: ['./youtube-modal.component.scss'],
+    animations: [
+        trigger('modalAnimation', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'scale(0.7)' }),
+                animate('300ms cubic-bezier(0.34, 1.56, 0.64, 1)', style({ opacity: 1, transform: 'scale(1)' })),
+            ]),
+            transition(':leave', [
+                animate('200ms ease-out', style({ opacity: 0, transform: 'scale(0.7)' })),
+            ]),
+        ]),
+        trigger('backdropAnimation', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('200ms ease-out', style({ opacity: 1 })),
+            ]),
+            transition(':leave', [animate('200ms ease-out', style({ opacity: 0 }))]),
+        ]),
+    ]
 })
 export class YoutubeModalComponent implements OnInit {
   isVisible = false;

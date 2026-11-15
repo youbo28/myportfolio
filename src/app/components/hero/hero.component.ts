@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-hero',
-  standalone: true,
-  imports: [CommonModule,TranslocoDirective],
-  templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'
+    selector: 'app-hero',
+    imports: [CommonModule, TranslocoDirective],
+    templateUrl: './hero.component.html',
+    styleUrl: './hero.component.scss'
 })
 export class HeroComponent {
   greetingHtml = '';

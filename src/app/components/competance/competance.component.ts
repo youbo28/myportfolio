@@ -6,11 +6,10 @@ import {} from '@angular/common/http';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-competance',
-  standalone: true,
-  imports: [CommonModule, TranslocoDirective],
-  templateUrl: './competance.component.html',
-  styleUrl: './competance.component.scss'
+    selector: 'app-competance',
+    imports: [CommonModule, TranslocoDirective],
+    templateUrl: './competance.component.html',
+    styleUrl: './competance.component.scss'
 })
 export class CompetanceComponent implements AfterViewInit{
   private service = inject(CompetanceService);

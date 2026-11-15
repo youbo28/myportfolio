@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-education',
-  standalone: true,
-  imports: [CommonModule,TranslocoDirective],
-  templateUrl: './education.component.html',
-  styleUrl: './education.component.scss'
+    selector: 'app-education',
+    imports: [CommonModule, TranslocoDirective],
+    templateUrl: './education.component.html',
+    styleUrl: './education.component.scss'
 })
 export class EducationComponent {
   readonly educationData = signal <Education[]>([]);

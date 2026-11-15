@@ -6,11 +6,10 @@ import { CommonModule } from '@angular/common';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-contact-me',
-  standalone: true,
-  imports: [CommonModule, FormsModule,TranslocoDirective],
-  templateUrl: './contact-me.component.html',
-  styleUrls: ['./contact-me.component.scss'],  // fixed typo here
+    selector: 'app-contact-me',
+    imports: [CommonModule, FormsModule, TranslocoDirective],
+    templateUrl: './contact-me.component.html',
+    styleUrls: ['./contact-me.component.scss']
 })
 export class ContactMeComponent {
   success = false;

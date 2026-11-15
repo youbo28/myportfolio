@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
-  selector: 'app-about-me',
-  standalone: true,
-  imports: [CommonModule,TranslocoDirective],
-  templateUrl: './about-me.component.html',
-  styleUrl: './about-me.component.scss'
+    selector: 'app-about-me',
+    imports: [CommonModule, TranslocoDirective],
+    templateUrl: './about-me.component.html',
+    styleUrl: './about-me.component.scss'
 })
 export class AboutMeComponent {
   readonly skills = signal<string[]>([]);
