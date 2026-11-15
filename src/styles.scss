@@ -244,3 +244,9 @@ a[data-say],button[data-say]{cursor:pointer}
   html body [dir="rtl"] .track{animation-name:sk-scroll-rtl !important}
   html body .marquee:hover .track,html body .marquee:focus-within .track{animation-play-state:paused !important}
 }
+
+/* project screenshots */
+.cover{display:block;background:var(--chip);border-bottom:1px solid var(--line)}
+.cover img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.cover img.poster{object-position:center}
+.pj:hover .cover img,.pj.spot .cover img{transform:scale(1.04)}
