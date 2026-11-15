@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 
 @Component({
   selector: 'app-skills',
@@ -11,7 +12,7 @@ import { I18nService } from '../core/i18n.service';
       <div class="sk" [class.core]="g.core">
         <h3>{{ g.label }}</h3>
         <ul class="chips">
-          @for (s of g.items; track s) { <li class="chip">{{ s }}</li> }
+          @for (s of g.items; track s) { <li class="chip" tabindex="0" [attr.data-say]="say.tech(s)">{{ s }}</li> }
         </ul>
       </div>
     }
@@ -21,4 +22,5 @@ import { I18nService } from '../core/i18n.service';
 })
 export class SkillsComponent {
   readonly i18n = inject(I18nService);
+  readonly say = inject(SayService);
 }

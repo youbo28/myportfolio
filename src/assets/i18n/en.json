@@ -126,6 +126,48 @@
       "come": "Come see this one I built: {p}.",
       "copied": "Copied. Talk soon!",
       "thanks": "Thank you! I will get back to you soon."
+    },
+    "hover": {
+      "and": "and",
+      "built": "I built {list} with {x}.",
+      "tool": "{x} is part of my everyday toolbox.",
+      "core": {
+        "Java": "Java is my main language, from university to my projects today.",
+        "Spring Boot": "Spring Boot is how I build backends and REST APIs, like my Loan Management app and Movies Watchlist API.",
+        "Angular": "Angular is my frontend framework. This very site is built with it.",
+        "TypeScript": "TypeScript keeps my Angular code clear and safe."
+      },
+      "langs": [
+        {
+          "name": "Arabic",
+          "say": "I speak Arabic."
+        },
+        {
+          "name": "French",
+          "say": "I speak French."
+        },
+        {
+          "name": "English",
+          "say": "I speak English. You're reading it!"
+        },
+        {
+          "name": "German (basics)",
+          "say": "I'm learning German. Ich habe die Grundlagen."
+        }
+      ],
+      "jobNow": "This is my current job: {role} at {company}.",
+      "jobPast": "I worked as {role} at {company} ({date}).",
+      "project": "{title}: I built it with {tech}. Have a look at the code.",
+      "edu": "I studied this at the University of Blida ({date}).",
+      "current": "I'm a software engineer at ENAGEO / Sonatrach right now.",
+      "focus": "That's my core stack: Java, Spring Boot and Angular.",
+      "cv": "My CV lives on Google Drive, so it's always the latest version.",
+      "email": "This is my email. Click to write to me, or copy it.",
+      "linkedin": "Let's connect on LinkedIn.",
+      "github": "All my code is on GitHub.",
+      "youtube": "My channel LEAF CODE: Spring Boot tutorials and coding tips.",
+      "contactBtn": "This takes you straight to my contact form.",
+      "form": "Write me a few lines. I read every message."
     }
   },
   "skills": [

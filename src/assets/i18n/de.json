@@ -126,6 +126,48 @@
       "come": "Kommen Sie, sehen Sie sich das an, das habe ich gebaut: {p}.",
       "copied": "Kopiert. Bis bald!",
       "thanks": "Danke! Ich melde mich bald."
+    },
+    "hover": {
+      "and": "und",
+      "built": "Ich habe {list} mit {x} gebaut.",
+      "tool": "{x} gehört zu meinen täglichen Werkzeugen.",
+      "core": {
+        "Java": "Java ist meine Hauptsprache, von der Uni bis zu meinen heutigen Projekten.",
+        "Spring Boot": "Mit Spring Boot baue ich Backends und REST-APIs, zum Beispiel meine Kreditverwaltung und die Movies-Watchlist-API.",
+        "Angular": "Angular ist mein Frontend-Framework. Genau diese Seite ist damit gebaut.",
+        "TypeScript": "TypeScript hält meinen Angular-Code klar und sicher."
+      },
+      "langs": [
+        {
+          "name": "Arabisch",
+          "say": "Ich spreche Arabisch."
+        },
+        {
+          "name": "Französisch",
+          "say": "Ich spreche Französisch."
+        },
+        {
+          "name": "Englisch",
+          "say": "Ich spreche Englisch."
+        },
+        {
+          "name": "Deutsch (Grundkenntnisse)",
+          "say": "Ich lerne Deutsch. Die Grundlagen habe ich schon!"
+        }
+      ],
+      "jobNow": "Das ist meine aktuelle Stelle: {role} bei {company}.",
+      "jobPast": "Ich war {role} bei {company} ({date}).",
+      "project": "{title}: Ich habe es mit {tech} gebaut. Schauen Sie sich den Code an.",
+      "edu": "Das habe ich an der Universität Blida studiert ({date}).",
+      "current": "Ich bin derzeit Softwareingenieur bei ENAGEO / Sonatrach.",
+      "focus": "Das ist mein Kern-Stack: Java, Spring Boot und Angular.",
+      "cv": "Mein Lebenslauf liegt auf Google Drive und ist daher immer aktuell.",
+      "email": "Das ist meine E-Mail. Klicken Sie, um mir zu schreiben, oder kopieren Sie sie.",
+      "linkedin": "Vernetzen wir uns auf LinkedIn.",
+      "github": "Mein ganzer Code liegt auf GitHub.",
+      "youtube": "Mein Kanal LEAF CODE: Spring-Boot-Tutorials und Coding-Tipps.",
+      "contactBtn": "Das bringt Sie direkt zu meinem Kontaktformular.",
+      "form": "Schreiben Sie mir ein paar Zeilen. Ich lese jede Nachricht."
     }
   },
   "skills": [

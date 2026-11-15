@@ -204,3 +204,11 @@ input.ng-touched.ng-invalid,textarea.ng-touched.ng-invalid{border-color:#F87171}
   .links.open .lang-m{display:flex;align-self:flex-start;margin-top:12px}
   .links.open .lang-m button{height:34px;padding:0 12px}
 }
+
+/* things the guide talks about on hover */
+[data-say]{cursor:default}
+a[data-say],button[data-say]{cursor:pointer}
+.chip[data-say],.tech span[data-say],.sl{transition:border-color .2s,background .2s,color .2s}
+.chip[data-say]:hover,.chip[data-say]:focus-visible,.tech span[data-say]:hover{border-color:var(--glow);background:color-mix(in srgb,var(--glow) 16%,var(--chip))}
+.spoken .sl{border-bottom:1px dashed color-mix(in srgb,var(--glow) 60%,transparent)}
+.spoken .sl:hover{color:var(--glow)}

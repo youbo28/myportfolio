@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 import { LINKS } from '../core/content';
 
 @Component({
@@ -12,21 +13,22 @@ import { LINKS } from '../core/content';
     <p class="role" [innerHTML]="i18n.ui('hero.role')"></p>
     <div class="type" aria-hidden="true">{{ typed() }}</div>
     <div class="ctas">
-      <a class="btn primary" [href]="links.cv" target="_blank" rel="noopener">{{ i18n.ui('hero.cv') }}</a>
-      <a class="btn" href="#contact">{{ i18n.ui('hero.contact') }}</a>
+      <a class="btn primary" [href]="links.cv" [attr.data-say]="say.key('cv')" target="_blank" rel="noopener">{{ i18n.ui('hero.cv') }}</a>
+      <a class="btn" href="#contact" [attr.data-say]="say.key('contactBtn')">{{ i18n.ui('hero.contact') }}</a>
     </div>
   </div>
   <div class="home" id="home" aria-hidden="true">
     <div class="orbit"></div><div class="orbit o2"></div>
-    <span class="chipf" style="top:4%;inset-inline-start:60%">&#64;Spring Boot</span>
-    <span class="chipf" style="top:48%;inset-inline-start:-8%">&lt;Angular/&gt;</span>
-    <span class="chipf" style="bottom:6%;inset-inline-start:48%">java 21</span>
+    <span class="chipf" style="top:-2%;inset-inline-start:58%">&#64;Spring Boot</span>
+    <span class="chipf" style="top:46%;inset-inline-start:-16%">&lt;Angular/&gt;</span>
+    <span class="chipf" style="bottom:-2%;inset-inline-start:50%">java 21</span>
   </div>
 </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent {
   readonly i18n = inject(I18nService);
+  readonly say = inject(SayService);
   readonly links = LINKS;
   readonly typed = signal('');
   private timer?: ReturnType<typeof setTimeout>;

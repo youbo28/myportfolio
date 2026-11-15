@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 
 @Component({
   selector: 'app-experience',
@@ -8,7 +9,7 @@ import { I18nService } from '../core/i18n.service';
   <div class="sh"><span class="n">04</span><h2>{{ i18n.ui('exp.t') }}</h2></div>
   <ol class="tl">
     @for (j of i18n.content()?.jobs ?? []; track $index) {
-      <li class="job" [class.now]="j.now">
+      <li class="job" [class.now]="j.now" [attr.data-say]="say.job(j)">
         <time>{{ j.date }}</time>
         <div>
           <h3>{{ j.role }}@if (j.now) {<span class="now-tag">{{ i18n.content()?.now }}</span>}</h3>
@@ -23,4 +24,5 @@ import { I18nService } from '../core/i18n.service';
 })
 export class ExperienceComponent {
   readonly i18n = inject(I18nService);
+  readonly say = inject(SayService);
 }

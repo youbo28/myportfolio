@@ -126,6 +126,48 @@
       "come": "Venez voir celui-ci, je l'ai construit : {p}.",
       "copied": "Copié. À bientôt !",
       "thanks": "Merci ! Je vous réponds très vite."
+    },
+    "hover": {
+      "and": "et",
+      "built": "J'ai construit {list} avec {x}.",
+      "tool": "{x} fait partie de mes outils de tous les jours.",
+      "core": {
+        "Java": "Java est mon langage principal, de l'université à mes projets d'aujourd'hui.",
+        "Spring Boot": "Spring Boot, c'est ainsi que je construis mes backends et mes API REST, comme Gestion des prêts et l'API Movies Watchlist.",
+        "Angular": "Angular est mon framework frontend. Ce site est construit avec.",
+        "TypeScript": "TypeScript rend mon code Angular clair et sûr."
+      },
+      "langs": [
+        {
+          "name": "Arabe",
+          "say": "Je parle arabe."
+        },
+        {
+          "name": "Français",
+          "say": "Je parle français. Vous le lisez en ce moment !"
+        },
+        {
+          "name": "Anglais",
+          "say": "Je parle anglais."
+        },
+        {
+          "name": "Allemand (bases)",
+          "say": "J'apprends l'allemand. J'ai les bases."
+        }
+      ],
+      "jobNow": "Mon poste actuel : {role} chez {company}.",
+      "jobPast": "J'ai travaillé comme {role} chez {company} ({date}).",
+      "project": "{title} : je l'ai construit avec {tech}. Jetez un œil au code.",
+      "edu": "J'ai étudié cela à l'université de Blida ({date}).",
+      "current": "Je suis actuellement ingénieur logiciel chez ENAGEO / Sonatrach.",
+      "focus": "Voilà ma stack principale : Java, Spring Boot et Angular.",
+      "cv": "Mon CV est sur Google Drive, donc toujours à jour.",
+      "email": "Voici mon e-mail. Cliquez pour m'écrire, ou copiez-le.",
+      "linkedin": "Retrouvons-nous sur LinkedIn.",
+      "github": "Tout mon code est sur GitHub.",
+      "youtube": "Ma chaîne LEAF CODE : tutoriels Spring Boot et astuces de code.",
+      "contactBtn": "Ceci vous mène directement à mon formulaire de contact.",
+      "form": "Écrivez-moi quelques lignes. Je lis chaque message."
     }
   },
   "skills": [

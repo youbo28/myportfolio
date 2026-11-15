@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 import { Project } from '../core/content';
 
 /** Drawn cover art per project (no screenshots, no external images). */
@@ -22,12 +23,12 @@ function cover(p: Project): string {
   <div class="sh"><span class="n">03</span><h2>{{ i18n.ui('projects.t') }}</h2></div>
   <div class="projects">
     @for (p of items(); track p.data.id) {
-      <article class="pj" [id]="'pj-' + p.data.id">
+      <article class="pj" [id]="'pj-' + p.data.id" [attr.data-say]="say.project(p.data)">
         <div class="cover" [innerHTML]="p.art"></div>
         <div class="body">
           <h3>{{ p.data.title }}</h3>
           <p>{{ p.data.desc }}</p>
-          <div class="tech">@for (t of p.data.tech; track t) { <span>{{ t }}</span> }</div>
+          <div class="tech">@for (t of p.data.tech; track t) { <span [attr.data-say]="say.tech(t)">{{ t }}</span> }</div>
           <div class="pl">
             <a [href]="p.data.gh" target="_blank" rel="noopener">{{ i18n.ui('site') }} ↗</a>
             @if (p.data.live) { <a [href]="p.data.live" target="_blank" rel="noopener">{{ i18n.ui('live') }} ↗</a> }
@@ -41,6 +42,7 @@ function cover(p: Project): string {
 })
 export class ProjectsComponent {
   readonly i18n = inject(I18nService);
+  readonly say = inject(SayService);
   private sanitizer = inject(DomSanitizer);
   // The cover markup is generated here from our own constants, so it is safe to trust.
   readonly items = computed(() =>

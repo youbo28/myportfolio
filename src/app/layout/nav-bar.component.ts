@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { I18nService } from '../core/i18n.service';
+import { SayService } from '../core/say.service';
 import { ThemeService } from '../services/theme.service';
 import { LINKS } from '../core/content';
 
@@ -34,7 +35,7 @@ import { LINKS } from '../core/content';
         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3a9 9 0 1 0 6.4 13.3A7.2 7.2 0 0 1 14.5 3Z" fill="currentColor"/></svg>
       }
     </button>
-    <a class="pill cv" [href]="links.cv" target="_blank" rel="noopener">
+    <a class="pill cv" [href]="links.cv" [attr.data-say]="say.key('cv')" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg><span>{{ i18n.ui('nav.resume') }}</span>
     </a>
     <button type="button" class="pill menu-btn" [attr.aria-expanded]="menu()" [attr.aria-label]="i18n.ui('nav.menu')" (click)="menu.set(!menu())">
@@ -47,6 +48,7 @@ import { LINKS } from '../core/content';
 export class NavBarComponent {
   readonly i18n = inject(I18nService);
   readonly theme = inject(ThemeService);
+  readonly say = inject(SayService);
   readonly links = LINKS;
   readonly menu = signal(false);
 }

@@ -13,6 +13,8 @@ export interface GuideApi {
   relabel(): void;
   switchTheme(next: 'dark' | 'light'): boolean;
   react(name: string, lineKey?: string): void;
+  hoverSay(el: Element, text: string): void;
+  hoverEnd(el: Element): void;
   destroy(): void;
 }
 
@@ -27,7 +29,7 @@ export function createGuide(host: GuideHost): GuideApi {
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext');
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;return{relabel(){},switchTheme(){return false},react(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -156,8 +158,8 @@ export function createGuide(host: GuideHost): GuideApi {
     if(oneShot){oneShot.t+=dt;if(oneShot.t>oneShot.dur)oneShot=null}
     const M=isMoon?moonFace:{x:0,y:-.15}, hs=isMoon?1:1.12;
     // what to point at: the spotlighted project, the email, or the CV button
-    let el=null; if(current==='projects')el=spot; else if(current==='contact')el=$('.mail'); else if(current==='hero')el=$('.hero .btn.primary');
-    let pointOn=!!el&&(current==='projects'||(t%9)<5), dir={x:1,y:0}, ang=0;
+    let el=null; const hovering=hoverEl&&now<hoverUntil&&document.contains(hoverEl); if(hovering)el=hoverEl; else if(current==='projects')el=spot; else if(current==='contact')el=$('.mail'); else if(current==='hero')el=$('.hero .btn.primary');
+    let pointOn=!!el&&(hovering||current==='projects'||(t%9)<5), dir={x:1,y:0}, ang=0;
     if(el){const r=el.getBoundingClientRect();if(r.bottom<0||r.top>H)pointOn=false;
       actor.updateMatrixWorld();V.set(r.left+r.width/2-W/2,H/2-(r.top+r.height/2),0);actor.worldToLocal(V);
       const l=Math.hypot(V.x,V.y)||1;dir={x:V.x/l,y:V.y/l};ang=Math.atan2(dir.y,dir.x)}
@@ -167,7 +169,7 @@ export function createGuide(host: GuideHost): GuideApi {
     else if(speed>70)b='travel';
     else if(moodName==='shy')b='shy';
     else if(moodName==='sleepy')b='sleepy';
-    else if(pointOn)b=(current==='projects'&&pjMode==='beckon')?'beckon':'point';
+    else if(pointOn)b=(!hovering&&current==='projects'&&pjMode==='beckon')?'beckon':'point';
     else if(dm<cur.s*3.2&&now-lastMove<1500)b='curious';
     const u=oneShot?oneShot.t:t, ws=cur.x>0?-1:1, ps=dir.x>=0?1:-1, still=RM?0:1;
     const Hp=(s,x,y,z,rx,ry,rz,ci,cf,ta,tc)=>[x*s*hs,y*hs,z,rx,ry*s,rz*s,ci,cf,ta,tc];
@@ -237,12 +239,15 @@ export function createGuide(host: GuideHost): GuideApi {
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
   function sayFor(k){if(k==='projects')return;const l=lines(k);say(l[lineIdx%l.length])}
   function relabel(){lastLine='';current=null;if(ready)react('surprised')}
+  let hoverEl=null, hoverUntil=0;
+  function hoverSay(el,text){if(hidden||trans||!text)return;hoverEl=el;hoverUntil=performance.now()+4500;lastLine='';say(text);lineTimer=-5}
+  function hoverEnd(el){if(hoverEl===el)hoverUntil=Math.min(hoverUntil,performance.now()+1200)}
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 
   function active(){const mid=H*.42;let best=sections[0];for(const s of sections){if(s.getBoundingClientRect().top<=mid)best=s}return best}
   function target(){
     const mobile=W<=860, rtl=host.getLang()==='ar';
-    if(current==='hero'){const r=$('#home').getBoundingClientRect();if(r.bottom>80)return{x:r.left+r.width/2-W/2,y:H/2-(r.top+r.height/2),s:Math.min(r.width*.27,115)}}
+    if(current==='hero'){const r=$('#home').getBoundingClientRect();if(r.bottom>80)return{x:r.left+r.width/2-W/2,y:H/2-(r.top+r.height/2),s:Math.min(r.width*(W<=860?.17:.24),110)}}
     const wrap=$('.wrap').getBoundingClientRect(); const gutter=Math.max(70,(W-wrap.width)/2);
     const s=mobile?Math.min(30,W*.075):Math.max(34,Math.min(50,gutter*.4));
     let px=mobile?(rtl?s*1.15+4:W-s*1.15-4):(rtl?wrap.left+s*.2:wrap.right-s*.2), py;
@@ -253,7 +258,7 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   function cyclePj(){clearInterval(pjTimer);document.querySelectorAll('.pj.spot').forEach(e=>e.classList.remove('spot'));spot=null;
     if(current!=='projects')return;
-    const show=()=>{const P=C().projects,p=P[pjIdx%P.length];spot=$('#pj-'+p.id);document.querySelectorAll('.pj').forEach(e=>e.classList.toggle('spot',e===spot));pjMode=pjIdx%3===0?'beckon':'point';say((pjMode==='beckon'?RT().come:C().guide[who].projects).replace('{p}',p.title));burst(18);pjIdx++};
+    const show=()=>{const P=C().projects,p=P[pjIdx%P.length];spot=$('#pj-'+p.id);document.querySelectorAll('.pj').forEach(e=>e.classList.toggle('spot',e===spot));pjMode=pjIdx%3===0?'beckon':'point';if(performance.now()>hoverUntil)say((pjMode==='beckon'?RT().come:C().guide[who].projects).replace('{p}',p.title));burst(18);pjIdx++};
     show();pjTimer=setInterval(show,4200)}
 
   function setHidden(v){hidden=v;store.set('guide-hidden',v?'1':'0');canvas.style.visibility=v?'hidden':'visible';bubble.hidden=v;$('#recall').hidden=!v;if(!v){lastLine='';current=null}}
@@ -289,7 +294,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const tg=target();
     if(first){cur.x=tg.x;cur.y=tg.y;cur.s=tg.s;first=false;anchor={x:tg.x,y:tg.y}}
     // hovering: once at its spot it drifts slowly around it, up and down, leaning toward the mouse side
-    const R=cur.s*1.1;
+    const R=cur.s*(current==='hero'?.12:1.1);
     hoverBias=lerp(hoverBias,clamp((mouse.y-tg.y)/(H*.5),-1,1),1-Math.exp(-dt*.6));
     const hx=RM?0:Math.sin(t*.21)*R*.45+Math.sin(t*.09+2)*R*.25;
     const hy=RM?0:Math.sin(t*.16+1)*R*.8+hoverBias*R*.6;
@@ -376,5 +381,5 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
-  return { relabel, switchTheme, react: reactSay, destroy() { stopped = true; renderer.dispose(); } };
+  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, destroy() { stopped = true; renderer.dispose(); } };
 }
