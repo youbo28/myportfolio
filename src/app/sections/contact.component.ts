@@ -30,12 +30,12 @@ type Status = 'idle' | 'sending' | 'ok' | 'err';
     </div>
     <form #f="ngForm" (ngSubmit)="send(f)" [attr.data-say]="say.key('form')">
       <label for="f-name">{{ i18n.ui('contact.name') }}</label>
-      <input id="f-name" name="name" [(ngModel)]="model.name" required autocomplete="name">
+      <input id="f-name" name="name" [attr.data-say]="say.key('fName')" [(ngModel)]="model.name" required autocomplete="name">
       <label for="f-mail">{{ i18n.ui('contact.email') }}</label>
-      <input id="f-mail" name="email" type="email" [(ngModel)]="model.email" required email autocomplete="email">
+      <input id="f-mail" name="email" [attr.data-say]="say.key('fEmail')" type="email" [(ngModel)]="model.email" required email autocomplete="email">
       <label for="f-msg">{{ i18n.ui('contact.msg') }}</label>
-      <textarea id="f-msg" name="message" [(ngModel)]="model.message" required></textarea>
-      <button class="btn primary" type="submit" [disabled]="status() === 'sending'">
+      <textarea id="f-msg" name="message" [attr.data-say]="say.key('fMsg')" [(ngModel)]="model.message" required></textarea>
+      <button class="btn primary" type="submit" [attr.data-say]="say.key('fSend')" [disabled]="status() === 'sending'">
         {{ status() === 'sending' ? i18n.ui('contact.sending') : i18n.ui('contact.send') }}
       </button>
       <p class="sent" [class.err]="status() === 'err'" role="status">

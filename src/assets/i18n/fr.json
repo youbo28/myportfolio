@@ -172,7 +172,11 @@
       "github": "Tout mon code est sur GitHub.",
       "youtube": "Ma chaîne LEAF CODE : tutoriels Spring Boot et astuces de code.",
       "contactBtn": "Ceci vous mène directement à mon formulaire de contact.",
-      "form": "Écrivez-moi quelques lignes. Je lis chaque message."
+      "form": "Écrivez-moi quelques lignes. Je lis chaque message.",
+      "fName": "D'abord, votre nom. Enchanté !",
+      "fEmail": "Votre e-mail, pour que je puisse vous répondre.",
+      "fMsg": "Parlez-moi du poste ou du projet. Quelques lignes suffisent.",
+      "fSend": "Prêt ? Envoyez, je vous réponds vite."
     }
   },
   "skills": [

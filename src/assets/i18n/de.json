@@ -172,7 +172,11 @@
       "github": "Mein ganzer Code liegt auf GitHub.",
       "youtube": "Mein Kanal LEAF CODE: Spring-Boot-Tutorials und Coding-Tipps.",
       "contactBtn": "Das bringt Sie direkt zu meinem Kontaktformular.",
-      "form": "Schreiben Sie mir ein paar Zeilen. Ich lese jede Nachricht."
+      "form": "Schreiben Sie mir ein paar Zeilen. Ich lese jede Nachricht.",
+      "fName": "Zuerst Ihr Name. Freut mich!",
+      "fEmail": "Ihre E-Mail, damit ich Ihnen antworten kann.",
+      "fMsg": "Erzählen Sie mir von der Stelle oder dem Projekt. Ein paar Zeilen reichen.",
+      "fSend": "Bereit? Abschicken, und ich melde mich bald."
     }
   },
   "skills": [

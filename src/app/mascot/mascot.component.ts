@@ -80,11 +80,15 @@ export class MascotComponent {
       const el = find(e.target);
       if (el) api.hoverSay(el, text(el));
     }, opts);
+    document.addEventListener('focusout', (e) => {
+      const el = find(e.target);
+      if (el && !(e.relatedTarget instanceof Node && el.contains(e.relatedTarget))) api.hoverEnd(el);
+    }, opts);
     // phones have no hover: a tap on something that isn't a link makes it talk
     document.addEventListener('click', (e) => {
       if (!matchMedia('(hover: none)').matches) return;
       const el = find(e.target);
-      if (el && !(e.target instanceof Element && e.target.closest('a,button,input,textarea'))) api.hoverSay(el, text(el));
+      if (el && !(e.target instanceof Element && e.target.closest('a,button,input,textarea'))) api.hoverSay(el, text(el), 6000);
     }, opts);
     this.stopListening = () => ac.abort();
   }

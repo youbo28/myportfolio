@@ -13,7 +13,7 @@ export interface GuideApi {
   relabel(): void;
   switchTheme(next: 'dark' | 'light'): boolean;
   react(name: string, lineKey?: string): void;
-  hoverSay(el: Element, text: string): void;
+  hoverSay(el: Element, text: string, holdMs?: number): void;
   hoverEnd(el: Element): void;
   destroy(): void;
 }
@@ -237,15 +237,26 @@ export function createGuide(host: GuideHost): GuideApi {
   let saidAt=performance.now();
   function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');setTimeout(()=>{btext.textContent=text;bubble.classList.remove('swap')},200)}
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
-  function sayFor(k){if(k==='projects')return;const l=lines(k);say(l[lineIdx%l.length])}
+  function sayFor(k){if(k==='projects'||isHover())return;const l=lines(k);say(l[lineIdx%l.length])}
   function relabel(){lastLine='';current=null;if(ready)react('surprised')}
   let hoverEl=null, hoverUntil=0;
-  function hoverSay(el,text){if(hidden||trans||!text)return;hoverEl=el;hoverUntil=performance.now()+4500;lastLine='';say(text);lineTimer=-5}
+  function hoverSay(el,text,hold){if(hidden||trans||!text)return;hoverEl=el;hoverUntil=hold?performance.now()+hold:Infinity;lastLine='';say(text);lineTimer=-5}
+  const isHover=()=>!!hoverEl&&performance.now()<hoverUntil&&document.contains(hoverEl);
   function hoverEnd(el){if(hoverEl===el)hoverUntil=Math.min(hoverUntil,performance.now()+1200)}
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 
   function active(){const mid=H*.42;let best=sections[0];for(const s of sections){if(s.getBoundingClientRect().top<=mid)best=s}return best}
   function target(){
+    // companion: fly next to whatever the visitor is hovering, focusing or tapping
+    if(isHover()){
+      const r=hoverEl.getBoundingClientRect(), mob=W<=860, s=mob?Math.min(30,W*.075):Math.max(34,Math.min(46,W*.03));
+      let x, y;
+      if(!mob&&r.right+s*2.6<W){x=r.right+s*1.4;y=r.top+Math.min(r.height/2,s*1.3)}
+      else if(!mob&&r.left-s*2.6>0){x=r.left-s*1.4;y=r.top+Math.min(r.height/2,s*1.3)}
+      else{x=host.getLang()==='ar'?r.left+s*1.1:r.right-s*1.1;y=r.top-s*1.1}
+      x=Math.max(s*1.4,Math.min(W-s*1.4,x)); y=Math.max(100,Math.min(H-70,y));
+      return{x:x-W/2,y:H/2-y,s};
+    }
     const mobile=W<=860, rtl=host.getLang()==='ar';
     if(current==='hero'){const r=$('#home').getBoundingClientRect();if(r.bottom>80)return{x:r.left+r.width/2-W/2,y:H/2-(r.top+r.height/2),s:Math.min(r.width*(W<=860?.17:.24),110)}}
     const wrap=$('.wrap').getBoundingClientRect(); const gutter=Math.max(70,(W-wrap.width)/2);
@@ -289,12 +300,12 @@ export function createGuide(host: GuideHost): GuideApi {
     // section + lines
     const sec=active().dataset.guide;
     if(sec!==current){onSection(sec,current);current=sec;lineIdx=0;lineTimer=0;cyclePj();sayFor(sec)}
-    lineTimer+=dt;if(current!=='projects'&&lineTimer>7){lineTimer=0;lineIdx++;sayFor(current)}
+    if(isHover())lineTimer=-5;lineTimer+=dt;if(current!=='projects'&&lineTimer>7){lineTimer=0;lineIdx++;sayFor(current)}
     // movement: a glide along a curved path when it changes place, a soft spring otherwise
     const tg=target();
     if(first){cur.x=tg.x;cur.y=tg.y;cur.s=tg.s;first=false;anchor={x:tg.x,y:tg.y}}
     // hovering: once at its spot it drifts slowly around it, up and down, leaning toward the mouse side
-    const R=cur.s*(current==='hero'?.12:1.1);
+    const R=cur.s*(isHover()?.18:current==='hero'?.12:1.1);
     hoverBias=lerp(hoverBias,clamp((mouse.y-tg.y)/(H*.5),-1,1),1-Math.exp(-dt*.6));
     const hx=RM?0:Math.sin(t*.21)*R*.45+Math.sin(t*.09+2)*R*.25;
     const hy=RM?0:Math.sin(t*.16+1)*R*.8+hoverBias*R*.6;
@@ -303,7 +314,7 @@ export function createGuide(host: GuideHost): GuideApi {
     // so there is nothing to vibrate. Scroll fast and it simply trails behind, then catches up.
     const dx=gx-cur.x, dy=gy-cur.y, d=Math.hypot(dx,dy);
     if(d>.01){
-      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17));
+      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17))*(isHover()?2.2:1);
       const step=Math.min(d, Math.min(MAXV, d*1.4)*dt);
       cur.x+=dx/d*step; cur.y+=dy/d*step;
     }
@@ -321,7 +332,7 @@ export function createGuide(host: GuideHost): GuideApi {
     if(want!==moodName){prevMood=moodName;moodName=want;
       // emote only when resting and not too often, so it never flickers
       if(want!=='flying'&&prevMood!=='flying'&&want!=='shy'&&prevMood!=='shy'&&t-lastEmote>8){lastEmote=t;gesture.t=0;gesture.kind='emote';gesture.burst=false}
-      if(want==='sleepy')say(C().guide[who].idle);
+      if(want==='sleepy'&&!isHover())say(C().guide[who].idle);
       if(want==='shy'&&Math.random()<.5)say(C().guide[who].near);
       if(prevMood==='sleepy'){lastLine='';sayFor(current)}}
     const mk=1-Math.exp(-dt*2.4);for(const key in m)m[key]=lerp(m[key],MOODS[moodName][key],mk);
