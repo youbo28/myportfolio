@@ -17,12 +17,15 @@ Tickets are in order. Each one should end with the app building (`npm run build`
 
 ---
 
-## T1. Upgrade Angular to the latest version
+## T1. Upgrade Angular to the latest version — ✅ DONE (Angular 21)
 - Upgrade from Angular 17 one major version at a time with `ng update` (17 → 18 → 19 → …).
 - Update `@ngneat/transloco` (or move to `@jsverse/transloco`), `lucide-angular`, TypeScript and Tailwind to compatible versions.
 - Fix anything the upgrade breaks.
 
 **Done when:** the current site builds and looks the same as before on the newest Angular, in all 4 languages.
+
+**Result:** upgraded 17 → 21, one major version per commit. Moved to `@jsverse/transloco`, removed unused `lucide-angular` and `@ngx-translate`, cleaned `main.ts` / `app.config.ts`. Build passes, site runs, Arabic RTL works.
+**Left over:** Angular 22 needs Node.js 22.22.3+ (this machine has 22.18). Upgrade Node, then run `npx ng update @angular/core@22 @angular/cli@22`.
 
 ## T2. Design tokens, fonts and themes
 - Move the prototype's colours into CSS variables / Tailwind theme: dark "night" theme (`--sky #0B1026`, `--glow #F6E7B4`) and light "dawn" theme.
