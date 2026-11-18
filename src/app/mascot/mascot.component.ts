@@ -30,6 +30,19 @@ export class MascotComponent {
   constructor() {
     inject(DestroyRef).onDestroy(() => { this.stopListening?.(); this.api?.destroy(); });
 
+    // The guide is the chat: while it's open, it flies to the panel and sits there.
+    effect(() => {
+      const open = this.chat.open();
+      if (!this.api) return;
+      if (!open) { this.api.undock(); return; }
+      const waitForPanel = () => {
+        const panel = document.querySelector('.chat');
+        if (panel) this.api?.dock(panel);
+        else if (this.chat.open()) requestAnimationFrame(waitForPanel);
+      };
+      waitForPanel();
+    });
+
     // A new language: the guide re-reads its lines and looks surprised.
     effect(() => {
       this.i18n.content();

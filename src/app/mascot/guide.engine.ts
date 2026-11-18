@@ -15,6 +15,9 @@ export interface GuideApi {
   react(name: string, lineKey?: string): void;
   hoverSay(el: Element, text: string, holdMs?: number): void;
   hoverEnd(el: Element): void;
+  /** Fly to `el` (the chat panel) and stay there, quiet, until undock(). */
+  dock(el: Element): void;
+  undock(): void;
   destroy(): void;
 }
 
@@ -31,7 +34,7 @@ export function createGuide(host: GuideHost): GuideApi {
   // the visitor reaching for the guide (to open the chat): it stops shying away
   let reaching=false; hit.onpointerenter=()=>{reaching=true}; hit.onpointerleave=()=>{reaching=false};
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -245,10 +248,20 @@ export function createGuide(host: GuideHost): GuideApi {
   function hoverSay(el,text,hold){if(hidden||trans||!text)return;hoverEl=el;hoverUntil=hold?performance.now()+hold:Infinity;lastLine='';say(text);lineTimer=-5}
   const isHover=()=>!!hoverEl&&performance.now()<hoverUntil&&document.contains(hoverEl);
   function hoverEnd(el){if(hoverEl===el)hoverUntil=Math.min(hoverUntil,performance.now()+1200)}
+  // docked: the chat is open, so the guide sits on the panel's top corner and lets the chat do the talking
+  let dockEl=null;
+  function dock(el){dockEl=el;hoverEl=null;bubble.style.visibility='hidden'}
+  function undock(){dockEl=null;bubble.style.visibility='';lastLine='';current=null}
+  const docked=()=>!!dockEl&&document.contains(dockEl);
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 
   function active(){const mid=H*.42;let best=sections[0];for(const s of sections){if(s.getBoundingClientRect().top<=mid)best=s}return best}
   function target(){
+    if(docked()){
+      const r=dockEl.getBoundingClientRect(), s=W<=860?30:42, rtl=host.getLang()==='ar';
+      const x=rtl?r.left+s*1.1:r.right-s*1.1, y=Math.max(s*1.2,r.top-s*.9);
+      return{x:x-W/2,y:H/2-y,s};
+    }
     // companion: fly next to whatever the visitor is hovering, focusing or tapping
     if(isHover()){
       const r=hoverEl.getBoundingClientRect(), mob=W<=860, s=mob?Math.min(30,W*.075):Math.max(34,Math.min(46,W*.03));
@@ -307,7 +320,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const tg=target();
     if(first){cur.x=tg.x;cur.y=tg.y;cur.s=tg.s;first=false;anchor={x:tg.x,y:tg.y}}
     // hovering: once at its spot it drifts slowly around it, up and down, leaning toward the mouse side
-    const R=cur.s*(isHover()?.18:current==='hero'?.12:1.1);
+    const R=cur.s*(docked()?.06:isHover()?.18:current==='hero'?.12:1.1);
     hoverBias=lerp(hoverBias,clamp((mouse.y-tg.y)/(H*.5),-1,1),1-Math.exp(-dt*.6));
     const hx=RM?0:Math.sin(t*.21)*R*.45+Math.sin(t*.09+2)*R*.25;
     const hy=RM?0:Math.sin(t*.16+1)*R*.8+hoverBias*R*.6;
@@ -316,7 +329,7 @@ export function createGuide(host: GuideHost): GuideApi {
     // so there is nothing to vibrate. Scroll fast and it simply trails behind, then catches up.
     const dx=gx-cur.x, dy=gy-cur.y, d=Math.hypot(dx,dy);
     if(d>.01){
-      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17))*(isHover()?2.2:1);
+      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17))*(docked()?3:isHover()?2.2:1);
       const step=Math.min(d, Math.min(MAXV, d*1.4)*dt);
       cur.x+=dx/d*step; cur.y+=dy/d*step;
     }
@@ -355,7 +368,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const bob=RM?0:Math.sin(phase)*m.bob+Math.sin(phase*.53+1.3)*m.bob*.35;
     const sway=RM?0:Math.sin(phase*.5)*.06;
     const dist=Math.hypot(mouse.x-cur.x,mouse.y-cur.y)+1;
-    const shy=reaching?0:m.back*Math.max(0,1-dist/(cur.s*3));
+    const shy=reaching||docked()?0:m.back*Math.max(0,1-dist/(cur.s*3));
     shyX=lerp(shyX,shy*(cur.x-mouse.x)/dist*cur.s*.9,1-Math.exp(-dt*4)); shyY=lerp(shyY,shy*(cur.y-mouse.y)/dist*cur.s*.9,1-Math.exp(-dt*4));
     const offY=-sinkOut*(H*.75)-riseIn*(H*.75);
     actor.position.set(cur.x+shyX,cur.y+bob+m.lift+shyY+offY,0);
@@ -397,5 +410,5 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
-  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, destroy() { stopped = true; renderer.dispose(); } };
+  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, destroy() { stopped = true; renderer.dispose(); } };
 }
