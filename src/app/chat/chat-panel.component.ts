@@ -26,7 +26,7 @@ import { ChatService } from './chat.service';
     <textarea #field rows="2" maxlength="1000" [value]="draft()" (input)="draft.set(field.value)"
       (keydown.enter)="enter($event)" [placeholder]="i18n.ui('chat.placeholder')"
       [attr.aria-label]="i18n.ui('chat.placeholder')"></textarea>
-    <button type="submit" [disabled]="chat.status() === 'waiting'">{{ i18n.ui('chat.send') }}</button>
+    <button type="submit" [disabled]="chat.status() === 'waiting' || chat.status() === 'typing'">{{ i18n.ui('chat.send') }}</button>
   </form>
 </section>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +45,7 @@ export class ChatPanelComponent {
   ask(e: Event): void {
     e.preventDefault();
     const text = this.draft();
-    if (!text.trim() || this.chat.status() === 'waiting') return;
+    if (!text.trim() || this.chat.status() === 'waiting' || this.chat.status() === 'typing') return;
     this.draft.set('');
     this.chat.send(text);
   }

@@ -61,6 +61,7 @@
     "chat.send": "Send",
     "chat.thinking": "Thinking…",
     "chat.error": "Sorry, the message didn't get through. Please try again.",
+    "chat.nudge": "Psst! You can chat with me. Click me and ask anything about my work.",
     "nav.menu": "Menu",
     "lang": "Language",
     "skills.hint": "Hover any skill and I'll tell you about it.",

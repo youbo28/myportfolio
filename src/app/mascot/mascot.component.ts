@@ -28,7 +28,7 @@ export class MascotComponent {
   private api?: GuideApi;
 
   constructor() {
-    inject(DestroyRef).onDestroy(() => { this.stopListening?.(); this.api?.destroy(); });
+    inject(DestroyRef).onDestroy(() => { this.stopListening?.(); this.stopNudge?.(); this.api?.destroy(); });
 
     // The guide is the chat: while it's open, it flies to the panel and sits there.
     effect(() => {
@@ -62,6 +62,7 @@ export class MascotComponent {
         this.theme.registerSwitcher((next) => this.api!.switchTheme(next));
         this.guide.connect(this.api);
         this.listenForHover(this.api);
+        this.nudgeAtContact(this.api);
       };
       start();
     });
@@ -113,4 +114,25 @@ export class MascotComponent {
     this.stopListening = () => ac.abort();
   }
   private stopListening?: () => void;
+
+  /**
+   * A visitor who reaches Contact without ever opening the chat gets one nudge per visit:
+   * the guide comes to the mouse, waves and says it can chat.
+   */
+  private nudgeAtContact(api: GuideApi): void {
+    const KEY = 'chat-nudged';
+    const contact = document.getElementById('contact');
+    if (!contact || !('IntersectionObserver' in window)) return;
+    const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch { return false; } };
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      if (this.chat.used() || seen()) { io.disconnect(); return; }
+      api.nudge(this.i18n.ui('chat.nudge'));
+      try { sessionStorage.setItem(KEY, '1'); } catch {}
+      io.disconnect();
+    }, { threshold: 0.35 });
+    io.observe(contact);
+    this.stopNudge = () => io.disconnect();
+  }
+  private stopNudge?: () => void;
 }

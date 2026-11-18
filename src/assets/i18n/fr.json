@@ -63,6 +63,7 @@
     "chat.send": "Envoyer",
     "chat.thinking": "Je réfléchis…",
     "chat.error": "Désolé, le message n'est pas passé. Réessayez.",
+    "chat.nudge": "Psst ! Vous pouvez discuter avec moi. Cliquez sur moi et posez une question sur mon travail.",
     "skills.hint": "Survolez une compétence et je vous en parle.",
     "skills.hintTouch": "Touchez une compétence et je vous en parle.",
     "skills.ai": "IA"

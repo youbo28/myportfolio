@@ -17,6 +17,8 @@ export interface GuideApi {
   hoverEnd(el: Element): void;
   /** Fly to `el` (the chat panel) and stay there, quiet, until undock(). */
   dock(el: Element): void;
+  /** Fly to the mouse for a few seconds, wave, and say `text` (e.g. "you can chat with me"). */
+  nudge(text: string, holdMs?: number): void;
   undock(): void;
   destroy(): void;
 }
@@ -34,7 +36,7 @@ export function createGuide(host: GuideHost): GuideApi {
   // the visitor reaching for the guide (to open the chat): it stops shying away
   let reaching=false; hit.onpointerenter=()=>{reaching=true}; hit.onpointerleave=()=>{reaching=false};
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -240,12 +242,16 @@ export function createGuide(host: GuideHost): GuideApi {
     return true;
   }
   let saidAt=performance.now();
-  function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');setTimeout(()=>{btext.textContent=text;bubble.classList.remove('swap')},200)}
+  // lines are written out letter by letter, as if the guide were typing them
+  let typing=0;
+  function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');clearInterval(typing);
+    setTimeout(()=>{bubble.classList.remove('swap');if(RM){btext.textContent=text;return}
+      btext.textContent='';let i=0;typing=setInterval(()=>{i+=1;btext.textContent=text.slice(0,i);if(i>=text.length)clearInterval(typing)},22)},200)}
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
   function sayFor(k){if(k==='projects'||isHover())return;const l=lines(k);say(l[lineIdx%l.length])}
   function relabel(){lastLine='';current=null;if(ready)react('surprised')}
   let hoverEl=null, hoverUntil=0;
-  function hoverSay(el,text,hold){if(hidden||trans||!text)return;hoverEl=el;hoverUntil=hold?performance.now()+hold:Infinity;lastLine='';say(text);lineTimer=-5}
+  function hoverSay(el,text,hold){if(hidden||trans||!text||nudging()||docked())return;hoverEl=el;hoverUntil=hold?performance.now()+hold:Infinity;lastLine='';say(text);lineTimer=-5}
   const isHover=()=>!!hoverEl&&performance.now()<hoverUntil&&document.contains(hoverEl);
   function hoverEnd(el){if(hoverEl===el)hoverUntil=Math.min(hoverUntil,performance.now()+1200)}
   // docked: the chat is open, so the guide sits on the panel's top corner and lets the chat do the talking
@@ -253,6 +259,10 @@ export function createGuide(host: GuideHost): GuideApi {
   function dock(el){dockEl=el;hoverEl=null;bubble.style.visibility='hidden'}
   function undock(){dockEl=null;bubble.style.visibility='';lastLine='';current=null}
   const docked=()=>!!dockEl&&document.contains(dockEl);
+  // nudge: it comes to the mouse and waves, to show the visitor it can chat
+  let nudgeUntil=0;
+  function nudge(text,hold=6500){if(hidden||trans||docked()||mouse.x<-9000)return;hoverEl=null;nudgeUntil=performance.now()+hold;lastLine='';say(text);lineTimer=-8;react('wave')}
+  const nudging=()=>performance.now()<nudgeUntil&&!docked();
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 
   function active(){const mid=H*.42;let best=sections[0];for(const s of sections){if(s.getBoundingClientRect().top<=mid)best=s}return best}
@@ -261,6 +271,10 @@ export function createGuide(host: GuideHost): GuideApi {
       const r=dockEl.getBoundingClientRect(), s=W<=860?30:42, rtl=host.getLang()==='ar';
       const x=rtl?r.left+s*1.1:r.right-s*1.1, y=Math.max(s*1.2,r.top-s*.9);
       return{x:x-W/2,y:H/2-y,s};
+    }
+    if(nudging()){
+      const s=W<=860?32:44, side=mouse.x>0?-1:1;
+      return{x:clamp(mouse.x+side*s*2.2,-W/2+s*1.4,W/2-s*1.4),y:clamp(mouse.y+s*.6,-H/2+70,H/2-100),s};
     }
     // companion: fly next to whatever the visitor is hovering, focusing or tapping
     if(isHover()){
@@ -329,7 +343,7 @@ export function createGuide(host: GuideHost): GuideApi {
     // so there is nothing to vibrate. Scroll fast and it simply trails behind, then catches up.
     const dx=gx-cur.x, dy=gy-cur.y, d=Math.hypot(dx,dy);
     if(d>.01){
-      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17))*(docked()?3:isHover()?2.2:1);
+      const MAXV=RM?1e5:Math.min(240,Math.max(150,W*.17))*(docked()||nudging()?3:isHover()?2.2:1);
       const step=Math.min(d, Math.min(MAXV, d*1.4)*dt);
       cur.x+=dx/d*step; cur.y+=dy/d*step;
     }
@@ -368,7 +382,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const bob=RM?0:Math.sin(phase)*m.bob+Math.sin(phase*.53+1.3)*m.bob*.35;
     const sway=RM?0:Math.sin(phase*.5)*.06;
     const dist=Math.hypot(mouse.x-cur.x,mouse.y-cur.y)+1;
-    const shy=reaching||docked()?0:m.back*Math.max(0,1-dist/(cur.s*3));
+    const shy=reaching||docked()||nudging()?0:m.back*Math.max(0,1-dist/(cur.s*3));
     shyX=lerp(shyX,shy*(cur.x-mouse.x)/dist*cur.s*.9,1-Math.exp(-dt*4)); shyY=lerp(shyY,shy*(cur.y-mouse.y)/dist*cur.s*.9,1-Math.exp(-dt*4));
     const offY=-sinkOut*(H*.75)-riseIn*(H*.75);
     actor.position.set(cur.x+shyX,cur.y+bob+m.lift+shyY+offY,0);
@@ -410,5 +424,5 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
-  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, destroy() { stopped = true; renderer.dispose(); } };
+  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, nudge, destroy() { stopped = true; renderer.dispose(); } };
 }
