@@ -243,7 +243,7 @@ export function createGuide(host: GuideHost): GuideApi {
   // lines are written out letter by letter, as if the guide were typing them
   let typing=0;
   function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');clearInterval(typing);
-    setTimeout(()=>{bubble.classList.remove('swap');if(RM){btext.textContent=text;return}
+    setTimeout(()=>{bubble.classList.remove('swap');
       btext.textContent='';let i=0;typing=setInterval(()=>{i+=1;btext.textContent=text.slice(0,i);if(i>=text.length)clearInterval(typing)},22)},200)}
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
   function sayFor(k){if(k==='projects'||isHover())return;const l=lines(k);say(l[lineIdx%l.length])}

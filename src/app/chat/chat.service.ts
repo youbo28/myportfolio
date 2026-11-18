@@ -32,11 +32,12 @@ export const CHAT_TRANSPORT = new InjectionToken<ChatTransport>('CHAT_TRANSPORT'
 
 /**
  * Milliseconds between words when an answer is typed out. The Worker sends the whole answer
- * at once; the typing is only presentation. 0 (or reduced motion) shows it at once.
+ * at once; the typing is only presentation. Words appearing in place aren't motion, so this
+ * ignores prefers-reduced-motion (the guide's flying and floating still respect it). 0 shows it at once.
  */
 export const CHAT_TYPING_MS = new InjectionToken<number>('CHAT_TYPING_MS', {
   providedIn: 'root',
-  factory: () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 45),
+  factory: () => 45,
 });
 
 /** The conversation with the bot: messages, status, and sending a question. */
