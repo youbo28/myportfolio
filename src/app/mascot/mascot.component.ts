@@ -18,9 +18,7 @@ import { ChatService } from '../chat/chat.service';
   [attr.aria-expanded]="chat.open()" aria-controls="chat-panel"></button>
 <div id="bubble" role="status" aria-live="polite"><span id="btext"></span><button id="hide" type="button" [attr.aria-label]="i18n.ui('guide.hide')">×</button></div>
 <button id="recall" type="button" hidden [attr.aria-label]="i18n.ui('guide.show')"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3a9 9 0 1 0 6.4 13.3A7.2 7.2 0 0 1 14.5 3Z" fill="currentColor"/></svg></button>
-<div id="chat-arrow" hidden aria-hidden="true"><div class="bob">
-  <svg viewBox="0 0 48 64" width="64" height="86"><path d="M24 60V14M24 4 8 22M24 4l16 18" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <span>{{ i18n.ui('chat.arrow') }}</span></div></div>
+<div id="chat-arrow" hidden aria-hidden="true"><span>{{ i18n.ui('chat.arrow') }}</span></div>
 <div id="horizon" aria-hidden="true"><div class="fill"></div></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

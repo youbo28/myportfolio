@@ -135,6 +135,19 @@ export function createGuide(host: GuideHost): GuideApi {
   const moonFace=(()=>{const sp=shape.getPoints();let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;sp.forEach(p=>{x0=Math.min(x0,p.x);x1=Math.max(x1,p.x);y0=Math.min(y0,p.y);y1=Math.max(y1,p.y)});
     const d=Math.hypot(.46,.2),fx=-.66*.46/d-(x0+x1)/2,fy=-.66*.2/d-(y0+y1)/2,r=moonMesh.rotation.z;return{x:fx*Math.cos(r)-fy*Math.sin(r),y:fx*Math.sin(r)+fy*Math.cos(r)}})();
   const mouthG=new THREE.Group(); actor.add(mouthG);
+
+  /* the chat arrow: a lit 3D arrow in the guide's own style that flies in, points at the guide
+     and pokes toward it, then flies away. It lives in the scene, not on the guide. */
+  const arrowMat=new THREE.MeshStandardMaterial({color:0xF6E7B4,roughness:.45,metalness:.05,emissive:0xFFE7A8,emissiveIntensity:.35});
+  const arrow3d=new THREE.Group(), arrowSpin=new THREE.Group(); arrow3d.add(arrowSpin);
+  { const shaft=new THREE.Mesh(new THREE.CapsuleGeometry(.12,.78,8,20),arrowMat); shaft.position.y=-.1;
+    const head=new THREE.Mesh(new THREE.ConeGeometry(.33,.52,32),arrowMat); head.position.y=.56;
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(.16,.045,12,32),arrowMat); ring.rotation.x=Math.PI/2; ring.position.y=-.5;
+    arrowSpin.add(shaft,head,ring);
+    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,color:0xF6E7B4,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.45}));
+    halo.scale.set(2.2,2.2,1); halo.position.z=-1; arrow3d.add(halo); arrow3d.userData.halo=halo; }
+  arrow3d.visible=false; scene.add(arrow3d);
+  const arw={x:0,y:0,shown:false,leaving:false};
   const mouthMat=new THREE.MeshBasicMaterial({color:0x3A2810}), mouthFill=new THREE.MeshBasicMaterial({color:0x5A1E14,side:THREE.DoubleSide});
   const capG=new THREE.SphereGeometry(.026,10,8), caps=[new THREE.Mesh(capG,mouthMat),new THREE.Mesh(capG,mouthMat)]; caps.forEach(c=>mouthG.add(c));
   let mouthMeshes=[]; const mo={w:.26,smile:.35,open:0,round:0,skew:0}, moLast={};
@@ -432,11 +445,31 @@ export function createGuide(host: GuideHost): GuideApi {
       bubble.style.transform=`translate(${bx}px,${by}px)`; bubble.classList.toggle('tail-r',toLeft); bubble.classList.toggle('tail-l',!toLeft);
       bubble.style.opacity=(trans&&!trans.swapped)||(W<=860&&now-saidAt>5000)?'0':'';
       bubble.style.pointerEvents=bubble.style.opacity==='0'?'none':'';}
-    // arrow: under the guide pointing up at it (above, pointing down, when there's no room below)
-    if(!hidden&&!docked()&&now<arrowUntil){arrow.hidden=false;const sx=actor.position.x+W/2, sy=H/2-actor.position.y, aw=arrow.offsetWidth, ah=arrow.offsetHeight;
-      let ay=sy+S*1.05+4, down=false; if(ay+ah>H-8){ay=sy-S*1.05-ah-4;down=true}
-      arrow.classList.toggle('down',down); arrow.style.transform=`translate(${clamp(sx-aw/2,8,W-aw-8)}px,${clamp(ay,72,H-ah-8)}px)`;}
-    else if(!arrow.hidden)arrow.hidden=true;
+    // chat arrow: hovers off to the side of the guide, below it, always turned to point at it,
+    // poking toward it in a rhythm; it trails the guide instead of being stuck to it
+    { const want=!hidden&&!docked()&&now<arrowUntil;
+      const side=actor.position.x>0?-1:1, dl=Math.hypot(.85,.6), ux=side*.85/dl, uy=-.6/dl;
+      const poke=RM?0:Math.max(0,Math.sin(t*4.2))*S*.35, dist=S*2.3-poke;
+      const tx=actor.position.x+ux*dist, ty=actor.position.y+uy*dist;
+      if(want&&!arw.shown){arw.shown=true;arw.leaving=false;arw.x=tx+ux*W;arw.y=ty+uy*W*.6;arrow3d.visible=true}
+      if(!want&&arw.shown&&!arw.leaving)arw.leaving=true;
+      if(arw.shown){
+        const gx=arw.leaving?arw.x+ux*W:tx, gy=arw.leaving?arw.y+uy*W:ty, k=1-Math.exp(-dt*(arw.leaving?2.5:4.5));
+        arw.x=lerp(arw.x,gx,k); arw.y=lerp(arw.y,gy,k);
+        const vx=actor.position.x-arw.x, vy=actor.position.y-arw.y;
+        arrow3d.position.set(arw.x,arw.y,40); arrow3d.rotation.z=Math.atan2(vy,vx)-Math.PI/2;
+        arrow3d.scale.setScalar(S*1.05);
+        if(!RM)arrowSpin.rotation.y+=dt*1.8; arrowSpin.rotation.x=.35;
+        arrowMat.color.setHex(isMoon?0xF6E7B4:0xFFC24D); arrowMat.emissive.setHex(isMoon?0xFFE7A8:0xFF9A2E);
+        arrow3d.userData.halo.material.color.setHex(isMoon?0xF6E7B4:0xFFB23F);
+        // the label rides at the arrow's tail
+        const d=Math.hypot(vx,vy)||1, lx=arw.x-vx/d*S*1.05, ly=arw.y-vy/d*S*1.05;
+        arrow.hidden=false; const aw=arrow.offsetWidth, ah=arrow.offsetHeight;
+        arrow.style.transform=`translate(${clamp(lx+W/2-aw/2,8,W-aw-8)}px,${clamp(H/2-ly-ah/2,72,H-ah-8)}px)`;
+        arrow.style.opacity=arw.leaving?'0':'1';
+        if(arw.leaving&&Math.hypot(arw.x-actor.position.x,arw.y-actor.position.y)>Math.max(W,H)){arw.shown=false;arrow3d.visible=false;arrow.hidden=true}
+      }
+    }
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
