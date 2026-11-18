@@ -383,8 +383,8 @@ export function createGuide(host: GuideHost): GuideApi {
     for(let i=0;i<N;i++){const p=parts[i];if(p.life>0){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.97;p.vy*=.97}const a=Math.max(0,p.life/p.max);pPos[i*3]=p.x;pPos[i*3+1]=p.y;pPos[i*3+2]=5;pA[i]=a*.9;pS[i]=p.s*(.4+a)}
     pg.attributes.position.needsUpdate=pg.attributes.a.needsUpdate=pg.attributes.s.needsUpdate=true;
     renderer.render(scene,cam);
-    // the chat button sits on the guide's body
-    if(!hidden){const hx=actor.position.x+W/2, hy=H/2-actor.position.y, hs=S*1.1;
+    // the chat button covers the whole guide (the crescent's lit side reaches well past its centre)
+    if(!hidden){const hx=actor.position.x+W/2, hy=H/2-actor.position.y, hs=S*2.3;
       hit.style.width=hit.style.height=hs+'px'; hit.style.transform=`translate(${hx-hs/2}px,${hy-hs/2}px)`;}
     // bubble follows, on the side with more room
     if(!hidden){const sx=actor.position.x+W/2, sy=H/2-actor.position.y; const toLeft=sx>W*.55; const bw=bubble.offsetWidth, bh=bubble.offsetHeight;
