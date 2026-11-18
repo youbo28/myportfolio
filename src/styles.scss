@@ -81,7 +81,6 @@ h1 .soft{color:var(--glow);transition:color .9s}
 
 section{padding-block:88px;scroll-margin-top:72px}
 .sh{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
-.sh .n{font:500 13px var(--mono);color:var(--accent)}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(34px,4.6vw,56px);letter-spacing:-.03em;margin:0;line-height:1}
 [dir="rtl"] h2{letter-spacing:0;line-height:1.3}
 
@@ -155,12 +154,21 @@ footer{padding-block:40px 120px;color:var(--muted);font-size:14px;display:flex;j
 footer button{background:none;border:0;color:var(--accent);font:inherit;cursor:pointer;padding:0;text-decoration:underline}
 
 /* speech bubble follows the 3D guide */
-#bubble{position:fixed;left:0;top:0;z-index:16;background:var(--glow);color:var(--glow-ink);font:600 14.5px/1.45 var(--body);padding:10px 34px 10px 14px;border-radius:16px;max-width:240px;width:max-content;box-shadow:0 14px 40px -14px var(--glow);transition:opacity .35s,background .9s,color .9s;will-change:transform}
-[dir="rtl"] #bubble{padding:10px 14px 10px 34px}
+/* the guide's speech: a comic cloud (an SVG cloud outline used as a mask, so it stretches with
+   the text and keeps the theme colour), with puffs trailing toward the guide */
+#bubble{--cl:var(--glow);position:fixed;left:0;top:0;z-index:16;color:var(--glow-ink);font:600 14.5px/1.45 var(--body);padding:30px 44px 30px 38px;max-width:290px;width:max-content;
+  filter:drop-shadow(0 10px 22px color-mix(in srgb,var(--glow) 45%,transparent));transition:opacity .35s,color .9s;will-change:transform}
+#bubble::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--cl);transition:background .9s;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20100'%20preserveAspectRatio='none'%3E%3Cg%20fill='%23000'%3E%3Cellipse%20cx='100'%20cy='52'%20rx='86'%20ry='33'/%3E%3Ccircle%20cx='38'%20cy='38'%20r='24'/%3E%3Ccircle%20cx='74'%20cy='24'%20r='25'/%3E%3Ccircle%20cx='116'%20cy='21'%20r='25'/%3E%3Ccircle%20cx='156'%20cy='32'%20r='24'/%3E%3Ccircle%20cx='180'%20cy='56'%20r='19'/%3E%3Ccircle%20cx='156'%20cy='78'%20r='21'/%3E%3Ccircle%20cx='112'%20cy='83'%20r='19'/%3E%3Ccircle%20cx='68'%20cy='81'%20r='20'/%3E%3Ccircle%20cx='28'%20cy='70'%20r='19'/%3E%3Ccircle%20cx='15'%20cy='48'%20r='14'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20100'%20preserveAspectRatio='none'%3E%3Cg%20fill='%23000'%3E%3Cellipse%20cx='100'%20cy='52'%20rx='86'%20ry='33'/%3E%3Ccircle%20cx='38'%20cy='38'%20r='24'/%3E%3Ccircle%20cx='74'%20cy='24'%20r='25'/%3E%3Ccircle%20cx='116'%20cy='21'%20r='25'/%3E%3Ccircle%20cx='156'%20cy='32'%20r='24'/%3E%3Ccircle%20cx='180'%20cy='56'%20r='19'/%3E%3Ccircle%20cx='156'%20cy='78'%20r='21'/%3E%3Ccircle%20cx='112'%20cy='83'%20r='19'/%3E%3Ccircle%20cx='68'%20cy='81'%20r='20'/%3E%3Ccircle%20cx='28'%20cy='70'%20r='19'/%3E%3Ccircle%20cx='15'%20cy='48'%20r='14'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat}
+[dir="rtl"] #bubble{padding:30px 38px 30px 44px}
+#btext{position:relative}
+/* the trail: two puffs getting smaller toward the guide */
+#bubble .puff{position:absolute;width:15px;height:15px;border-radius:50%;background:var(--cl);bottom:2px;transition:background .9s}
+#bubble .puff.small{width:9px;height:9px;bottom:-12px}
+#bubble.tail-r .puff{right:4px}#bubble.tail-r .puff.small{right:-10px}
+#bubble.tail-l .puff{left:4px}#bubble.tail-l .puff.small{left:-10px}
 #bubble.swap{opacity:0}
-#bubble.tail-r{border-start-end-radius:4px}
-#bubble.tail-l{border-start-start-radius:4px}
-#bubble button{position:absolute;top:6px;inset-inline-end:8px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font:700 15px var(--body);width:22px;height:22px;border-radius:50%}
+#bubble button{position:absolute;top:16px;inset-inline-end:22px;border:0;background:none;color:inherit;opacity:.6;cursor:pointer;font:700 15px var(--body);width:22px;height:22px;border-radius:50%}
 #bubble button:hover{opacity:1}
 #recall{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px));z-index:16;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;display:grid;place-items:center;color:var(--glow)}
 @media (max-width:860px){#bubble{font-size:13px;max-width:200px}}
@@ -257,15 +265,36 @@ a[data-say],button[data-say]{cursor:pointer}
 /* no WebGL: the guide can't be drawn, so its chat button shows as a plain round button */
 #guide-hit.static{left:auto;top:auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-start:20px;width:52px;height:52px;background:var(--glow);transform:none}
 .chat{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom,0px));inset-inline-start:20px;z-index:17;width:min(360px,calc(100vw - 32px));max-height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;padding:0;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);overflow:hidden}
-.chat-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-family:var(--display)}
+.chat-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.chat-who{display:flex;flex-direction:column;line-height:1.2;flex:1;font-family:var(--display)}
+.chat-online{font:500 12px var(--body);color:var(--muted);display:flex;align-items:center;gap:6px}
+.chat-online::before{content:"";width:8px;height:8px;border-radius:50%;background:#34D399;box-shadow:0 0 0 3px color-mix(in srgb,#34D399 25%,transparent)}
+.chat-avatar{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--glow);color:var(--glow-ink);box-shadow:0 4px 14px -6px var(--glow)}
 .chat-close{border:0;background:none;color:inherit;font:700 20px var(--body);cursor:pointer;width:30px;height:30px;border-radius:50%;opacity:.7}
 .chat-close:hover{opacity:1}
-.chat-log{list-style:none;margin:0;padding:14px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;flex:1}
-.chat-msg{max-width:85%;padding:8px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
-.chat-msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-end-end-radius:4px}
-.chat-msg.assistant{align-self:flex-start;background:color-mix(in srgb,var(--glow) 85%,transparent);color:var(--glow-ink);border-end-start-radius:4px}
-.chat-msg.thinking{opacity:.75;font-style:italic}
-.chat-msg.error{align-self:stretch;max-width:none;background:none;color:var(--muted);font-size:13.5px;text-align:center}
+.chat-log{list-style:none;margin:0;padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;flex:1;scroll-behavior:smooth}
+.chat-row{display:flex;align-items:flex-end;gap:8px;max-width:88%}
+.chat-row.user{align-self:flex-end}
+.chat-row .chat-avatar{width:24px;height:24px}
+.chat-row .chat-avatar svg{width:14px;height:14px}
+.chat-msg{padding:9px 13px;border-radius:16px;font-size:14.5px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-msg.user{background:var(--accent);color:#fff;border-end-end-radius:4px}
+.chat-msg.assistant{background:color-mix(in srgb,var(--glow) 88%,transparent);color:var(--glow-ink);border-end-start-radius:4px}
+.chat-msg.thinking{display:flex;gap:5px;align-items:center;padding:13px 15px}
+.chat-msg .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.35;animation:chat-dot 1.2s infinite ease-in-out}
+.chat-msg .dot:nth-child(2){animation-delay:.15s}.chat-msg .dot:nth-child(3){animation-delay:.3s}
+@keyframes chat-dot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.chat-msg.error{align-self:stretch;background:none;color:var(--muted);font-size:13.5px;text-align:center}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 12px}
+.chat-chip{border:1px solid color-mix(in srgb,var(--glow) 55%,var(--line));background:color-mix(in srgb,var(--glow) 12%,transparent);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 13px var(--body);cursor:pointer;margin:0;width:auto;transition:background .2s}
+.chat-chip:hover{background:color-mix(in srgb,var(--glow) 28%,transparent)}
+@media (prefers-reduced-motion:no-preference){
+  .chat-row{animation:chat-in .28s ease-out both}
+  .chat{animation:chat-open .25s ease-out both}
+}
+@keyframes chat-in{from{opacity:0;transform:translateY(8px)}}
+@keyframes chat-open{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .chat-form{display:flex;gap:8px;padding:10px;border:0;border-top:1px solid var(--line);border-radius:0;background:none}
 .chat-form textarea{flex:1;resize:none;height:56px;min-height:0;margin:0;border:1px solid var(--line);border-radius:12px;background:var(--sky);color:var(--ink);font:inherit;font-size:14.5px;padding:8px 10px}
 .chat-form button{align-self:stretch;margin:0;width:auto;border:0;border-radius:12px;background:var(--accent);color:#fff;font:600 14px var(--body);padding:0 14px;cursor:pointer}

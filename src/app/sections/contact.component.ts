@@ -15,7 +15,6 @@ type Status = 'idle' | 'sending' | 'ok' | 'err';
 <section id="contact" data-guide="contact">
   <div class="contact">
     <div class="side">
-      <div class="sh" style="margin-bottom:18px"><span class="n">06</span></div>
       <h2>{{ i18n.ui('contact.t') }}</h2>
       <p>{{ i18n.ui('contact.p') }}</p>
       <div class="outs">

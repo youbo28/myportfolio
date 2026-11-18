@@ -19,6 +19,8 @@ export interface GuideApi {
   dock(el: Element): void;
   /** Fly to the mouse for a few seconds, wave, and say `text` (e.g. "you can chat with me"). */
   nudge(text: string, holdMs?: number): void;
+  /** Move the mouth for a moment, as if speaking (called while a chat answer is typed out). */
+  talk(): void;
   undock(): void;
   destroy(): void;
 }
@@ -34,7 +36,7 @@ export function createGuide(host: GuideHost): GuideApi {
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},talk(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -204,7 +206,7 @@ export function createGuide(host: GuideHost): GuideApi {
     // mouth
     const mt={...(MOUTH[b]||MOUTH.idle)};
     if(b==='sleepy'){const y=t%7;mt.open=y<2?.3*Math.sin(y/2*Math.PI):0}
-    if(!RM&&now-saidAt<1500&&mt.round<.5)mt.open+=.05*(.5+.5*Math.sin(t*10));
+    if((!RM&&now-saidAt<1500||now<talkUntil)&&mt.round<.5)mt.open+=.05*(.5+.5*Math.sin(t*10));
     const mk=1-Math.exp(-dt*8);for(const k in mo)mo[k]=lerp(mo[k],mt[k],mk);
     buildMouth(); mouthG.position.set(M.x,M.y,isMoon?.37:.66); mouthMat.color.set(isMoon?0x3A2810:0x7A2A0E);
     rigTilt=lerp(rigTilt,(b==='thanks'&&oneShot)?.35*Math.sin(Math.min(1,u/oneShot.dur)*Math.PI):0,mk);
@@ -257,6 +259,9 @@ export function createGuide(host: GuideHost): GuideApi {
   function dock(el){dockEl=el;hoverEl=null;bubble.style.visibility='hidden'}
   function undock(){dockEl=null;bubble.style.visibility='';lastLine='';current=null}
   const docked=()=>!!dockEl&&document.contains(dockEl);
+  // talk: the mouth moves while the chat types an answer out
+  let talkUntil=0;
+  function talk(){talkUntil=performance.now()+350}
   // nudge: it comes to the mouse and waves, to show the visitor it can chat
   let nudgeUntil=0;
   function nudge(text,hold=6500){if(hidden||trans||docked()||mouse.x<-9000)return;hoverEl=null;nudgeUntil=performance.now()+hold;lastLine='';say(text);lineTimer=-8;react('wave')}
@@ -422,5 +427,5 @@ export function createGuide(host: GuideHost): GuideApi {
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
-  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, nudge, destroy() { stopped = true; renderer.dispose(); } };
+  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, nudge, talk, destroy() { stopped = true; renderer.dispose(); } };
 }

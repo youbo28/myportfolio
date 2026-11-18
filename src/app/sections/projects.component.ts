@@ -9,7 +9,7 @@ const POSTERS = new Set(['loan', 'movies', 'library']);
   selector: 'app-projects',
   template: `
 <section id="projects" data-guide="projects">
-  <div class="sh"><span class="n">03</span><h2>{{ i18n.ui('projects.t') }}</h2></div>
+  <div class="sh"><h2>{{ i18n.ui('projects.t') }}</h2></div>
   <div class="projects">
     @for (p of i18n.content()?.projects ?? []; track p.id) {
       <article class="pj" [id]="'pj-' + p.id" [attr.data-say]="say.project(p)">

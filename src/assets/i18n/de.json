@@ -64,6 +64,11 @@
     "chat.thinking": "Ich überlege…",
     "chat.error": "Entschuldigung, die Nachricht kam nicht an. Bitte versuch es noch einmal.",
     "chat.nudge": "Psst! Du kannst mit mir chatten. Klick mich an und frag mich etwas über meine Arbeit.",
+    "chat.greeting": "Hallo! Ich bin Ayoub 👋 Frag mich etwas über meine Arbeit, meine Skills oder Projekte.",
+    "chat.online": "Online",
+    "chat.s1": "Was machst du?",
+    "chat.s2": "Was sind deine wichtigsten Skills?",
+    "chat.s3": "Wie kann ich dich erreichen?",
     "skills.hint": "Fahren Sie über einen Skill, und ich erzähle Ihnen davon.",
     "skills.hintTouch": "Tippen Sie auf einen Skill, und ich erzähle Ihnen davon.",
     "skills.ai": "KI"

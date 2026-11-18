@@ -6,7 +6,7 @@ import { SayService } from '../core/say.service';
   selector: 'app-experience',
   template: `
 <section id="experience" data-guide="experience">
-  <div class="sh"><span class="n">04</span><h2>{{ i18n.ui('exp.t') }}</h2></div>
+  <div class="sh"><h2>{{ i18n.ui('exp.t') }}</h2></div>
   <ol class="tl">
     @for (j of i18n.content()?.jobs ?? []; track $index) {
       <li class="job" [class.now]="j.now" [attr.data-say]="say.job(j)">

@@ -45,7 +45,7 @@ interface Item { name: string; core: boolean; hex: string; svg: SafeHtml; }
   selector: 'app-skills',
   template: `
 <section id="skills" data-guide="skills">
-  <div class="sh"><span class="n">02</span><h2>{{ i18n.ui('skills.t') }}</h2></div>
+  <div class="sh"><h2>{{ i18n.ui('skills.t') }}</h2></div>
   <p class="sk-hint">{{ i18n.ui(touch ? 'skills.hintTouch' : 'skills.hint') }}</p>
   <div class="marquees">
     @for (row of rows(); track $index; let odd = $odd) {

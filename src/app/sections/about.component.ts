@@ -6,7 +6,7 @@ import { SayService } from '../core/say.service';
   selector: 'app-about',
   template: `
 <section id="about" data-guide="about">
-  <div class="sh"><span class="n">01</span><h2>{{ i18n.ui('about.t') }}</h2></div>
+  <div class="sh"><h2>{{ i18n.ui('about.t') }}</h2></div>
   <div class="about">
     <div [innerHTML]="i18n.ui('about.p')"></div>
     <div class="facts">

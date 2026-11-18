@@ -88,4 +88,31 @@ describe('ChatHostComponent (the chat the mascot opens)', () => {
 
     expect(el().querySelector('[role="dialog"]')).toBeNull();
   });
+
+  it('greets the visitor and suggests questions before they ask anything', async () => {
+    await open();
+
+    expect(el().textContent).toContain('[chat.greeting]');
+    const chips = [...el().querySelectorAll<HTMLButtonElement>('.chat-chip')].map((b) => b.textContent!.trim());
+    expect(chips).toEqual(['[chat.s1]', '[chat.s2]', '[chat.s3]']);
+  });
+
+  it('asks a suggested question when its chip is clicked, then hides the chips', async () => {
+    await open();
+    el().querySelector<HTMLButtonElement>('.chat-chip')!.click();
+    fixture.detectChanges();
+
+    expect(el().querySelector('.chat-msg.user')!.textContent).toContain('[chat.s1]');
+    expect(el().querySelectorAll('.chat-chip').length).toBe(0);
+  });
+
+  it('shows animated typing dots while waiting, still announced as thinking', async () => {
+    await open();
+    el().querySelector<HTMLButtonElement>('.chat-chip')!.click();
+    fixture.detectChanges();
+
+    const dots = el().querySelector('.chat-msg.thinking')!;
+    expect(dots.querySelectorAll('.dot').length).toBe(3);
+    expect(dots.textContent).toContain('[chat.thinking]');
+  });
 });
