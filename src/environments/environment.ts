@@ -1,4 +1,4 @@
-/** Production settings. The Worker URL is set when the bot goes live (myportfolio#9). */
+/** Production settings: the portfolio-bot Worker on Cloudflare. */
 export const environment = {
-  chatUrl: '',
+  chatUrl: 'https://portfolio-bot.ayoubrazali28.workers.dev/chat',
 };
