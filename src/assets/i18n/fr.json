@@ -56,6 +56,13 @@
     "dark": "Passer en mode nuit",
     "guide.hide": "Masquer le guide",
     "guide.show": "Afficher le guide",
+    "chat.open": "Posez-moi une question sur mon travail",
+    "chat.title": "Demandez à Ayoub",
+    "chat.close": "Fermer le chat",
+    "chat.placeholder": "Une question sur mon travail, mes compétences ou mes projets…",
+    "chat.send": "Envoyer",
+    "chat.thinking": "Je réfléchis…",
+    "chat.error": "Désolé, le message n'est pas passé. Réessayez.",
     "skills.hint": "Survolez une compétence et je vous en parle.",
     "skills.hintTouch": "Touchez une compétence et je vous en parle.",
     "skills.ai": "IA"

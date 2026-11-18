@@ -56,6 +56,13 @@
     "dark": "Zum Nachtmodus wechseln",
     "guide.hide": "Guide ausblenden",
     "guide.show": "Guide wieder anzeigen",
+    "chat.open": "Frag mich etwas über meine Arbeit",
+    "chat.title": "Frag Ayoub",
+    "chat.close": "Chat schließen",
+    "chat.placeholder": "Frag nach meiner Arbeit, meinen Skills oder Projekten…",
+    "chat.send": "Senden",
+    "chat.thinking": "Ich überlege…",
+    "chat.error": "Entschuldigung, die Nachricht kam nicht an. Bitte versuch es noch einmal.",
     "skills.hint": "Fahren Sie über einen Skill, und ich erzähle Ihnen davon.",
     "skills.hintTouch": "Tippen Sie auf einen Skill, und ich erzähle Ihnen davon.",
     "skills.ai": "KI"
