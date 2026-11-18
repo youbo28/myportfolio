@@ -33,8 +33,6 @@ export function createGuide(host: GuideHost): GuideApi {
   const mode = () => host.mode();
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
-  // the visitor reaching for the guide (to open the chat): it stops shying away
-  let reaching=false; hit.onpointerenter=()=>{reaching=true}; hit.onpointerleave=()=>{reaching=false};
   let renderer;
   try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -218,7 +216,7 @@ export function createGuide(host: GuideHost): GuideApi {
     curious:{bob:9, bobSp:1.6,glow:1.2,warm:.15,wob:.02,spin:0,  breathe:.03,brSp:1.4,lift:6,  tilt:.35, back:0},
     excited:{bob:11,bobSp:2.2,glow:1.7,warm:.8, wob:.07,spin:.9, breathe:.06,brSp:3.2,lift:10, tilt:.2,  back:0},
     proud:  {bob:6, bobSp:1.0,glow:1.5,warm:.5, wob:.01,spin:0,  breathe:.04,brSp:1.2,lift:22, tilt:-.1, back:0},
-    shy:    {bob:4, bobSp:1.4,glow:.75,warm:-.1,wob:.03,spin:0,  breathe:.02,brSp:2.5,lift:0,  tilt:-.5, back:1},
+    shy:    {bob:4, bobSp:1.4,glow:.75,warm:-.1,wob:.03,spin:0,  breathe:.02,brSp:1.3,lift:0,  tilt:-.5, back:1},
     sleepy: {bob:5, bobSp:.55,glow:.45,warm:-.35,wob:0, spin:0,  breathe:.06,brSp:.5, lift:-26,tilt:.5,  back:0},
     flying: {bob:3, bobSp:2,  glow:1.25,warm:.3,wob:.02,spin:.2, breathe:0,  brSp:1,  lift:0,  tilt:0,   back:0}};
   const SECTION_MOOD={hero:'curious',about:'calm',skills:'curious',projects:'excited',experience:'calm',education:'calm',contact:'proud'};
@@ -382,7 +380,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const bob=RM?0:Math.sin(phase)*m.bob+Math.sin(phase*.53+1.3)*m.bob*.35;
     const sway=RM?0:Math.sin(phase*.5)*.06;
     const dist=Math.hypot(mouse.x-cur.x,mouse.y-cur.y)+1;
-    const shy=reaching||docked()||nudging()?0:m.back*Math.max(0,1-dist/(cur.s*3));
+    const shy=docked()||nudging()?0:m.back*Math.max(0,1-dist/(cur.s*3));
     shyX=lerp(shyX,shy*(cur.x-mouse.x)/dist*cur.s*.9,1-Math.exp(-dt*4)); shyY=lerp(shyY,shy*(cur.y-mouse.y)/dist*cur.s*.9,1-Math.exp(-dt*4));
     const offY=-sinkOut*(H*.75)-riseIn*(H*.75);
     actor.position.set(cur.x+shyX,cur.y+bob+m.lift+shyY+offY,0);
@@ -403,7 +401,7 @@ export function createGuide(host: GuideHost): GuideApi {
     moonHalo.scale.setScalar(3.6+g*.9+Math.sin(t*m.brSp*2)*.15);
     sunMat.uniforms.t.value=t; sunMat.uniforms.energy.value=.6+g*.7;
     sunHalo.material.opacity=.35+g*.35; sunHalo.scale.setScalar(4+g*1.1+Math.sin(t*m.brSp*2)*.2);
-    rayList.forEach((r,i)=>{const len=.85+.18*Math.sin(t*(2+m.glow)+i*1.3)*m.glow;r.position.set(Math.cos(r.userData.a)*len,Math.sin(r.userData.a)*len,0);r.scale.set(1,.8+.4*m.glow+.2*Math.sin(t*3+i),1)});
+    rayList.forEach((r,i)=>{const len=.85+.18*Math.sin(t*(1.2+.4*m.glow)+i*1.3)*m.glow;r.position.set(Math.cos(r.userData.a)*len,Math.sin(r.userData.a)*len,0);r.scale.set(1,.8+.4*m.glow+.2*Math.sin(t*1.6+i),1)});
     // particles
     pMat.uniforms.col.value.set(isMoon?0xF6E7B4:0xFFC24D);
     if(!RM&&!hidden&&(speed>120||Math.random()<.04*m.glow)){const spread=S*.4;emit(actor.position.x+(Math.random()-.5)*spread,actor.position.y+(Math.random()-.5)*spread,-cur.vx*.15+(Math.random()-.5)*20,-cur.vy*.15+(Math.random()-.5)*20+(moodName==='sleepy'?25:0),3+Math.random()*6,.8+Math.random()*.8)}
