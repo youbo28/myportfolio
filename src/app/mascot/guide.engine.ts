@@ -242,11 +242,7 @@ export function createGuide(host: GuideHost): GuideApi {
     return true;
   }
   let saidAt=performance.now();
-  // lines are written out letter by letter, as if the guide were typing them
-  let typing=0;
-  function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');clearInterval(typing);
-    setTimeout(()=>{bubble.classList.remove('swap');
-      btext.textContent='';let i=0;typing=setInterval(()=>{i+=1;btext.textContent=text.slice(0,i);if(i>=text.length)clearInterval(typing)},22)},200)}
+  function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');setTimeout(()=>{btext.textContent=text;bubble.classList.remove('swap')},200)}
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
   function sayFor(k){if(k==='projects'||isHover())return;const l=lines(k);say(l[lineIdx%l.length])}
   function relabel(){lastLine='';current=null;if(ready)react('surprised')}
@@ -416,12 +412,18 @@ export function createGuide(host: GuideHost): GuideApi {
     // the chat button covers the whole guide (the crescent's lit side reaches well past its centre)
     if(!hidden){const hx=actor.position.x+W/2, hy=H/2-actor.position.y, hs=S*2.3;
       hit.style.width=hit.style.height=hs+'px'; hit.style.transform=`translate(${hx-hs/2}px,${hy-hs/2}px)`;}
-    // bubble follows, on the side with more room
-    if(!hidden){const sx=actor.position.x+W/2, sy=H/2-actor.position.y; const toLeft=sx>W*.55; const bw=bubble.offsetWidth, bh=bubble.offsetHeight;
-      let bx=toLeft?sx-S*.62-bw:sx+S*.62, by=sy-S*.55-bh*.2;
-      if(W<=860){bx=toLeft?sx-S*.5-bw:sx+S*.5;by=sy-S*.6-bh}
+    // speech balloon: above the guide, toward the top-left (top-right when there's no room),
+    // with its tail drawn from the guide's mouth up to the balloon
+    if(!hidden){const sx=actor.position.x+W/2, sy=H/2-actor.position.y, mob=W<=860; const bw=bubble.offsetWidth, bh=bubble.offsetHeight;
+      const mx=sx-(isMoon?S*.5:0), my=sy+(isMoon?S*.04:S*.18); // the mouth (measured on screen)
+      const gap=mob?S*.55:S*.75, lift=mob?S*.7:S*.85;
+      let bx=mx-gap-bw*.75, by=my-lift-bh-14;
+      if(bx<8)bx=mx+gap-bw*.25;                            // no room on the left: top-right
       bx=clamp(bx,8,W-bw-8); by=clamp(by,72,H-bh-8);
-      bubble.style.transform=`translate(${bx}px,${by}px)`; bubble.classList.toggle('tail-r',toLeft); bubble.classList.toggle('tail-l',!toLeft);
+      const tip=clamp(mx-bx,-190,bw+190), base=clamp(tip,bw*.22,bw*.78), th=Math.max(12,my-6-(by+bh-8));
+      bubble.style.transform=`translate(${bx}px,${by}px)`;
+      bubble.style.setProperty('--b0',(200+base-11)+'px'); bubble.style.setProperty('--b1',(200+base+11)+'px');
+      bubble.style.setProperty('--tip',(200+tip)+'px'); bubble.style.setProperty('--th',th+'px');
       bubble.style.opacity=(trans&&!trans.swapped)||(W<=860&&now-saidAt>5000)?'0':'';
       bubble.style.pointerEvents=bubble.style.opacity==='0'?'none':'';}
   }
