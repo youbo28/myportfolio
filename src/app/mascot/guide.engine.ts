@@ -8,6 +8,8 @@ export interface GuideHost {
   getContent(): any;
   mode(): 'dark' | 'light';
   applyTheme(next: 'dark' | 'light'): void;
+  /** What to say when the visitor goes quiet; null for the guide's own line. */
+  idleLine?(): string | null;
 }
 export interface GuideApi {
   relabel(): void;
@@ -245,7 +247,9 @@ export function createGuide(host: GuideHost): GuideApi {
     return true;
   }
   let saidAt=performance.now();
-  function say(text){if(!text||text===lastLine)return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');setTimeout(()=>{btext.textContent=text;bubble.classList.remove('swap')},200)}
+  // an invitation to chat holds the bubble: other lines wait until it has been read
+  let holdUntil=0;
+  function say(text,force){if(!text||text===lastLine||(!force&&performance.now()<holdUntil))return;lastLine=text;saidAt=performance.now();bubble.classList.add('swap');setTimeout(()=>{btext.textContent=text;bubble.classList.remove('swap')},200)}
   function lines(k){const v=C().guide[who][k];return Array.isArray(v)?v:[v]}
   function sayFor(k){if(k==='projects'||isHover())return;const l=lines(k);say(l[lineIdx%l.length])}
   function relabel(){lastLine='';current=null;if(ready)react('surprised')}
@@ -263,7 +267,7 @@ export function createGuide(host: GuideHost): GuideApi {
   function talk(){talkUntil=performance.now()+350}
   // nudge: it comes to the mouse and waves, to show the visitor it can chat
   let nudgeUntil=0;
-  function nudge(text,hold=6500){if(hidden||trans||docked()||!text)return false;hoverEl=null;if(mouse.x>-9000)nudgeUntil=performance.now()+hold;lastLine='';say(text);lineTimer=-8;react('wave');return true}
+  function nudge(text,hold=8000){if(hidden||trans||docked()||!text)return false;hoverEl=null;if(mouse.x>-9000)nudgeUntil=performance.now()+hold;lastLine='';say(text,true);holdUntil=performance.now()+hold;lineTimer=-8;react('wave');return true}
   const nudging=()=>performance.now()<nudgeUntil&&!docked();
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 
@@ -363,7 +367,7 @@ export function createGuide(host: GuideHost): GuideApi {
     if(want!==moodName){prevMood=moodName;moodName=want;
       // emote only when resting and not too often, so it never flickers
       if(want!=='flying'&&prevMood!=='flying'&&want!=='shy'&&prevMood!=='shy'&&t-lastEmote>8){lastEmote=t;gesture.t=0;gesture.kind='emote';gesture.burst=false}
-      if(want==='sleepy'&&!isHover())say(C().guide[who].idle);
+      if(want==='sleepy'&&!isHover())say(host.idleLine?.()||C().guide[who].idle);
       if(want==='shy'&&Math.random()<.5)say(C().guide[who].near);
       if(prevMood==='sleepy'){lastLine='';sayFor(current)}}
     const mk=1-Math.exp(-dt*2.4);for(const key in m)m[key]=lerp(m[key],MOODS[moodName][key],mk);

@@ -66,6 +66,8 @@ export class MascotComponent {
           getContent: () => this.i18n.content(),
           mode: () => this.theme.mode(),
           applyTheme: (next) => this.theme.apply(next),
+          // a visitor who goes quiet is invited to chat, until they have used it
+          idleLine: () => (this.chat.used() ? null : this.i18n.ui('chat.nudgeShort')),
         });
         this.theme.registerSwitcher((next) => this.api!.switchTheme(next));
         this.guide.connect(this.api);
