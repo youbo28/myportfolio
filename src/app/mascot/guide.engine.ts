@@ -17,8 +17,11 @@ export interface GuideApi {
   hoverEnd(el: Element): void;
   /** Fly to `el` (the chat panel) and stay there, quiet, until undock(). */
   dock(el: Element): void;
-  /** Fly to the mouse for a few seconds, wave, and say `text` (e.g. "you can chat with me"). */
-  nudge(text: string, holdMs?: number): void;
+  /**
+   * Fly to the mouse for a few seconds, wave, and say `text` (e.g. "click me to chat").
+   * With no mouse (phones) it waves and says it where it is. False if it couldn't (busy).
+   */
+  nudge(text: string, holdMs?: number): boolean;
   /** Move the mouth for a moment, as if speaking (called while a chat answer is typed out). */
   talk(): void;
   undock(): void;
@@ -36,7 +39,7 @@ export function createGuide(host: GuideHost): GuideApi {
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},talk(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){return false},talk(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -260,7 +263,7 @@ export function createGuide(host: GuideHost): GuideApi {
   function talk(){talkUntil=performance.now()+350}
   // nudge: it comes to the mouse and waves, to show the visitor it can chat
   let nudgeUntil=0;
-  function nudge(text,hold=6500){if(hidden||trans||docked()||mouse.x<-9000)return;hoverEl=null;nudgeUntil=performance.now()+hold;lastLine='';say(text);lineTimer=-8;react('wave')}
+  function nudge(text,hold=6500){if(hidden||trans||docked()||!text)return false;hoverEl=null;if(mouse.x>-9000)nudgeUntil=performance.now()+hold;lastLine='';say(text);lineTimer=-8;react('wave');return true}
   const nudging=()=>performance.now()<nudgeUntil&&!docked();
   function reactSay(name,key){react(name);if(key){lastLine='';say(RT()[key])}}
 

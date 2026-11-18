@@ -62,6 +62,7 @@
     "chat.thinking": "Thinking…",
     "chat.error": "Sorry, the message didn't get through. Please try again.",
     "chat.nudge": "Psst! You can chat with me. Click me and ask anything about my work.",
+    "chat.nudgeShort": "Click me to start a chat!",
     "chat.greeting": "Hi! I'm Ayoub 👋 Ask me anything about my work, skills or projects.",
     "chat.online": "Online",
     "chat.s1": "What do you do?",

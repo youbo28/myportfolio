@@ -70,7 +70,7 @@ export class MascotComponent {
         this.theme.registerSwitcher((next) => this.api!.switchTheme(next));
         this.guide.connect(this.api);
         this.listenForHover(this.api);
-        this.nudgeAtContact(this.api);
+        this.nudges(this.api);
       };
       start();
     });
@@ -124,23 +124,46 @@ export class MascotComponent {
   private stopListening?: () => void;
 
   /**
-   * A visitor who reaches Contact without ever opening the chat gets one nudge per visit:
-   * the guide comes to the mouse, waves and says it can chat.
+   * Invitations to chat, until the visitor opens it: a few seconds after arrival, now and then
+   * while scrolling, and on reaching Contact. The guide comes to the mouse and says
+   * "click me to start a chat". At most 3 per visit, at least 45 s apart (Contact: 15 s).
    */
-  private nudgeAtContact(api: GuideApi): void {
-    const KEY = 'chat-nudged';
+  private nudges(api: GuideApi): void {
+    const KEY = 'chat-nudges', MAX = 3, GAP = 45_000;
+    let count = 0;
+    try { count = Number(sessionStorage.getItem(KEY)) || 0; } catch {}
+    let last = -Infinity;
+    const invite = (line: string, gap = GAP): boolean => {
+      if (this.chat.used() || count >= MAX || performance.now() - last < gap) return false;
+      if (!api.nudge(this.i18n.ui(line))) return false;
+      count++; last = performance.now();
+      try { sessionStorage.setItem(KEY, String(count)); } catch {}
+      return true;
+    };
+
+    // on arrival, once its hello has been read
+    const arrival = setTimeout(() => invite('chat.nudgeShort'), 7000);
+
+    // while scrolling: after the visitor has moved a good way down the page
+    let from = scrollY;
+    const onScroll = () => {
+      if (Math.abs(scrollY - from) < innerHeight * 1.2) return;
+      from = scrollY;
+      invite('chat.nudgeShort');
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+
+    // on reaching Contact, the longer invitation
+    let io: IntersectionObserver | undefined;
     const contact = document.getElementById('contact');
-    if (!contact || !('IntersectionObserver' in window)) return;
-    const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch { return false; } };
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((e) => e.isIntersecting)) return;
-      if (this.chat.used() || seen()) { io.disconnect(); return; }
-      api.nudge(this.i18n.ui('chat.nudge'));
-      try { sessionStorage.setItem(KEY, '1'); } catch {}
-      io.disconnect();
-    }, { threshold: 0.35 });
-    io.observe(contact);
-    this.stopNudge = () => io.disconnect();
+    if (contact && 'IntersectionObserver' in window) {
+      io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting) && invite('chat.nudge', 15_000)) io?.disconnect();
+      }, { threshold: 0.35 });
+      io.observe(contact);
+    }
+
+    this.stopNudge = () => { clearTimeout(arrival); removeEventListener('scroll', onScroll); io?.disconnect(); };
   }
   private stopNudge?: () => void;
 }
