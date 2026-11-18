@@ -10,14 +10,14 @@ import { ExperienceComponent } from './sections/experience.component';
 import { EducationComponent } from './sections/education.component';
 import { ContactComponent } from './sections/contact.component';
 import { MascotComponent } from './mascot/mascot.component';
-import { ChatLauncherComponent } from './chat/chat-launcher.component';
+import { ChatHostComponent } from './chat/chat-host.component';
 import { I18nService } from './core/i18n.service';
 import { GuideService } from './core/guide.service';
 
 @Component({
   selector: 'app-root',
   imports: [SkyComponent, NavBarComponent, YoutubeModalComponent, HeroComponent, AboutComponent, SkillsComponent,
-    ProjectsComponent, ExperienceComponent, EducationComponent, ContactComponent, MascotComponent, ChatLauncherComponent],
+    ProjectsComponent, ExperienceComponent, EducationComponent, ContactComponent, MascotComponent, ChatHostComponent],
   template: `
 <app-sky />
 <app-nav-bar />
@@ -35,7 +35,7 @@ import { GuideService } from './core/guide.service';
   </footer>
 </main>
 <app-mascot />
-<app-chat-launcher />
+<app-chat-host />
 <app-youtube-modal />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

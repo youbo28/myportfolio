@@ -3,12 +3,18 @@ import { I18nService } from '../core/i18n.service';
 import { ThemeService } from '../services/theme.service';
 import { GuideService } from '../core/guide.service';
 import type { GuideApi } from './guide.engine';
+import { ChatUiService } from '../chat/chat-ui.service';
 
-/** The 3D guide. three.js and the engine load in their own chunk after the page is up. */
+/**
+ * The 3D guide. three.js and the engine load in their own chunk after the page is up.
+ * The guide is also the chat: #guide-hit is a real button the engine keeps on top of it.
+ */
 @Component({
   selector: 'app-mascot',
   template: `
 <canvas id="guide3d" aria-hidden="true"></canvas>
+<button id="guide-hit" type="button" (click)="chat.toggle()" [attr.aria-label]="i18n.ui('chat.open')"
+  [attr.aria-expanded]="chat.open()" aria-controls="chat-panel"></button>
 <div id="bubble" role="status" aria-live="polite"><span id="btext"></span><button id="hide" type="button" [attr.aria-label]="i18n.ui('guide.hide')">×</button></div>
 <button id="recall" type="button" hidden [attr.aria-label]="i18n.ui('guide.show')"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3a9 9 0 1 0 6.4 13.3A7.2 7.2 0 0 1 14.5 3Z" fill="currentColor"/></svg></button>
 <div id="horizon" aria-hidden="true"><div class="fill"></div></div>`,
@@ -16,6 +22,7 @@ import type { GuideApi } from './guide.engine';
 })
 export class MascotComponent {
   readonly i18n = inject(I18nService);
+  readonly chat = inject(ChatUiService);
   private theme = inject(ThemeService);
   private guide = inject(GuideService);
   private api?: GuideApi;

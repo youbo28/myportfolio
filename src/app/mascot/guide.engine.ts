@@ -27,9 +27,11 @@ export function createGuide(host: GuideHost): GuideApi {
   const C = () => host.getContent();
   const mode = () => host.mode();
   let stopped = false;
-  const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext');
+  const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
+  // the visitor reaching for the guide (to open the chat): it stops shying away
+  let reaching=false; hit.onpointerenter=()=>{reaching=true}; hit.onpointerleave=()=>{reaching=false};
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -272,7 +274,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const show=()=>{const P=C().projects,p=P[pjIdx%P.length];spot=$('#pj-'+p.id);document.querySelectorAll('.pj').forEach(e=>e.classList.toggle('spot',e===spot));pjMode=pjIdx%3===0?'beckon':'point';if(performance.now()>hoverUntil)say(pjMode==='beckon'?RT().come.replace('{p}',p.title):(p.story||C().guide[who].projects.replace('{p}',p.title)));burst(18);pjIdx++};
     show();pjTimer=setInterval(show,4200)}
 
-  function setHidden(v){hidden=v;store.set('guide-hidden',v?'1':'0');canvas.style.visibility=v?'hidden':'visible';bubble.hidden=v;$('#recall').hidden=!v;if(!v){lastLine='';current=null}}
+  function setHidden(v){hidden=v;store.set('guide-hidden',v?'1':'0');canvas.style.visibility=v?'hidden':'visible';bubble.hidden=v;hit.hidden=v;$('#recall').hidden=!v;if(!v){lastLine='';current=null}}
   $('#hide').onclick=()=>setHidden(true); $('#recall').onclick=()=>setHidden(false); setHidden(hidden);
 
   const clock=new THREE.Clock(); let moodName='curious', prevMood='curious';
@@ -353,7 +355,7 @@ export function createGuide(host: GuideHost): GuideApi {
     const bob=RM?0:Math.sin(phase)*m.bob+Math.sin(phase*.53+1.3)*m.bob*.35;
     const sway=RM?0:Math.sin(phase*.5)*.06;
     const dist=Math.hypot(mouse.x-cur.x,mouse.y-cur.y)+1;
-    const shy=m.back*Math.max(0,1-dist/(cur.s*3));
+    const shy=reaching?0:m.back*Math.max(0,1-dist/(cur.s*3));
     shyX=lerp(shyX,shy*(cur.x-mouse.x)/dist*cur.s*.9,1-Math.exp(-dt*4)); shyY=lerp(shyY,shy*(cur.y-mouse.y)/dist*cur.s*.9,1-Math.exp(-dt*4));
     const offY=-sinkOut*(H*.75)-riseIn*(H*.75);
     actor.position.set(cur.x+shyX,cur.y+bob+m.lift+shyY+offY,0);
@@ -381,6 +383,9 @@ export function createGuide(host: GuideHost): GuideApi {
     for(let i=0;i<N;i++){const p=parts[i];if(p.life>0){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vx*=.97;p.vy*=.97}const a=Math.max(0,p.life/p.max);pPos[i*3]=p.x;pPos[i*3+1]=p.y;pPos[i*3+2]=5;pA[i]=a*.9;pS[i]=p.s*(.4+a)}
     pg.attributes.position.needsUpdate=pg.attributes.a.needsUpdate=pg.attributes.s.needsUpdate=true;
     renderer.render(scene,cam);
+    // the chat button sits on the guide's body
+    if(!hidden){const hx=actor.position.x+W/2, hy=H/2-actor.position.y, hs=S*1.1;
+      hit.style.width=hit.style.height=hs+'px'; hit.style.transform=`translate(${hx-hs/2}px,${hy-hs/2}px)`;}
     // bubble follows, on the side with more room
     if(!hidden){const sx=actor.position.x+W/2, sy=H/2-actor.position.y; const toLeft=sx>W*.55; const bw=bubble.offsetWidth, bh=bubble.offsetHeight;
       let bx=toLeft?sx-S*.62-bw:sx+S*.62, by=sy-S*.55-bh*.2;

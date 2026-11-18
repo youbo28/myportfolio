@@ -1,28 +1,38 @@
 import { ComponentFixture, DeferBlockState, TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
-import { ChatLauncherComponent } from './chat-launcher.component';
+import { ChatHostComponent } from './chat-host.component';
+import { ChatUiService } from './chat-ui.service';
 import { CHAT_TRANSPORT, ChatReply } from './chat.service';
 import { I18nService } from '../core/i18n.service';
 
-describe('ChatLauncherComponent', () => {
-  let fixture: ComponentFixture<ChatLauncherComponent>;
+describe('ChatHostComponent (the chat the mascot opens)', () => {
+  let fixture: ComponentFixture<ChatHostComponent>;
+  let ui: ChatUiService;
   let answer: (r: ChatReply) => void;
+  let mascot: HTMLButtonElement;
   const el = () => fixture.nativeElement as HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChatLauncherComponent],
+      imports: [ChatHostComponent],
       providers: [
         { provide: I18nService, useValue: { lang: signal('en'), ui: (k: string) => `[${k}]` } },
         { provide: CHAT_TRANSPORT, useValue: { send: () => new Promise<ChatReply>((r) => (answer = r)) } },
       ],
     }).compileComponents();
-    fixture = TestBed.createComponent(ChatLauncherComponent);
+    // Stands in for the mascot's hit button, which lives in the mascot component.
+    mascot = document.createElement('button');
+    mascot.id = 'guide-hit';
+    document.body.appendChild(mascot);
+    ui = TestBed.inject(ChatUiService);
+    fixture = TestBed.createComponent(ChatHostComponent);
     fixture.detectChanges();
   });
 
+  afterEach(() => mascot.remove());
+
   async function open() {
-    el().querySelector<HTMLButtonElement>('button.chat-open')!.click();
+    ui.toggle();
     fixture.detectChanges();
     const [panel] = await fixture.getDeferBlocks();
     await panel.render(DeferBlockState.Complete);
@@ -30,13 +40,7 @@ describe('ChatLauncherComponent', () => {
     fixture.detectChanges();
   }
 
-  it('is a real button with an accessible label, so keyboard users can open it', () => {
-    const button = el().querySelector('button.chat-open')!;
-    expect(button.getAttribute('aria-label')).toBe('[chat.open]');
-    expect(button.getAttribute('aria-expanded')).toBe('false');
-  });
-
-  it('does not render the panel until it is opened', () => {
+  it('renders nothing until the mascot opens the chat', () => {
     expect(el().querySelector('[role="dialog"]')).toBeNull();
   });
 
@@ -45,7 +49,6 @@ describe('ChatLauncherComponent', () => {
 
     expect(el().querySelector('[role="dialog"]')).not.toBeNull();
     expect(document.activeElement).toBe(el().querySelector('textarea'));
-    expect(el().querySelector('button.chat-open')!.getAttribute('aria-expanded')).toBe('true');
   });
 
   it('shows the question at once, a thinking line, then the answer', async () => {
@@ -67,13 +70,22 @@ describe('ChatLauncherComponent', () => {
     expect(el().textContent).not.toContain('[chat.thinking]');
   });
 
-  it('closes with Escape and gives focus back to the button', async () => {
+  it('closes with Escape and gives focus back to the mascot', async () => {
     await open();
     el().querySelector('[role="dialog"]')!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     fixture.detectChanges();
     await fixture.whenStable();
 
+    expect(ui.open()).toBeFalse();
     expect(el().querySelector('[role="dialog"]')).toBeNull();
-    expect(document.activeElement).toBe(el().querySelector('button.chat-open'));
+    expect(document.activeElement).toBe(mascot);
+  });
+
+  it('clicking the mascot again closes it', async () => {
+    await open();
+    ui.toggle();
+    fixture.detectChanges();
+
+    expect(el().querySelector('[role="dialog"]')).toBeNull();
   });
 });

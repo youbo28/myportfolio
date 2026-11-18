@@ -251,9 +251,11 @@ a[data-say],button[data-say]{cursor:pointer}
 .cover img.poster{object-position:center}
 .pj:hover .cover img,.pj.spot .cover img{transform:scale(1.04)}
 
-/* Chat with the bot: the launcher sits beside the guide's recall button, the panel above it */
-.chat-open{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-start:calc(20px + env(safe-area-inset-left,0px));z-index:17;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:var(--glow);color:var(--glow-ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 14px 40px -14px var(--glow);transition:transform .2s,background .9s,color .9s}
-.chat-open:hover{transform:scale(1.06)}
+/* Chat with the bot: clicking the guide opens this panel */
+#guide-hit{position:fixed;left:0;top:0;z-index:16;width:0;height:0;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#guide-hit:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+/* no WebGL: the guide can't be drawn, so its chat button shows as a plain round button */
+#guide-hit.static{left:auto;top:auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-start:20px;width:52px;height:52px;background:var(--glow);transform:none}
 .chat{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom,0px));inset-inline-start:20px;z-index:17;width:min(360px,calc(100vw - 32px));max-height:min(520px,calc(100vh - 120px));display:flex;flex-direction:column;padding:0;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);overflow:hidden}
 .chat-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-family:var(--display)}
 .chat-close{border:0;background:none;color:inherit;font:700 20px var(--body);cursor:pointer;width:30px;height:30px;border-radius:50%;opacity:.7}
