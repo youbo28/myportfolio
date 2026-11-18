@@ -35,6 +35,7 @@ export function createGuide(host: GuideHost): GuideApi {
   const mode = () => host.mode();
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
+  const dots=[...bubble.querySelectorAll('.dot')]; let cloudAt=null; const rtlSide=()=>host.getLang()==='ar';
   let renderer;
   try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){},talk(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -412,18 +413,35 @@ export function createGuide(host: GuideHost): GuideApi {
     // the chat button covers the whole guide (the crescent's lit side reaches well past its centre)
     if(!hidden){const hx=actor.position.x+W/2, hy=H/2-actor.position.y, hs=S*2.3;
       hit.style.width=hit.style.height=hs+'px'; hit.style.transform=`translate(${hx-hs/2}px,${hy-hs/2}px)`;}
-    // speech balloon: above the guide, toward the top-left (top-right when there's no room),
-    // with its tail drawn from the guide's mouth up to the balloon
+    // thought cloud: tries above-left, above-right, then left, right of the guide, keeping the
+    // spot it has while it still fits; never over the guide. A trail of bubbles runs from the
+    // mouth to the cloud, so it reads as coming out of the mouth wherever the cloud is.
     if(!hidden){const sx=actor.position.x+W/2, sy=H/2-actor.position.y, mob=W<=860; const bw=bubble.offsetWidth, bh=bubble.offsetHeight;
       const mx=sx-(isMoon?S*.5:0), my=sy+(isMoon?S*.04:S*.18); // the mouth (measured on screen)
-      const gap=mob?S*.55:S*.75, lift=mob?S*.7:S*.85;
-      let bx=mx-gap-bw*.75, by=my-lift-bh-14;
-      if(bx<8)bx=mx+gap-bw*.25;                            // no room on the left: top-right
-      bx=clamp(bx,8,W-bw-8); by=clamp(by,72,H-bh-8);
-      const tip=clamp(mx-bx,-190,bw+190), base=clamp(tip,bw*.22,bw*.78), th=Math.max(12,my-6-(by+bh-8));
+      const R=S*1.05, gap=mob?16:26;                          // the guide's own space, and room for the bubbles
+      const spots={
+        aboveL:[mx-bw*.85, sy-R-gap-bh], aboveR:[mx-bw*.15, sy-R-gap-bh],
+        left:[sx-R-gap-bw, my-bh*.75],  right:[sx+R+gap, my-bh*.75],
+        below:[sx-bw/2, sy+R+gap]};
+      const onScreen=([x,y])=>[clamp(x,8,W-bw-8),clamp(y,72,H-bh-8)];
+      // how far the cloud's nearest edge is from the guide's centre (must stay outside its circle)
+      const clearance=([x,y])=>Math.hypot(clamp(sx,x,x+bw)-sx,clamp(sy,y,y+bh)-sy);
+      const fits=(p)=>{const q=onScreen(p);return q[0]===p[0]&&q[1]===p[1]&&clearance(p)>R*.92};
+      const order=rtlSide()?['aboveR','aboveL','right','left','below']:['aboveL','aboveR','left','right','below'];
+      if(!cloudAt||!fits(spots[cloudAt])){
+        cloudAt=order.find(k=>fits(spots[k]));
+        // nothing fits as is (small screens): squeeze each spot onto the screen and take the
+        // first that stays off the guide, else the one that leaves it the most room
+        if(!cloudAt){const room=k=>clearance(onScreen(spots[k]));
+          cloudAt=order.find(k=>room(k)>R*.92)||order.reduce((a,k)=>room(k)>room(a)?k:a);}
+      }
+      let [bx,by]=onScreen(spots[cloudAt]);
       bubble.style.transform=`translate(${bx}px,${by}px)`;
-      bubble.style.setProperty('--b0',(200+base-11)+'px'); bubble.style.setProperty('--b1',(200+base+11)+'px');
-      bubble.style.setProperty('--tip',(200+tip)+'px'); bubble.style.setProperty('--th',th+'px');
+      // bubbles: from just off the mouth to the cloud's edge facing it, getting bigger
+      const cx=bx+bw/2, cy=by+bh/2, dx=mx-cx, dy=my-cy, k=1/Math.hypot(dx/(bw/2),dy/(bh/2)||1e-6);
+      const ex=cx+dx*k*.86, ey=cy+dy*k*.86, sizes=mob?[5,8,11]:[7,10,14];
+      dots.forEach((d,i)=>{const f=[.82,.55,.26][i], z=sizes[i], x=ex+(mx-ex)*f, y=ey+(my-ey)*f;
+        d.style.width=d.style.height=z+'px'; d.style.transform=`translate(${x-bx-z/2}px,${y-by-z/2}px)`});
       bubble.style.opacity=(trans&&!trans.swapped)||(W<=860&&now-saidAt>5000)?'0':'';
       bubble.style.pointerEvents=bubble.style.opacity==='0'?'none':'';}
   }
