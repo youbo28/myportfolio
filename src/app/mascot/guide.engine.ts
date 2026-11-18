@@ -136,16 +136,21 @@ export function createGuide(host: GuideHost): GuideApi {
     const d=Math.hypot(.46,.2),fx=-.66*.46/d-(x0+x1)/2,fy=-.66*.2/d-(y0+y1)/2,r=moonMesh.rotation.z;return{x:fx*Math.cos(r)-fy*Math.sin(r),y:fx*Math.sin(r)+fy*Math.cos(r)}})();
   const mouthG=new THREE.Group(); actor.add(mouthG);
 
-  /* the chat arrow: a lit 3D arrow in the guide's own style that flies in, points at the guide
-     and pokes toward it, then flies away. It lives in the scene, not on the guide. */
-  const arrowMat=new THREE.MeshStandardMaterial({color:0xF6E7B4,roughness:.45,metalness:.05,emissive:0xFFE7A8,emissiveIntensity:.35});
+  /* the chat pointer: a 3D hand like the guide's own (same material and build), index finger out,
+     that flies in, points at the guide and pokes toward it, then flies away. It lives in the scene. */
+  const arrowMat=handMat;
   const arrow3d=new THREE.Group(), arrowSpin=new THREE.Group(); arrow3d.add(arrowSpin);
-  { const shaft=new THREE.Mesh(new THREE.CapsuleGeometry(.12,.78,8,20),arrowMat); shaft.position.y=-.1;
-    const head=new THREE.Mesh(new THREE.ConeGeometry(.33,.52,32),arrowMat); head.position.y=.56;
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(.16,.045,12,32),arrowMat); ring.rotation.x=Math.PI/2; ring.position.y=-.5;
-    arrowSpin.add(shaft,head,ring);
-    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,color:0xF6E7B4,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.45}));
-    halo.scale.set(2.2,2.2,1); halo.position.z=-1; arrow3d.add(halo); arrow3d.userData.halo=halo; }
+  { const palm=new THREE.Mesh(new THREE.SphereGeometry(.5,32,24),handMat); palm.scale.set(1,1.05,.6); arrowSpin.add(palm);
+    // index finger straight out (the pointer), the other three curled into the palm
+    [-.3,-.1,.1,.3].forEach((x,i)=>{const p=new THREE.Group();p.position.set(x,.36,0);const len=i===0?.62:i===3?.26:.32;
+      const f=new THREE.Mesh(new THREE.CapsuleGeometry(i===0?.12:.115,len,6,12),handMat);f.position.y=len/2+.06;p.add(f);
+      if(i>0){p.rotation.x=1.9;p.position.z=.12} arrowSpin.add(p)});
+    const th=new THREE.Group(); th.position.set(-.42,-.02,.08); th.rotation.z=.9; th.rotation.x=.6;
+    const tm=new THREE.Mesh(new THREE.CapsuleGeometry(.12,.3,6,12),handMat); tm.position.y=.22; th.add(tm); arrowSpin.add(th);
+    // centre the hand on its pointing axis: the index finger is at x=-.3
+    arrowSpin.position.x=.3;
+    const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,color:0xF6E7B4,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.4}));
+    halo.scale.set(2.4,2.4,1); halo.position.z=-1; arrow3d.add(halo); arrow3d.userData.halo=halo; }
   arrow3d.visible=false; scene.add(arrow3d);
   const arw={x:0,y:0,shown:false,leaving:false};
   const mouthMat=new THREE.MeshBasicMaterial({color:0x3A2810}), mouthFill=new THREE.MeshBasicMaterial({color:0x5A1E14,side:THREE.DoubleSide});
@@ -445,7 +450,7 @@ export function createGuide(host: GuideHost): GuideApi {
       bubble.style.transform=`translate(${bx}px,${by}px)`; bubble.classList.toggle('tail-r',toLeft); bubble.classList.toggle('tail-l',!toLeft);
       bubble.style.opacity=(trans&&!trans.swapped)||(W<=860&&now-saidAt>5000)?'0':'';
       bubble.style.pointerEvents=bubble.style.opacity==='0'?'none':'';}
-    // chat arrow: hovers off to the side of the guide, below it, always turned to point at it,
+    // chat pointer: hovers off to the side of the guide, below it, always turned to point at it,
     // poking toward it in a rhythm; it trails the guide instead of being stuck to it
     { const want=!hidden&&!docked()&&now<arrowUntil;
       const side=actor.position.x>0?-1:1, dl=Math.hypot(.85,.6), ux=side*.85/dl, uy=-.6/dl;
@@ -458,9 +463,9 @@ export function createGuide(host: GuideHost): GuideApi {
         arw.x=lerp(arw.x,gx,k); arw.y=lerp(arw.y,gy,k);
         const vx=actor.position.x-arw.x, vy=actor.position.y-arw.y;
         arrow3d.position.set(arw.x,arw.y,40); arrow3d.rotation.z=Math.atan2(vy,vx)-Math.PI/2;
-        arrow3d.scale.setScalar(S*1.05);
-        if(!RM)arrowSpin.rotation.y+=dt*1.8; arrowSpin.rotation.x=.35;
-        arrowMat.color.setHex(isMoon?0xF6E7B4:0xFFC24D); arrowMat.emissive.setHex(isMoon?0xFFE7A8:0xFF9A2E);
+        arrow3d.scale.setScalar(S*.95);
+        // a gentle rock, so it reads as a 3D hand (a spinning hand would look odd)
+        arrowSpin.rotation.y=RM?.3:.3+Math.sin(t*1.6)*.45; arrowSpin.rotation.x=.2;
         arrow3d.userData.halo.material.color.setHex(isMoon?0xF6E7B4:0xFFB23F);
         // the label rides at the arrow's tail
         const d=Math.hypot(vx,vy)||1, lx=arw.x-vx/d*S*1.05, ly=arw.y-vy/d*S*1.05;

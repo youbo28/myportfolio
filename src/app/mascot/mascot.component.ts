@@ -127,8 +127,8 @@ export class MascotComponent {
   private stopListening?: () => void;
 
   /**
-   * Invitations to chat, until the visitor opens it: a few seconds after arrival (with the big
-   * arrow), now and then while scrolling, and on reaching Contact. The engine adds the arrow
+   * Invitations to chat, until the visitor opens it: a few seconds after every page load (with the
+   * pointing hand), now and then while scrolling, and on reaching Contact. The engine adds the arrow
    * again when the visitor stays idle for 10 s. The guide comes to the mouse and says
    * "click me to start a chat". At most 3 per visit, at least 45 s apart (Contact: 15 s).
    */
@@ -146,8 +146,12 @@ export class MascotComponent {
     };
 
     // on arrival, once its hello has been read
-    // (with the big arrow pointing at the guide)
-    const arrival = setTimeout(() => { if (invite('chat.nudgeShort')) api.showArrow(); }, 7000);
+    // The pointing hand shows on every page load (until the chat is opened); only the
+    // spoken invitation counts toward the per-visit limit.
+    const arrival = setTimeout(() => {
+      invite('chat.nudgeShort');
+      if (!this.chat.used()) api.showArrow();
+    }, 5000);
 
     // while scrolling: after the visitor has moved a good way down the page
     let from = scrollY;
