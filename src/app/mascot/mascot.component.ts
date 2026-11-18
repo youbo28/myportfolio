@@ -16,7 +16,7 @@ import { ChatService } from '../chat/chat.service';
 <canvas id="guide3d" aria-hidden="true"></canvas>
 <button id="guide-hit" type="button" (click)="chat.toggle()" [attr.aria-label]="i18n.ui('chat.open')"
   [attr.aria-expanded]="chat.open()" aria-controls="chat-panel"></button>
-<div id="bubble" role="status" aria-live="polite"><i class="dot" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><i class="dot" aria-hidden="true"></i><span id="btext"></span><button id="hide" type="button" [attr.aria-label]="i18n.ui('guide.hide')">×</button></div>
+<div id="bubble" role="status" aria-live="polite"><span id="btext"></span><button id="hide" type="button" [attr.aria-label]="i18n.ui('guide.hide')">×</button></div>
 <button id="recall" type="button" hidden [attr.aria-label]="i18n.ui('guide.show')"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3a9 9 0 1 0 6.4 13.3A7.2 7.2 0 0 1 14.5 3Z" fill="currentColor"/></svg></button>
 <div id="horizon" aria-hidden="true"><div class="fill"></div></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
