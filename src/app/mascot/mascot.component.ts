@@ -18,6 +18,9 @@ import { ChatService } from '../chat/chat.service';
   [attr.aria-expanded]="chat.open()" aria-controls="chat-panel"></button>
 <div id="bubble" role="status" aria-live="polite"><span id="btext"></span><button id="hide" type="button" [attr.aria-label]="i18n.ui('guide.hide')">×</button></div>
 <button id="recall" type="button" hidden [attr.aria-label]="i18n.ui('guide.show')"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 3a9 9 0 1 0 6.4 13.3A7.2 7.2 0 0 1 14.5 3Z" fill="currentColor"/></svg></button>
+<div id="chat-arrow" hidden aria-hidden="true"><div class="bob">
+  <svg viewBox="0 0 48 64" width="64" height="86"><path d="M24 60V14M24 4 8 22M24 4l16 18" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>{{ i18n.ui('chat.arrow') }}</span></div></div>
 <div id="horizon" aria-hidden="true"><div class="fill"></div></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -126,8 +129,9 @@ export class MascotComponent {
   private stopListening?: () => void;
 
   /**
-   * Invitations to chat, until the visitor opens it: a few seconds after arrival, now and then
-   * while scrolling, and on reaching Contact. The guide comes to the mouse and says
+   * Invitations to chat, until the visitor opens it: a few seconds after arrival (with the big
+   * arrow), now and then while scrolling, and on reaching Contact. The engine adds the arrow
+   * again when the visitor stays idle for 10 s. The guide comes to the mouse and says
    * "click me to start a chat". At most 3 per visit, at least 45 s apart (Contact: 15 s).
    */
   private nudges(api: GuideApi): void {
@@ -144,7 +148,8 @@ export class MascotComponent {
     };
 
     // on arrival, once its hello has been read
-    const arrival = setTimeout(() => invite('chat.nudgeShort'), 7000);
+    // (with the big arrow pointing at the guide)
+    const arrival = setTimeout(() => { if (invite('chat.nudgeShort')) api.showArrow(); }, 7000);
 
     // while scrolling: after the visitor has moved a good way down the page
     let from = scrollY;

@@ -291,3 +291,14 @@ a[data-say],button[data-say]{cursor:pointer}
 .chat-form button{align-self:stretch;margin:0;width:auto;border:0;border-radius:12px;background:var(--accent);color:#fff;font:600 14px var(--body);padding:0 14px;cursor:pointer}
 .chat-form button:disabled{opacity:.5;cursor:default}
 @media (max-width:860px){.chat{inset-inline-start:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
+
+/* the big "click here to chat" arrow: points at the guide now and then (the engine places it) */
+#chat-arrow{position:fixed;left:0;top:0;z-index:16;pointer-events:none;color:var(--glow);will-change:transform}
+#chat-arrow[hidden]{display:none}
+#chat-arrow .bob{display:flex;flex-direction:column;align-items:center;gap:4px;filter:drop-shadow(0 6px 14px color-mix(in srgb,var(--glow) 50%,transparent))}
+#chat-arrow.down .bob{flex-direction:column-reverse}
+#chat-arrow.down svg{transform:rotate(180deg)}
+#chat-arrow span{background:var(--glow);color:var(--glow-ink);font:800 17px var(--body);padding:9px 18px;border-radius:999px;white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){#chat-arrow .bob{animation:arrow-bob 1s ease-in-out infinite}#chat-arrow.down .bob{animation-name:arrow-bob-down}}
+@keyframes arrow-bob{50%{transform:translateY(-10px)}}
+@keyframes arrow-bob-down{50%{transform:translateY(10px)}}

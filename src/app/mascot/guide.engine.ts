@@ -26,6 +26,8 @@ export interface GuideApi {
   nudge(text: string, holdMs?: number): boolean;
   /** Move the mouth for a moment, as if speaking (called while a chat answer is typed out). */
   talk(): void;
+  /** Show the big "click here to chat" arrow pointing at the guide for a few seconds. */
+  showArrow(ms?: number): void;
   undock(): void;
   destroy(): void;
 }
@@ -41,7 +43,7 @@ export function createGuide(host: GuideHost): GuideApi {
   let stopped = false;
   const canvas=$('#guide3d'), bubble=$('#bubble'), btext=$('#btext'), hit=$('#guide-hit');
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){return false},talk(){},destroy(){}}}
+  try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){canvas.hidden=true;bubble.hidden=true;hit.classList.add('static');return{relabel(){},switchTheme(){return false},react(){},hoverSay(){},hoverEnd(){},dock(){},undock(){},nudge(){return false},talk(){},showArrow(){},destroy(){}}}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1;
   const scene=new THREE.Scene();
@@ -262,6 +264,9 @@ export function createGuide(host: GuideHost): GuideApi {
   function dock(el){dockEl=el;hoverEl=null;bubble.style.visibility='hidden'}
   function undock(){dockEl=null;bubble.style.visibility='';lastLine='';current=null}
   const docked=()=>!!dockEl&&document.contains(dockEl);
+  // the big "click here to chat" arrow pointing at the guide, now and then
+  const arrow=$('#chat-arrow'); let arrowUntil=0;
+  function showArrow(ms=7000){if(!hidden&&!docked())arrowUntil=performance.now()+ms}
   // talk: the mouth moves while the chat types an answer out
   let talkUntil=0;
   function talk(){talkUntil=performance.now()+350}
@@ -367,7 +372,7 @@ export function createGuide(host: GuideHost): GuideApi {
     if(want!==moodName){prevMood=moodName;moodName=want;
       // emote only when resting and not too often, so it never flickers
       if(want!=='flying'&&prevMood!=='flying'&&want!=='shy'&&prevMood!=='shy'&&t-lastEmote>8){lastEmote=t;gesture.t=0;gesture.kind='emote';gesture.burst=false}
-      if(want==='sleepy'&&!isHover())say(host.idleLine?.()||C().guide[who].idle);
+      if(want==='sleepy'&&!isHover()){const inv=host.idleLine?.();say(inv||C().guide[who].idle);if(inv)showArrow()}
       if(want==='shy'&&Math.random()<.5)say(C().guide[who].near);
       if(prevMood==='sleepy'){lastLine='';sayFor(current)}}
     const mk=1-Math.exp(-dt*2.4);for(const key in m)m[key]=lerp(m[key],MOODS[moodName][key],mk);
@@ -427,8 +432,13 @@ export function createGuide(host: GuideHost): GuideApi {
       bubble.style.transform=`translate(${bx}px,${by}px)`; bubble.classList.toggle('tail-r',toLeft); bubble.classList.toggle('tail-l',!toLeft);
       bubble.style.opacity=(trans&&!trans.swapped)||(W<=860&&now-saidAt>5000)?'0':'';
       bubble.style.pointerEvents=bubble.style.opacity==='0'?'none':'';}
+    // arrow: under the guide pointing up at it (above, pointing down, when there's no room below)
+    if(!hidden&&!docked()&&now<arrowUntil){arrow.hidden=false;const sx=actor.position.x+W/2, sy=H/2-actor.position.y, aw=arrow.offsetWidth, ah=arrow.offsetHeight;
+      let ay=sy+S*1.05+4, down=false; if(ay+ah>H-8){ay=sy-S*1.05-ah-4;down=true}
+      arrow.classList.toggle('down',down); arrow.style.transform=`translate(${clamp(sx-aw/2,8,W-aw-8)}px,${clamp(ay,72,H-ah-8)}px)`;}
+    else if(!arrow.hidden)arrow.hidden=true;
   }
   const safeLoop=()=>{try{loop()}catch(e){console.error(e)}};
   safeLoop();
-  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, nudge, talk, destroy() { stopped = true; renderer.dispose(); } };
+  return { relabel, switchTheme, react: reactSay, hoverSay, hoverEnd, dock, undock, nudge, talk, showArrow, destroy() { stopped = true; renderer.dispose(); } };
 }
